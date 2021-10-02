@@ -6,8 +6,8 @@ For more information about the CompuTec AppEngine, visit the [CompuTec AppEngine
 To learn more about building your plugins, visit the [CompuTec AppEngine Developers's Guide](https://connect.computec.pl/display/AEEN/Developer%27s+Guide) (customer or partner account required).
 
 ## List of samples
-- [UI Plugin](samples/ui): This sample demonstrates how to build a plugin with a user interface based on SAPUI5.
-- [Job Plugin](samples/job): This sample demonstrates how to build a plugin that runs a background job based on SAP Business One events.
+- [UI Plugin](plugins/ui): This sample demonstrates how to build a plugin with a user interface based on SAPUI5.
+- [Job Plugin](plugins/job): This sample demonstrates how to build a plugin that runs a background job based on SAP Business One events.
 
 ## Help us improve our samples
 
