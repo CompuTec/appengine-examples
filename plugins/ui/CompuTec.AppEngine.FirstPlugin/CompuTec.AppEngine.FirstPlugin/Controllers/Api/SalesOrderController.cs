@@ -34,12 +34,12 @@ namespace CompuTec.AppEngine.FirstPlugin.Controllers.Api
             try
             {
                 int res;
+				// Uncomment to turn run in transaction (remember to uncomment also line 54)
+                // Company.StartTransaction();
                 if (firstAttachment)
                     res = atc.Add();
                 else
                     res = atc.Update();
-
-                Company.StartTransaction();
                 
                 if (res != 0)
                     throw new Exception($"Adding attachment failed: {Company.GetLastErrorDescription()}");
@@ -50,8 +50,8 @@ namespace CompuTec.AppEngine.FirstPlugin.Controllers.Api
                         throw new Exception(
                             $"Exception while updating attachment info to Sales Order: {Company.GetLastErrorDescription()}");
                 }
-                
-                Company.EndTransaction(BoWfTransOpt.wf_Commit);
+                // Uncomment to turn run in transaction (remember to uncomment also line 38)
+                // Company.EndTransaction(BoWfTransOpt.wf_Commit);
             }
             catch (Exception e)
             {
