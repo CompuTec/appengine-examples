@@ -1,13 +1,16 @@
 # CompuTec AppEngine Examples
-This repository hosts code project's examples for the CompuTec AppEngine plugins.
 
-For more information about the CompuTec AppEngine, visit the [CompuTec AppEngine Documentation](https://connect.computec.pl/display/AEEN/Welcome+to+CompuTec+AppEngine+Documentation).
+This repository hosts different code examples for CompuTec AppEngine.
 
-To learn more about building your plugins, visit the [CompuTec AppEngine Developers's Guide](https://connect.computec.pl/display/AEEN/Developer%27s+Guide) (customer or partner account required).
+For more information about the CompuTec AppEngine, visit the [CompuTec AppEngine Documentation](https://learn.computec.one/docs/appengine).
+
+To learn more about building your plugins, visit the [CompuTec AppEngine Developers's Guide](https://learn.computec.one/docs/appengine/developers-guide/sapui5-plugins/development-prerequisites).
 
 ## List of examples
+
 - [UI Plugin](plugins/ui): This example demonstrates how to build a plugin with a user interface based on SAPUI5.
-- [Job Plugin](plugins/job): This example demonstrates how to build a plugin that runs a background job based on SAP Business One events.
+- [Job Plugin](plugins/job): This example demonstrates how to build a plugin that runs a background job based on SAP Business One event.
+- [REST/OData](postman): REST/OData API usage examples as Postman Collection.
 
 ## Help us improve our examples
 

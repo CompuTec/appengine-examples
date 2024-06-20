@@ -1,0 +1,392 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CompuTec.AppEngine",
+		"_postman_id": "b4fb57ad-e22b-d07a-dada-58b2e6789546",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login - OAuth2 [Token]",
+			"request": {
+				"url": "http://localhost:54000/Token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded; charset=utf-8",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "grant_type=password&username=manager&password=1234&serverInstance=PLZG001&companySchema=PFDemoGB"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Login - OAuth2  [Cookie]",
+			"request": {
+				"url": "http://localhost:54000/api/Login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ServerInstance\": \"PLZG001\",\r\n  \"CompanySchema\": \"PFDemoGB\",\r\n  \"UserName\": \"manager\",\r\n  \"Password\": \"1234\",\r\n  \"Language\": \"ln_English_Gb\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ManufacturingOrder - GET [Token]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Object expected\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].Object).to.eql(\"CT_PF_ManufacOrd\");",
+							"});",
+							"pm.test(\"Object count\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.be.at.least(0);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:54000/api/ProcessForce/ManufacturingOrder",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAA9a7SAWGZMEONqxE-pdwbuwAAAAACAAAAAAADZgAAwAAAABAAAADjQ4JvgwwizdEgTWQPeY_OAAAAAASAAACgAAAAEAAAAL6TwipiIKBNjnVwjlHu2aLgAAAA3--ZhW2M4bROXYug5eV-rzLtnaxOkTSZ1IciPfMFSDLJixhwLtk-eYKN017cYDbtxO-wMfxM5vv-vVMIGzWwL_ndUQbdsUA1B_imzsiligem5Q5-NRS2MP7ae5TURykAqg1QhnMcKIhhYZ23UKq1DIKl2vYy1BwwdHJ0uCU-IXI_RlJzHhT-FOYc5n2HQQEvqELmfUQmmsnpuBxgvzjJTLJjt2_4A928fhOPh4cwbMqe3_GgUJpVqJXQoDfvxS2Qf7fdYYb5XjJkrKy_DZHaKs9gHG-mFYip2-9ufkqWsh8UAAAA-xi_H4ZlxSx7UYep3yp3RGdpyP4",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ManufacturingOrder - GET [Cookie]",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Object expected\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData[0].Object).to.eql(\"CT_PF_ManufacOrd\");",
+							"});",
+							"pm.test(\"Object count\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.length).to.be.at.least(0);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:54000/api/ProcessForce/ManufacturingOrder",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ManufacturingOrder - PATCH",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:54000/api/ProcessForce/ManufacturingOrder/1",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAA9a7SAWGZMEONqxE-pdwbuwAAAAACAAAAAAADZgAAwAAAABAAAADjQ4JvgwwizdEgTWQPeY_OAAAAAASAAACgAAAAEAAAAL6TwipiIKBNjnVwjlHu2aLgAAAA3--ZhW2M4bROXYug5eV-rzLtnaxOkTSZ1IciPfMFSDLJixhwLtk-eYKN017cYDbtxO-wMfxM5vv-vVMIGzWwL_ndUQbdsUA1B_imzsiligem5Q5-NRS2MP7ae5TURykAqg1QhnMcKIhhYZ23UKq1DIKl2vYy1BwwdHJ0uCU-IXI_RlJzHhT-FOYc5n2HQQEvqELmfUQmmsnpuBxgvzjJTLJjt2_4A928fhOPh4cwbMqe3_GgUJpVqJXQoDfvxS2Qf7fdYYb5XjJkrKy_DZHaKs9gHG-mFYip2-9ufkqWsh8UAAAA-xi_H4ZlxSx7UYep3yp3RGdpyP4",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n    \"U_ItemCode\": \"Active-Item-01\",\n    \"U_Description\": \"Active-Item-01\",\n    \"U_Revision\": \"code00\",\n    \"U_RevisionName\": \"code00\",\n    \"U_Remarks\": \"ManufacturingOrder POSTED 00001 patched\",\n    \n    \"Items\": [\n        {\n            \"U_Remarks\": \"Item patched 2\",\n            \"U_LineNum\": 2\n        },\n        {\n            \"U_Remarks\": \"Item patched 3\",\n            \"U_LineNum\": 3\n        }\n       \n        ]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "BillOfMaterial [Odata query filter - 'contains']",
+			"request": {
+				"url": {
+					"raw": "http://localhost:54000/odata/ProcessForce/BillOfMaterial?$filter=contains(U_ItemCode,'Prod')",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "54000",
+					"path": [
+						"odata",
+						"ProcessForce",
+						"BillOfMaterial"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "contains(U_ItemCode,'Prod')",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "BillOfMaterial [Odata query filter - 'endswith']",
+			"request": {
+				"url": {
+					"raw": "http://localhost:54000/odata/ProcessForce/BillOfMaterial?$filter=endswith(U_ItemCode, '-A')",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "54000",
+					"path": [
+						"odata",
+						"ProcessForce",
+						"BillOfMaterial"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "endswith(U_ItemCode, '-A') ",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "BillOfMaterial [Odata query filter - 'substring']",
+			"request": {
+				"url": {
+					"raw": "http://localhost:54000/odata/ProcessForce/BillOfMaterial?$filter=endswith(U_ItemCode, '-A')",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "54000",
+					"path": [
+						"odata",
+						"ProcessForce",
+						"BillOfMaterial"
+					],
+					"query": [
+						{
+							"key": "$filter",
+							"value": "endswith(U_ItemCode, '-A') ",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "SqlQuery",
+			"request": {
+				"url": "http://localhost:54000/api/SqlQuery",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAA9a7SAWGZMEONqxE-pdwbuwAAAAACAAAAAAADZgAAwAAAABAAAAB1skCOFM4_ODLFQygm5OdYAAAAAASAAACgAAAAEAAAAKSZPcKsZeKa4c4VXaJ53E_gAAAAiygjvGFSJjObxZGDMiEAiB4OPAJth27gffTOs9XA1AGNgFiqZSfsjgQ5dcfRNeotOvsXwp8Y8oUQ8C31FLr6Z9ULW_QUTXEUswYePUT_9xMXOfPEWUdPPEhausvl7hBIz-9aI2a19bYsYkMBFrQgcz2dRMuWv-EgM8KmYEvHlQ-dBgn7ThBmefHVdg4onuy4718Cyhap9U2Q26n64v5Q2X5KLla5ST7igh0jO7JwaxM11fo0HSQLp6AUhApT5-Tj7JNsuxCt57ImoX2AQgnB1tdlXPSPTMUYz_BqYJ9wTTgUAAAAzS5nuf-jfaowCQh3Y-0_f4lQ09A",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Query\": \"select * from OITM\",\r\n  \"Parameters\": {}\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "BillOfMaterial - GET",
+			"request": {
+				"url": "http://localhost:54000/api/ProcessForce/BillOfMaterial",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAA9a7SAWGZMEONqxE-pdwbuwAAAAACAAAAAAADZgAAwAAAABAAAADjQ4JvgwwizdEgTWQPeY_OAAAAAASAAACgAAAAEAAAAL6TwipiIKBNjnVwjlHu2aLgAAAA3--ZhW2M4bROXYug5eV-rzLtnaxOkTSZ1IciPfMFSDLJixhwLtk-eYKN017cYDbtxO-wMfxM5vv-vVMIGzWwL_ndUQbdsUA1B_imzsiligem5Q5-NRS2MP7ae5TURykAqg1QhnMcKIhhYZ23UKq1DIKl2vYy1BwwdHJ0uCU-IXI_RlJzHhT-FOYc5n2HQQEvqELmfUQmmsnpuBxgvzjJTLJjt2_4A928fhOPh4cwbMqe3_GgUJpVqJXQoDfvxS2Qf7fdYYb5XjJkrKy_DZHaKs9gHG-mFYip2-9ufkqWsh8UAAAA-xi_H4ZlxSx7UYep3yp3RGdpyP4",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "BillOfMaterial - PATCH Odata",
+			"request": {
+				"url": "http://localhost:54000/odata/ProcessForce/BillOfMaterial('00000001')",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAA9a7SAWGZMEONqxE-pdwbuwAAAAACAAAAAAADZgAAwAAAABAAAADjQ4JvgwwizdEgTWQPeY_OAAAAAASAAACgAAAAEAAAAL6TwipiIKBNjnVwjlHu2aLgAAAA3--ZhW2M4bROXYug5eV-rzLtnaxOkTSZ1IciPfMFSDLJixhwLtk-eYKN017cYDbtxO-wMfxM5vv-vVMIGzWwL_ndUQbdsUA1B_imzsiligem5Q5-NRS2MP7ae5TURykAqg1QhnMcKIhhYZ23UKq1DIKl2vYy1BwwdHJ0uCU-IXI_RlJzHhT-FOYc5n2HQQEvqELmfUQmmsnpuBxgvzjJTLJjt2_4A928fhOPh4cwbMqe3_GgUJpVqJXQoDfvxS2Qf7fdYYb5XjJkrKy_DZHaKs9gHG-mFYip2-9ufkqWsh8UAAAA-xi_H4ZlxSx7UYep3yp3RGdpyP4",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n    \"U_ItemCode\": \"Product-A\",\n    \"U_Revision\": \"code00\",\n\t\"U_Quantity\": 100\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "BillOfMaterial/Items - PATACH Odata",
+			"request": {
+				"url": "http://localhost:54000/odata/ProcessForce/BillOfMaterial('00000001')/Items(1)",
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAA9a7SAWGZMEONqxE-pdwbuwAAAAACAAAAAAADZgAAwAAAABAAAADjQ4JvgwwizdEgTWQPeY_OAAAAAASAAACgAAAAEAAAAL6TwipiIKBNjnVwjlHu2aLgAAAA3--ZhW2M4bROXYug5eV-rzLtnaxOkTSZ1IciPfMFSDLJixhwLtk-eYKN017cYDbtxO-wMfxM5vv-vVMIGzWwL_ndUQbdsUA1B_imzsiligem5Q5-NRS2MP7ae5TURykAqg1QhnMcKIhhYZ23UKq1DIKl2vYy1BwwdHJ0uCU-IXI_RlJzHhT-FOYc5n2HQQEvqELmfUQmmsnpuBxgvzjJTLJjt2_4A928fhOPh4cwbMqe3_GgUJpVqJXQoDfvxS2Qf7fdYYb5XjJkrKy_DZHaKs9gHG-mFYip2-9ufkqWsh8UAAAA-xi_H4ZlxSx7UYep3yp3RGdpyP4",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"U_Quantity\": 0\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ItemDetails - Add Revision [Odata]",
+			"request": {
+				"url": "http://localhost:54000/odata/ProcessForce/ItemDetails('00000002')/Revisions",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"U_Code\": \"code06\",\r\n  \"U_ParentItemCode\": \"Product-A\",\r\n  \"U_Description\": \"default\",\r\n  \"U_Status\": \"Active\",\r\n  \"U_Default\": \"Yes\",\r\n  \"U_IsCostingDefault\": \"Yes\",\r\n  \"U_IsMrpDefault\": \"Yes\",\r\n  \"U_MatPhantom\": \"No\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
