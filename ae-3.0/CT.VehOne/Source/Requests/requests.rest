@@ -1,0 +1,45 @@
+### login to company 
+POST https://{{AE_Address}}:{{AE_Port}}/api/Login  HTTP/1.1
+Content-Type: application/json
+
+{
+  "UserName": "{{SAP_UserName}}",
+  "Password": "{{SAP_Password}}",
+  "CompanyId": "{{AE_CompanyId}}"
+}
+
+
+### Logout 
+
+GET https://{{AE_Address}}:{{AE_Port}}/api/Logout
+
+
+### GEt All VEhicles CRUD
+
+GET https://{{AE_Address}}:{{AE_Port}}/api/CTVehOne/VehicleMasterData
+
+### GEt All VEhicles OData
+GET https://{{AE_Address}}:{{AE_Port}}/odata/CTVehOne/VehicleMasterData
+
+### GEt All VEhicles OData
+GET https://{{AE_Address}}:{{AE_Port}}/odata/CTVehOne/VehicleMasterData?$select=Code,Name&$top=1
+
+### Add Oner CRUD 
+POST https://{{AE_Address}}:{{AE_Port}}/api/CTVehOne/VehicleMasterData/AddOwner/V00005
+Content-Type: application/json
+
+{
+  "Name": "John",
+  "Address": "Kowalski"
+}
+
+### Add Oner odata
+POST https://{{AE_Address}}:{{AE_Port}}/odata/CTVehOne/VehicleMasterData/V00005/AddOwner
+Content-Type: application/json
+
+{
+  "owner": {
+  "Name": "John",
+  "Address": "Kowalski"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "LaunchSetup":{
+      "commandName": "Executable",
+      "executablePath": "C:\\Program Files\\sap\\SAP Business One\\AddOns\\CT\\CompuTec.Start\\X64Client\\CompuTec.Start.exe",
+      "workingDirectory": "C:\\Program Files\\sap\\SAP Business One\\AddOns\\CT\\CompuTec.Start\\X64Client\\",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "devapp",
+        "CT_DEBUG": "C:\\git\\core\\SampleApp\\CT.VehOne\\Source\\CT.VehOne.BL\\Properties\\Debug.config.json"
+        
+
+      }
+  
+}}}

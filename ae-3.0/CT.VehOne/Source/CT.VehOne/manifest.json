@@ -1,0 +1,37 @@
+﻿{
+  "version": "1.0.1",
+  "id": "CT.VehOne",
+  "name": "CT.VehOne Name",
+  "PluginType": "plugin",
+  "icon": "sap-icon://machine",
+  "Assembly": "CT.VehOne.dll",
+  "MinimumCoreLevel": "3.0.1.151",
+  "company": "YourCompany",
+  "TranslationDescription":
+  {
+    "XmlTranslationFile":"CT.VehOne.UI.Translations.messages.xml."
+  },
+  "api": {
+    "routePrefix": "CTVehOne",
+    "assemblies": [
+    ],
+    "dependencies": {
+      "CT.VehOne.BL": {
+        "minVersion": "1.0.0"
+      }
+    }
+  },
+  "ui": {
+    "translationFile": "Translations\\messages.xml",
+    "apps": [
+      {
+        "icon": "sap-icon://machine",
+        "namespace": "CT.VehOne.Plugin",
+        "tile": "TEstApp",
+        "target": "home",
+        "type": "user"
+      }
+    ],
+    "sapForms": []
+  }
+}

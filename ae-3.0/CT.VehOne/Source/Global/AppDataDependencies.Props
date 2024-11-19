@@ -1,0 +1,5 @@
+<Project>
+    <ItemGroup>   
+        <PackageReference Include="CompuTec.AppData" Version="$(CTCoreVersion)"/>
+    </ItemGroup>
+</Project>

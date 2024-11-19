@@ -1,0 +1,9 @@
+﻿<Application>
+	<Menus uid="CT_VO_MENU">
+		 
+		<action type="add">
+            <Menu Checked="0" Enabled="1" FatherUID="3072" Image="" Position="11" String="VehicleOne" Type="2" UniqueID="CT_VO_Main" />
+			<Menu Checked="0" Enabled="1" FatherUID="CT_VO_Main" Image="" Position="1" String="VehicleMasterData" Type="1" UniqueID="CT_VO_MD" />
+		</action>
+	</Menus>
+</Application>

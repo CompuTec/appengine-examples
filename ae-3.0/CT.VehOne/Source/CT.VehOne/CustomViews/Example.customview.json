@@ -1,0 +1,8 @@
+﻿{
+  "Id": "PMMyList",
+  "Description": "Example of a custom view",
+  "Source": {
+    "Hana": "Select \"ItemCode\", \"ItemName\" from \"OITM\"",
+    "MsSql": "Select ItemCode, ItemName from OITM"
+  }
+}

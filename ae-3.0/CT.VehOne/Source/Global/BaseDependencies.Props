@@ -1,0 +1,8 @@
+<Project>
+ <Import Project="Properties.Props" />
+    <ItemGroup >
+        <PackageReference Include="CompuTec.Core2" Version="$(CTCoreVersion)" />
+    </ItemGroup>
+   
+</Project>
+        

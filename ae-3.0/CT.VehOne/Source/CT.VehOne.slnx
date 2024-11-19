@@ -1,0 +1,19 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+  </Configurations>
+  <Folder Name="/Global/">
+    <File Path="Global\Properties.Props" />
+    <File Path="Global\AppDataDependencies.Props" />
+    <File Path="Global\BaseDependencies.Props" />
+    <File Path="Global\AEPluginDependencies.Props" />
+    <File Path="Global\SapUiDependencies.Props" />
+  </Folder>
+  <Folder Name="/Requests/">
+    <File Path="Requests\requests.rest" />
+    <File Path="Requests\http-client.env.json" />
+  </Folder>
+  <Project Path="CT.VehOne.BL\CT.VehOne.BL.csproj" Type="Classic C#" />
+  <Project Path="CT.VehOne.UI\CT.VehOne.UI.csproj" Type="Classic C#" />
+  <Project Path="CT.VehOne\CT.VehOne.csproj" Type="Classic C#" />
+</Solution>

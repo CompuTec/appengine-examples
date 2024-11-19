@@ -1,0 +1,10 @@
+<Project>
+    <PropertyGroup>
+        <Version>1.0</Version>
+		<CTCoreVersion>3.0.1.277</CTCoreVersion>
+        <Authors>CompuTec S.A.</Authors>
+        <Copyright>CompuTec S.A.</Copyright>    
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <RunNpmTask>false</RunNpmTask>
+    </PropertyGroup>
+</Project>

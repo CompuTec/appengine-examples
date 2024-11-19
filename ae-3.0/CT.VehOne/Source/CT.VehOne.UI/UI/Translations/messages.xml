@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<messageTranslations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Message id="CT.VehOne.UI" param="0">
+		<translation lang="Default" >CT.VehOne.UI English</translation>
+		<translation lang="ln_English" >CT.VehOne.UI English</translation>
+		<translation lang="ln_Polish" >CT.VehOne.UI Polish</translation>
+		<translation lang="ln_Hebrew" >CT.VehOne.UI Hebrew</translation>
+		<translation lang="ln_Spanish_Ar" >CT.VehOne.UI Spanish (Argentina)</translation>
+		<translation lang="ln_Spanish_Pa" >CT.VehOne.UI Spanish (Panama)</translation>
+		<translation lang="ln_German" >CT.VehOne.UI German</translation>
+		<translation lang="ln_Serbian" >CT.VehOne.UI Serbian</translation>
+		<translation lang="ln_Danish" >CT.VehOne.UI Danish</translation>
+		<translation lang="ln_Norwegian" >CT.VehOne.UI Norwegian</translation>
+		<translation lang="ln_Italian" >CT.VehOne.UI Italian</translation>
+		<translation lang="ln_Hungarian" >CT.VehOne.UI Hungarian</translation>
+		<translation lang="ln_Chinese" >CT.VehOne.UI Chinese</translation>
+		<translation lang="ln_Dutch" >CT.VehOne.UI Dutch</translation>
+		<translation lang="ln_Finnish" >CT.VehOne.UI Finnish</translation>
+		<translation lang="ln_Greek" >CT.VehOne.UI Greek</translation>
+		<translation lang="ln_Portuguese" >CT.VehOne.UI Portuguese</translation>
+		<translation lang="ln_Swedish" >CT.VehOne.UI Swedish</translation>
+		<translation lang="ln_French" >CT.VehOne.UI French</translation>
+		<translation lang="ln_Spanish" >CT.VehOne.UI Spanish</translation>
+		<translation lang="ln_Russian" >CT.VehOne.UI Russian</translation>
+		<translation lang="ln_Spanish_La" >CT.VehOne.UI Spanish (Latin America)</translation>
+		<translation lang="ln_Czech_Cz" >CT.VehOne.UI Czech</translation>
+		<translation lang="ln_Slovak_Sk" >CT.VehOne.UI Slovak</translation>
+		<translation lang="ln_Korean_Kr" >CT.VehOne.UI Korean</translation>
+		<translation lang="ln_Portuguese_Br" >CT.VehOne.UI Portuguese (Brazil)</translation>
+		<translation lang="ln_Japanese_Jp" >CT.VehOne.UI Japanese</translation>
+		<translation lang="ln_Turkish_Tr" >CT.VehOne.UI Turkish</translation>
+		<translation lang="ln_TrdtnlChinese_Hk" >CT.VehOne.UI Traditional Chinese (Hong Kong)</translation>
+	</Message>
+	<Message id="CT.VehOne.VEhicleLabel" param="0">
+		<translation lang="Default" >Linked Vehicle</translation>
+		<translation lang="ln_English" >Linked Vehicle</translation>
+		<translation lang="ln_Polish" >Połączony pojazd</translation>
+	</Message>
+	<Message id="CT_VO_ContextMn1Desctiption" param="0" >
+		<translation lang="Default" >Menu 1 </translation>
+		<translation lang="ln_English" >Menu 1</translation>
+		<translation lang="ln_Polish" >Menu 1</translation>
+	</Message>
+	<Message id="CT_VO_ContextMn2Desctiption" param="0" >
+		<translation lang="Default" >Menu 2 </translation>
+		<translation lang="ln_English" >Menu 2</translation>
+		<translation lang="ln_Polish" >Menu 2</translation>
+	</Message>
+	<Message id="CT_VO_ContextMn3Desctiption" param="0" >
+		<translation lang="Default" >Menu 3 </translation>
+		<translation lang="ln_English" >Menu 3</translation>
+		<translation lang="ln_Polish" >Menu 3</translation>
+	</Message>
+	<Message id="CT_VO_ContextMn4Desctiption" param="0" >
+		<translation lang="Default" >Menu 4 </translation>
+		<translation lang="ln_English" >Menu 4</translation>
+		<translation lang="ln_Polish" >Menu 4</translation>
+	</Message>
+	<Message id="CT_VO_ContextMn5Desctiption" param="0" >
+		<translation lang="Default" >Menu 5 </translation>
+		<translation lang="ln_English" >Menu 5</translation>
+		<translation lang="ln_Polish" >Menu 5</translation>
+	</Message>
+	<Message id="CT_VO_ContextSMn1Desctiption" param="0" >
+		<translation lang="Default" >Sub menu </translation>
+		<translation lang="ln_English" >Sub menu</translation>
+		<translation lang="ln_Polish" >Sub Menu</translation>
+	</Message>
+</messageTranslations>

@@ -1,0 +1,23 @@
+{
+  "Version": "1.0.0",
+  "Id": "CT.VehOne.BL",
+  "Name": "CT.VehOne.BL Name",
+  "Assembly":"CT.VehOne.BL.dll",
+  "PluginType": "Di",
+  "Icon": "sap-icon://machine",
+  "Company": "YourCompany",
+  "MinimumCoreLevel": "3.0.1.160",
+  "SetupDescription": {
+    
+  },
+  "TranslationDescription":
+  {
+    "XmlTranslationFile":"CT.VehOne.BL.Translations.MessageTranslations.xml"
+  },
+  "Api": {
+    "assemblies": [
+    ],
+    "dependencies": {
+    }
+  }
+}

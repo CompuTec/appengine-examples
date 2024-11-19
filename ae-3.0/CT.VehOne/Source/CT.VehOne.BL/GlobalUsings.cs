@@ -1,0 +1,13 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using System.Text;
+global using System.Threading.Tasks;
+global using CompuTec.BaseLayer;
+global using CompuTec.BaseLayer.DI;
+global using CompuTec.BaseLayer.Connection;
+global using CompuTec.Core2;
+global using CompuTec.Core2.DI.Setup.Attributes;
+global using CompuTec.Core2.DI.Setup.UDO.Model;
+global using CompuTec.Core2.DI.Setup;
+global using CompuTec.Core2.Translations;

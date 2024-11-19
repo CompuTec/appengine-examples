@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "id":"CT.VehOne.UI",
+  "Assembly": "CT.VehOne.UI.dll",
+  "name": "ConsoleApp User Interface",
+  "PluginType": "SapUI",
+  "icon": "sap-icon://activate",
+  "company": "Company Name",
+  "TranslationDescription":
+{
+  "XmlTranslationFile":"CT.VehOne.UI.UI.Translations.messages.xml"
+},
+  "api": {
+    "assemblies": [
+    ],
+    "dependencies": {
+      "CT.VehOne.BL": {
+        "minVersion": "1.0"
+      } 
+    }
+  },
+  "SAPUI": {
+    "MenuPath": "UI/Forms/Menu.xml",
+    "FormTranslationFile": "CT.VehOne.UI.Translations.Translations.xml",
+    "CflTranslationFilePath": "CT.VehOne.UI.Translations.CflTranslation.xml",
+    "FormColumnTranslationFilePath": "CT.VehOne.UI.Translations.FormColumnTranslation.xml"
+  }
+}

@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <AutoGenerateBindingRedirects>False</AutoGenerateBindingRedirects>
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+        <CompilerGeneratedFilesOutputPath>.Generated</CompilerGeneratedFilesOutputPath>
+        <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+    </PropertyGroup>
+    <Import Project="..\Global\SapUiDependencies.Props"/>
+    
+    <ItemGroup>
+        <PackageReference Include="CompuTec.SourceCodeGenerators" Version="$(CTCoreVersion)" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\CT.VehOne\CT.VehOne.csproj"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="manifest.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="dev.config.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="UI\**\*.xml">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory> 
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="UI\Translations\messages.xml" />
+      <EmbeddedResource Include="UI\Translations\messages.xml" />
+    </ItemGroup>
+ 
+    <Target Name="CTpack" AfterTargets="AfterBuild">
+        <Exec WorkingDirectory="$(TargetDir)" Command="del *.zip /F"/>
+        <Exec WorkingDirectory="$(TargetDir)" Command="del *.nupkg /F"/>
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet tool restore"/>
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet ct push  $(TargetDir) -x CT.VehOne.BL -r $(Version) -z" Condition="'$(Configuration)'!='Debug'"/>
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet ct pack $(TargetDir) -x CT.VehOne.BL -r $(Version)"/>
+    </Target>
+</Project>

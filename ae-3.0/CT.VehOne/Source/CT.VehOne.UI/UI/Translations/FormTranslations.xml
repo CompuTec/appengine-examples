@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <from file="UI\Forms\VehicleMasterData\VehicleMasterDataForm.xml" uid="CT_VO_OVMD_">
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]">
+      <property name="title">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Vehicle Naster Data</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;1&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">OK</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;2&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Cancel</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;CodeLbl&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Code</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;NameLbl&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Name</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;porStCb&amp;quot;]/specific/ValidValues/action[@type=&amp;quot;add&amp;quot;]/ValidValue[@value=&amp;quot;C&amp;quot;]">
+      <property name="description">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Car</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;porStCb&amp;quot;]/specific/ValidValues/action[@type=&amp;quot;add&amp;quot;]/ValidValue[@value=&amp;quot;B&amp;quot;]">
+      <property name="description">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Bus</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;porStCb&amp;quot;]/specific/ValidValues/action[@type=&amp;quot;add&amp;quot;]/ValidValue[@value=&amp;quot;T&amp;quot;]">
+      <property name="description">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Truck</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;porStCb&amp;quot;]/specific/ValidValues/action[@type=&amp;quot;add&amp;quot;]/ValidValue[@value=&amp;quot;M&amp;quot;]">
+      <property name="description">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Motorcycle</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;porStCb&amp;quot;]/specific/ValidValues/action[@type=&amp;quot;add&amp;quot;]/ValidValue[@value=&amp;quot;O&amp;quot;]">
+      <property name="description">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Other</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;staLbl&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Type</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;DetTab&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Properties</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;OwnTab&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Owners</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;VINLbl&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">VIN number</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;ModelLbl&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Model</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;ReglLbl&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Registration nr.</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;MnfDlLbl&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Mng Date</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;RgDlLbl&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Registration  Date</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;SlrlLbl&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Seller Code</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;InvlLbl&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Invoice</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;SlrlNLbl&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Seller Name</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;ownrsMtx&amp;quot;]/specific/columns/action[@type=&amp;quot;add&amp;quot;]/column[@uid=&amp;quot;rowNoCol&amp;quot;]">
+      <property name="title">
+        <translation lang="Default" Date="0001-01-01T00:00:00">#</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;ownrsMtx&amp;quot;]/specific/columns/action[@type=&amp;quot;add&amp;quot;]/column[@uid=&amp;quot;rqILnNCol&amp;quot;]">
+      <property name="title">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Line No.</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;ownrsMtx&amp;quot;]/specific/columns/action[@type=&amp;quot;add&amp;quot;]/column[@uid=&amp;quot;rqIDcTCol&amp;quot;]">
+      <property name="title">
+        <translation lang="Default" Date="0001-01-01T00:00:00">OwnerName</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;ownrsMtx&amp;quot;]/specific/columns/action[@type=&amp;quot;add&amp;quot;]/column[@uid=&amp;quot;rqIBPCCol&amp;quot;]">
+      <property name="title">
+        <translation lang="Default" Date="0001-01-01T00:00:00">U_OwnerAddress </translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;ownrsMtx&amp;quot;]/specific/columns/action[@type=&amp;quot;add&amp;quot;]/column[@uid=&amp;quot;rqIItCCol&amp;quot;]">
+      <property name="title">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Phone</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;ownrsMtx&amp;quot;]/specific/columns/action[@type=&amp;quot;add&amp;quot;]/column[@uid=&amp;quot;rqIItNCol&amp;quot;]">
+      <property name="title">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Email</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;ownrsMtx&amp;quot;]/specific/columns/action[@type=&amp;quot;add&amp;quot;]/column[@uid=&amp;quot;rqrevCCol&amp;quot;]">
+      <property name="title">
+        <translation lang="Default" Date="0001-01-01T00:00:00">U_OwnershipStartDate</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;ownrsMtx&amp;quot;]/specific/columns/action[@type=&amp;quot;add&amp;quot;]/column[@uid=&amp;quot;rqIPlQCol&amp;quot;]">
+      <property name="title">
+        <translation lang="Default" Date="0001-01-01T00:00:00">OwnershipEndDate</translation>
+      </property>
+    </item>
+    <item path="/Application/forms/action[@type=&amp;quot;add&amp;quot;]/form[@uid=&amp;quot;CT_VO_OVMD_&amp;quot;]/items/action[@type=&amp;quot;add&amp;quot;]/item[@uid=&amp;quot;remLbl&amp;quot;]/specific">
+      <property name="caption">
+        <translation lang="Default" Date="0001-01-01T00:00:00">Remarks</translation>
+      </property>
+    </item>
+  </from>
+</translations>

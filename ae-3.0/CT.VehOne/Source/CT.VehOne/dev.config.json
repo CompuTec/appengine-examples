@@ -1,0 +1,9 @@
+{
+  "SourceDirectory": "",
+  "OutputDll": "bin\\Debug\\net8.0\\CT.VehOne.dll",
+  "Dependencies": [
+    "..\\CT.VehOne.BL\\dev.config.json"
+  ],
+  "MapWwwAppFolder": true
+}
+ 

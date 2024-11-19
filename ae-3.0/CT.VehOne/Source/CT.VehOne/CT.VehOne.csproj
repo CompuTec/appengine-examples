@@ -1,0 +1,93 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+    </PropertyGroup>
+    <Import Project="..\Global\AEPluginDependencies.Props"/>
+    <ItemGroup>
+        <FrameworkReference Include="Microsoft.AspNetCore.App"/>
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="manifest.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="CustomViews\*.customview.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+
+        <None Remove="www\Tests\**"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Remove="www\dist\**"/>
+        <Compile Remove="www\node_modules\**"/>
+        <Compile Remove="www\src\**"/>
+        <Compile Remove="www\Tests\**"/>
+        <EmbeddedResource Remove="www\dist\**"/>
+        <EmbeddedResource Remove="www\node_modules\**"/>
+        <EmbeddedResource Remove="www\src\**"/>
+        <EmbeddedResource Remove="www\Tests\**"/>
+        <None Remove="www\dist\**"/>
+        <None Remove="www\node_modules\**"/>
+        <None Remove="www\Tests\**"/>
+        <EmbeddedResource Update="Resources\HanaQueries.resx">
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>HanaQueries.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <Compile Update="Resources\HanaQueries.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>HanaQueries.resx</DependentUpon>
+        </Compile>
+        <EmbeddedResource Update="Resources\MssqlResources.resx">
+          <Generator>ResXFileCodeGenerator</Generator>
+          <LastGenOutput>MssqlResources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <Compile Update="Resources\MssqlResources.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>MssqlResources.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="www\.babelrc.json"/>
+        <None Remove="www\.eslintrc"/>
+        <None Remove="www\.gitignore"/>
+        <None Remove="www\package-lock.json"/>
+        <None Remove="www\package.json"/>
+        <None Remove="www\tsconfig.json"/>
+        <None Remove="www\ui5.yaml"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="www\webapp\**">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Include="Translations\*.xml">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\CT.VehOne.BL\CT.VehOne.BL.csproj"/>
+    </ItemGroup>
+
+    <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(RunNpmTask)'=='true'">
+        <Exec Command="cd $(ProjectDir)www\&#xD;&#xA;npm install"/>
+        <Exec Command="cd $(ProjectDir)www\&#xD;&#xA;npm run build:ts"/>
+    </Target>
+
+    <Target Name="CTpack" AfterTargets="AfterBuild">
+        <Message Text="AfterBuild"/>
+        <Exec WorkingDirectory="$(TargetDir)" Command="del *.zip /F"/>
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet tool restore"/>
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet ct push  $(TargetDir) -r $(Version)  -x CT.VehOne.BL -s $(ComputecPluginSource) -z" Condition="'$(Configuration)'!='Debug'"/>
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet ct pack $(TargetDir) -r $(Version) -x CT.VehOne.BL"/>
+    </Target>
+</Project>

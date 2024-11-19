@@ -1,0 +1,1 @@
+﻿View "SimpleView" as select "ItemCode", "ItemName" from OITM

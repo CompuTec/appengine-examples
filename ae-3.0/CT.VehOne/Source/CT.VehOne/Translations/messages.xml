@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<messageTranslations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Message id="CT.VehOne" param="0">
+	<translation lang="Default" >CT.VehOne English</translation>
+	<translation lang="ln_English" >CT.VehOne English</translation>
+	<translation lang="ln_Polish" >CT.VehOne Polish</translation>
+	<translation lang="ln_Hebrew" >CT.VehOne Hebrew</translation>
+	<translation lang="ln_Spanish_Ar" >CT.VehOne Spanish (Argentina)</translation>
+	<translation lang="ln_Spanish_Pa" >CT.VehOne Spanish (Panama)</translation>
+	<translation lang="ln_German" >CT.VehOne German</translation>
+	<translation lang="ln_Serbian" >CT.VehOne Serbian</translation>
+	<translation lang="ln_Danish" >CT.VehOne Danish</translation>
+	<translation lang="ln_Norwegian" >CT.VehOne Norwegian</translation>
+	<translation lang="ln_Italian" >CT.VehOne Italian</translation>
+	<translation lang="ln_Hungarian" >CT.VehOne Hungarian</translation>
+	<translation lang="ln_Chinese" >CT.VehOne Chinese</translation>
+	<translation lang="ln_Dutch" >CT.VehOne Dutch</translation>
+	<translation lang="ln_Finnish" >CT.VehOne Finnish</translation>
+	<translation lang="ln_Greek" >CT.VehOne Greek</translation>
+	<translation lang="ln_Portuguese" >CT.VehOne Portuguese</translation>
+	<translation lang="ln_Swedish" >CT.VehOne Swedish</translation>
+	<translation lang="ln_French" >CT.VehOne French</translation>
+	<translation lang="ln_Spanish" >CT.VehOne Spanish</translation>
+	<translation lang="ln_Russian" >CT.VehOne Russian</translation>
+	<translation lang="ln_Spanish_La" >CT.VehOne Spanish (Latin America)</translation>
+	<translation lang="ln_Czech_Cz" >CT.VehOne Czech</translation>
+	<translation lang="ln_Slovak_Sk" >CT.VehOne Slovak</translation>
+	<translation lang="ln_Korean_Kr" >CT.VehOne Korean</translation>
+	<translation lang="ln_Portuguese_Br" >CT.VehOne Portuguese (Brazil)</translation>
+	<translation lang="ln_Japanese_Jp" >CT.VehOne Japanese</translation>
+	<translation lang="ln_Turkish_Tr" >CT.VehOne Turkish</translation>
+	<translation lang="ln_TrdtnlChinese_Hk" >CT.VehOne Traditional Chinese (Hong Kong)</translation>
+	</Message>
+</messageTranslations>

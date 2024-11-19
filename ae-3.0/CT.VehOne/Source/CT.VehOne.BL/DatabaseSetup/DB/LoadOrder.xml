@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<scripts>
+	<script Name="SimpleView" Type="V" DatabaseType="All" ContinueOnError="false"  />
+	<script Name="MyFirstProcedure" Type="P" DatabaseType="All" ContinueOnError="false" />
+</scripts>

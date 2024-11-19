@@ -1,0 +1,15 @@
+{
+  "ConnectionProperties": {
+    "FORMCachingDisabled": true,
+    "FofseDbStructureCheckOnConnectionInitialization": true,
+    "ExecuteSetupOnUI": true
+  },
+  "DevelopmentConfiguration": {
+    "Enabled": true,
+    "AeWwwPath": "",
+    "Plugins": [
+      "C:\\git\\core\\SampleApp\\CT.VehOne\\Source\\CT.VehOne.BL\\dev.config.json"
+    ]
+  }
+
+}

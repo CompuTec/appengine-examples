@@ -1,0 +1,6 @@
+{
+  "SourceDirectory": "",
+  "OutputDll": "bin\\Debug\\net8.0\\CT.VehOne.BL.dll",
+  "Dependencies": [],
+  "MapWwwAppFolder": false
+}

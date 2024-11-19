@@ -1,0 +1,8 @@
+<Project>
+ <Import Project="BaseDependencies.Props" />
+    <ItemGroup  >
+        <PackageReference Include="CompuTec.Core2.AE" Version="$(CTCoreVersion)" />
+        <PackageReference Include="CompuTec.SAP.UI" Version="3.0.0" />
+    </ItemGroup>
+</Project>
+        

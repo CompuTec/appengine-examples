@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<messageTranslations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Message id="CompuTec.AppEngine.Template.AE" param="0">
+    <translation lang="Default" >CompuTec.AppEngine.Template.AE English</translation>
+    <translation lang="ln_English" >CompuTec.AppEngine.Template.AE English</translation>
+    <translation lang="ln_Polish" >CompuTec.AppEngine.Template.AE Polish</translation>
+    <translation lang="ln_Hebrew" >CompuTec.AppEngine.Template.AE Hebrew</translation>
+    <translation lang="ln_Spanish_Ar" >CompuTec.AppEngine.Template.AE Spanish (Argentina)</translation>
+    <translation lang="ln_Spanish_Pa" >CompuTec.AppEngine.Template.AE Spanish (Panama)</translation>
+    <translation lang="ln_German" >CompuTec.AppEngine.Template.AE German</translation>
+    <translation lang="ln_Serbian" >CompuTec.AppEngine.Template.AE Serbian</translation>
+    <translation lang="ln_Danish" >CompuTec.AppEngine.Template.AE Danish</translation>
+    <translation lang="ln_Norwegian" >CompuTec.AppEngine.Template.AE Norwegian</translation>
+    <translation lang="ln_Italian" >CompuTec.AppEngine.Template.AE Italian</translation>
+    <translation lang="ln_Hungarian" >CompuTec.AppEngine.Template.AE Hungarian</translation>
+    <translation lang="ln_Chinese" >CompuTec.AppEngine.Template.AE Chinese</translation>
+    <translation lang="ln_Dutch" >CompuTec.AppEngine.Template.AE Dutch</translation>
+    <translation lang="ln_Finnish" >CompuTec.AppEngine.Template.AE Finnish</translation>
+    <translation lang="ln_Greek" >CompuTec.AppEngine.Template.AE Greek</translation>
+    <translation lang="ln_Portuguese" >CompuTec.AppEngine.Template.AE Portuguese</translation>
+    <translation lang="ln_Swedish" >CompuTec.AppEngine.Template.AE Swedish</translation>
+    <translation lang="ln_French" >CompuTec.AppEngine.Template.AE French</translation>
+    <translation lang="ln_Spanish" >CompuTec.AppEngine.Template.AE Spanish</translation>
+    <translation lang="ln_Russian" >CompuTec.AppEngine.Template.AE Russian</translation>
+    <translation lang="ln_Spanish_La" >CompuTec.AppEngine.Template.AE Spanish (Latin America)</translation>
+    <translation lang="ln_Czech_Cz" >CompuTec.AppEngine.Template.AE Czech</translation>
+    <translation lang="ln_Slovak_Sk" >CompuTec.AppEngine.Template.AE Slovak</translation>
+    <translation lang="ln_Korean_Kr" >CompuTec.AppEngine.Template.AE Korean</translation>
+    <translation lang="ln_Portuguese_Br" >CompuTec.AppEngine.Template.AE Portuguese (Brazil)</translation>
+    <translation lang="ln_Japanese_Jp" >CompuTec.AppEngine.Template.AE Japanese</translation>
+    <translation lang="ln_Turkish_Tr" >CompuTec.AppEngine.Template.AE Turkish</translation>
+    <translation lang="ln_TrdtnlChinese_Hk" >CompuTec.AppEngine.Template.AE Traditional Chinese (Hong Kong)</translation>
+    </Message>
+    <Message id="VehOne.VinIsMissing" param="0">
+    <translation lang="Default" >VIN is missing</translation>
+    <translation lang="ln_English" >VIN is missing</translation>
+    <translation lang="ln_Polish" >Prosze Podać numer VIN</translation>
+    </Message>
+    <Message id="VehOne.ModelIsMissing" param="0">
+        <translation lang="Default" >Model is missing</translation>
+        <translation lang="ln_English" >Model is missing</translation>
+        <translation lang="ln_Polish" >Prosze Podać Model</translation>
+    </Message>
+    <Message id="VehOne.CodeIsMissing" param="0">
+        <translation lang="Default" >Code is missing</translation>
+        <translation lang="ln_English" >Code is missing</translation>
+        <translation lang="ln_Polish" >Prosze podać kod</translation>
+    </Message>
+    <Message id="VehOne.DuplicatedPrevOwners" param="0">
+        <translation lang="Default" >Duplicated previous owners</translation>
+        <translation lang="ln_English" >Duplicated previous owners</translation>
+        <translation lang="ln_Polish" >Duplikowani poprzedni właściciele</translation>
+    </Message>
+</messageTranslations>

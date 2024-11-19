@@ -1,0 +1,310 @@
+<Application>
+    <forms>
+        <action type="add">
+            <form AutoManaged="1" BorderStyle="0" FormType="CT_VO_OVMD" ObjectType="CT_VO_OVMD" SupportedModes="15" appformnumber="CT_VO_OVMD" client_height="390" client_width="740" color="0" default_button="1"
+                  height="390" left="200" mode="0" pane="1" title="Vehicle Naster Data" top="50" type="0" uid="CT_VO_OVMD_" visible="0" width="740">
+                <ActiveItem FindDefaultItemUID="NameEdt" AddDefaultItemUID="CodeEdt"/>
+                <datasources>
+                    <dbdatasources>
+                        <action type="add">
+                            <datasource tablename="@CT_VO_OVMD" />
+                            <datasource tablename="@CT_VO_VMD1" />
+                        </action>
+                    </dbdatasources>
+                    <userdatasources>
+                        <action type="add">
+                            <datasource type="1" uid="RowNoDs" />
+                            <datasource size="9" type="1" uid="FolderDS" />
+                            <datasource size="11" type="9" uid="InvDocNum" />
+                            <datasource size="11" type="9" uid="CardName" />
+
+                        </action>
+                    </userdatasources>
+                    <DataTables>
+
+                    </DataTables>
+                </datasources>
+                <items>
+                    <action type="add">
+                        <item uid="1" type="4" left="5" tab_order="0" width="65" top="325" height="20" visible="1" enabled="1" from_pane="0" to_pane="0" disp_desc="0" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="0">
+                            <AutoManagedAttribute/>
+                            <specific caption="OK"/>
+                        </item>
+                        <item uid="2" type="4" left="75" tab_order="0" width="65" top="325" height="20" visible="1" enabled="1" from_pane="0" to_pane="0" disp_desc="0" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="0">
+                            <AutoManagedAttribute/>
+                            <specific caption="Cancel"/>
+                        </item>
+                        <item uid="CodeLbl" type="8" left="6" tab_order="0" width="77" top="8" height="14" visible="1" enabled="1" from_pane="0" to_pane="0" disp_desc="0" right_just="0" description="" linkto="CodeEdt" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute/>
+                            <specific caption="Code"/>
+                        </item>
+                        <item uid="CodeEdt" type="16" left="92" tab_order="2" width="200" top="8" height="14" visible="1" enabled="0" from_pane="0" to_pane="0" disp_desc="1" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute>
+                                <Attribute description="" id="2" modeFind="1" modeAdd="1" modeOk="0" modeView="0" />
+                            </AutoManagedAttribute>
+                            <specific TabOrder="2" IsPassword="0">
+                                <databind databound="1" table="@CT_VO_OVMD" alias="Code"/>
+
+                            </specific>
+                        </item>
+                        <item uid="NameLbl" type="8" left="6" tab_order="0" width="77" top="23" height="14" visible="1" enabled="1" from_pane="0" to_pane="0" disp_desc="0" right_just="0" description="" linkto="CodeEdt" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute/>
+                            <specific caption="Name"/>
+                        </item>
+                        <item uid="NameEdt" type="16" left="92" tab_order="2" width="400" top="23" height="14" visible="1" enabled="0" from_pane="0" to_pane="0" disp_desc="1" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute>
+                                <Attribute description="" id="2" modeFind="1" modeAdd="1" modeOk="1" modeView="0" />
+                            </AutoManagedAttribute>
+                            <specific TabOrder="2" IsPassword="0">
+                                <databind databound="1" table="@CT_VO_OVMD" alias="Name"/>
+
+                            </specific>
+                        </item>
+
+                        <item uid="porStCb" type="113" left="92" tab_order="2" width="200" top="38" height="14" visible="1" enabled="0" from_pane="0" to_pane="0" disp_desc="1" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute>
+                                <Attribute description="" id="2" modeFind="1" modeAdd="1" modeOk="1" modeView="0" />
+                            </AutoManagedAttribute>
+                            <specific TabOrder="2" IsPassword="0">
+                                <databind databound="1" table="@CT_VO_OVMD" alias="U_Type"/>
+                                <ValidValues>
+                                    <action type="add">
+                                        <ValidValue value="C" description="Car" />
+                                        <ValidValue value="B" description="Bus" />
+                                        <ValidValue value="T" description="Truck" />
+                                        <ValidValue value="M" description="Motorcycle" />
+                                        <ValidValue value="O" description="Other" />
+                                    </action>
+                                </ValidValues>
+                            </specific>
+                        </item>
+                        <item uid="staLbl" type="8" left="6" tab_order="0" width="77" top="38" height="14" visible="1" enabled="1" from_pane="0" to_pane="0" disp_desc="0" right_just="0" description="" linkto="porStCb" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute/>
+                            <specific caption="Type"/>
+                        </item>
+
+
+                        <!-- Deatils tab -->
+                        <item AffectsFormMode="1" backcolor="-1" description="" disp_desc="0" enabled="1" font_size="0" forecolor="-1" from_pane="0" linkto="" right_just="0" supp_zeros="0" tab_order="0" text_style="0" to_pane="0" visible="1" uid="DetTab" width="220" height="19" top="53" left="5" type="99">
+                            <AutoManagedAttribute />
+                            <specific AffectsFormMode="0" caption="Properties" val_off="0" val_on="1">
+                                <databind alias="FolderDS" databound="1" table="" />
+                            </specific>
+                        </item>
+
+                        <!-- rectangle -->
+                        <item AffectsFormMode="1" backcolor="-1" description="" disp_desc="0" enabled="1" font_size="0" forecolor="-1" linkto="" right_just="0" supp_zeros="0" tab_order="0" text_style="0" visible="1" uid="oprPrpRct" width="698" height="180" top="70" left="5" type="100" to_pane="0" from_pane="0">
+
+                            <AutoManagedAttribute />
+                        </item>
+                        <!-- PrevOwners tab -->
+                        <item AffectsFormMode="1" backcolor="-1" description="" disp_desc="0" enabled="1" font_size="0" forecolor="-1" from_pane="0" linkto="" right_just="0" supp_zeros="0" tab_order="0" text_style="0" to_pane="0" visible="1" uid="OwnTab" width="220" height="19" top="53" left="6" type="99">
+                            <AutoManagedAttribute />
+                            <specific AffectsFormMode="0" caption="Owners" val_off="0" val_on="2">
+                                <databind alias="FolderDS" databound="1" table="" />
+                            </specific>
+                        </item>
+                        <!-- Details TAb content -->
+
+                        <item uid="VINLbl" type="8" left="6" tab_order="0" width="77" top="75" height="14" visible="1" enabled="1" from_pane="1" to_pane="1"  disp_desc="0" right_just="0" description="" linkto="VINEdt" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute/>
+                            <specific caption="VIN number"/>
+                        </item>
+                        <item uid="VINEdt" type="16" left="92" tab_order="2" width="200" top="75" height="14" visible="1" enabled="0" from_pane="1" to_pane="1"  disp_desc="1" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute>
+                                <Attribute description="" id="2" modeFind="1" modeAdd="1" modeOk="1" modeView="0" />
+                            </AutoManagedAttribute>
+                            <specific TabOrder="4" IsPassword="0">
+                                <databind databound="1" table="@CT_VO_OVMD" alias="U_VIN"/>
+                            </specific>
+                        </item>
+                        <item uid="ModelLbl" type="8" left="6" tab_order="0" width="77" top="90" height="14" visible="1" enabled="1"   disp_desc="0" right_just="0" description="" linkto="ModelEdt" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute/>
+                            <specific caption="Model"/>
+                        </item>
+                        <item uid="ModelEdt" type="16" left="92" tab_order="2" width="200" top="90" height="14" visible="1" enabled="0" from_pane="1" to_pane="1"  disp_desc="1" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute>
+                                <Attribute description="" id="2" modeFind="1" modeAdd="1" modeOk="1" modeView="0" />
+                            </AutoManagedAttribute>
+                            <specific TabOrder="5" IsPassword="0">
+                                <databind databound="1" table="@CT_VO_OVMD" alias="U_Model"/>
+                            </specific>
+                        </item>
+                        <item uid="ReglLbl" type="8" left="6" tab_order="0" width="77" top="105" height="14" visible="1" enabled="1" from_pane="1" to_pane="1"  disp_desc="0" right_just="0" description="" linkto="ReglEdt" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            
+                            <AutoManagedAttribute/>
+                            <specific caption="Registration nr."/>
+                        </item>
+                        <item uid="ReglEdt" type="16" left="92" tab_order="2" width="200" top="105" height="14" visible="1" enabled="0" from_pane="1" to_pane="1"  disp_desc="1" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute>
+                                <Attribute description="" id="2" modeFind="1" modeAdd="1" modeOk="1" modeView="0" />
+                            </AutoManagedAttribute>
+                            <specific TabOrder="6" IsPassword="0">
+                                <databind databound="1" table="@CT_VO_OVMD" alias="U_RegistrationNumber"/>
+                            </specific>
+                        </item>
+                        <item uid="MnfDlLbl" type="8" left="6" tab_order="0" width="77" top="120" height="14" visible="1" enabled="1" from_pane="1" to_pane="1"  disp_desc="0" right_just="0" description="" linkto="MngDEdt" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute/>
+                            <specific caption="Mng Date"/>
+                        </item>
+                        <item uid="MngDEdt" type="16" left="92" tab_order="2" width="200" top="120" height="14" visible="1" enabled="1" from_pane="1" to_pane="1"  disp_desc="1" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute>
+                                <Attribute description="" id="2" modeFind="1" modeAdd="1" modeOk="1" modeView="0" />
+                            </AutoManagedAttribute>
+                            <specific TabOrder="7" IsPassword="0">
+                                <databind databound="1" table="@CT_VO_OVMD" alias="U_RegistrationDate"/>
+                            </specific>
+                        </item>
+                        <item uid="RgDlLbl" type="8" left="380" tab_order="0" width="97" top="120" height="14" visible="1" enabled="1" from_pane="1" to_pane="1"  disp_desc="0" right_just="0" description="" linkto="RgDDEdt" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute/>
+                            <specific caption="Registration  Date"/>
+                        </item>
+                        <item uid="RgDDEdt" type="16" left="480" tab_order="2" width="200" top="120" height="14" visible="1" enabled="0" from_pane="1" to_pane="1"  disp_desc="1" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute>
+                                <Attribute description="" id="2" modeFind="1" modeAdd="1" modeOk="0" modeView="0" />
+                            </AutoManagedAttribute>
+                            <specific TabOrder="8" IsPassword="0">
+                                <databind databound="1" table="@CT_VO_OVMD" alias="U_RegistrationDate"/>
+                            </specific>
+                        </item>
+
+                        <item uid="SlrlLbl" type="8" left="6" tab_order="0" width="77" top="135" height="14" visible="1" enabled="1" from_pane="1" to_pane="1"  disp_desc="0" right_just="0" description="" linkto="SLrEdt" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute/>
+                            <specific caption="Seller Code"/>
+                        </item>
+                        <item AffectsFormMode="0" backcolor="-1" description="" disp_desc="0" enabled="1" font_size="0" forecolor="-1" from_pane="1" to_pane="1"
+                              linkto="SLrEdt" right_just="0" supp_zeros="0" tab_order="0" text_style="0"   visible="1" uid="SLrLnk"
+                              width="13" height="14" top="134" left="78" type="116">
+                            <specific linkedObject="2" LinkedObjectType="2" />
+                        </item>
+                        <item uid="SLrEdt" type="16" left="92" tab_order="2" width="200" top="135" height="14" visible="1" enabled="1" from_pane="1" to_pane="1" disp_desc="1" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute>
+                                <Attribute description="" id="2" modeFind="1" modeAdd="1" modeOk="1" modeView="0" />
+                            </AutoManagedAttribute>
+                            <specific TabOrder="9" IsPassword="0" ChooseFromListUID="SellerCFL" ChooseFromListAlias="CardCode">
+                                <databind databound="1" table="@CT_VO_OVMD" alias="U_BuyBy"/>
+                            </specific>
+                        </item>
+
+                        <item uid="InvlLbl" type="8" left="380" tab_order="0" width="77" top="135" height="14" visible="1" enabled="1" from_pane="1" to_pane="1"  disp_desc="0" right_just="0" description="" linkto="InvDEdt" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute/>
+                            <specific caption="Invoice"/>
+                        </item>
+                        <item AffectsFormMode="0" backcolor="-1" description="" disp_desc="0" enabled="1" font_size="0" forecolor="-1" from_pane="1" to_pane="1"
+                              linkto="InvDEdt" right_just="0" supp_zeros="0" tab_order="0" text_style="0"  visible="1" uid="InlLnk"
+                              width="13" height="14" top="134" left="462" type="116">
+                            <specific linkedObject="13" LinkedObjectType="13" />
+                        </item>
+                        <item uid="InvDEdt" type="16" left="480" tab_order="2" width="200" top="135" height="14" visible="1" enabled="0" from_pane="1" to_pane="1" disp_desc="1" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute>
+                                <Attribute description="" id="2" modeFind="1" modeAdd="1" modeOk="1" modeView="0" />
+                            </AutoManagedAttribute>
+                            <specific TabOrder="10" IsPassword="0" ChooseFromListUID="InvCFL" ChooseFromListAlias="DodNum">
+                                <databind databound="1" table="" alias="InvDocNum"/>
+                            </specific>
+                        </item>
+                        <item uid="SlrlNLbl" type="8" left="6" tab_order="0" width="77" top="150" height="14" visible="1" enabled="1" from_pane="1" to_pane="1" disp_desc="0" right_just="0" description="" linkto="SLrNEdt" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute/>
+                            <specific caption="Seller Name"/>
+                        </item>
+
+                        <item uid="SLrNEdt" type="16" left="92" tab_order="2" width="200" top="150" height="14" visible="1" enabled="0" from_pane="1" to_pane="1"  disp_desc="1" right_just="0" description="" linkto="" forecolor="-1" backcolor="-1" text_style="0" font_size="-1" supp_zeros="0" AffectsFormMode="1">
+                            <AutoManagedAttribute>
+                                <Attribute description="" id="2" modeFind="0" modeAdd="0" modeOk="0" modeView="0" />
+                            </AutoManagedAttribute>
+                            <specific TabOrder="9" IsPassword="0">
+                                <databind databound="1" table="" alias="CardName"/>
+                            </specific>
+                        </item>
+                        <!-- PrevOwners Items matrix -->
+                        <item AffectsFormMode="0" backcolor="-1" description="" disp_desc="0" enabled="1" font_size="0" forecolor="-1" linkto="" right_just="0" supp_zeros="0"
+                              tab_order="0" text_style="0" visible="1" uid="ownrsMtx" width="690" height="155" top="83" left="10" type="127" to_pane="2" from_pane="2">
+
+                            <AutoManagedAttribute />
+                            <specific SelectionMode="2" layout="0">
+                                <columns>
+                                    <action type="add">
+                                        <!-- Row Number column -->
+                                        <column AffectsFormMode="1" backcolor="-1" description="" disp_desc="0" editable="0" font_size="12" forecolor="-1" right_just="0" text_style="0" visible="1" val_off="" val_on="" title="#" uid="rowNoCol" width="20" type="16">
+                                            <databind alias="RowNoDs" databound="1" table="" />
+                                        </column>
+                                        <!-- Line No. column -->
+                                        <column AffectsFormMode="1" backcolor="-1" description="" disp_desc="0" editable="0" font_size="12" forecolor="-1" right_just="0" text_style="0" visible="0" val_off="" val_on="" title="Line No." uid="rqILnNCol" width="70" type="16">
+                                            <databind alias="U_LineNum" databound="1" table="@CT_VO_VMD1" />
+                                        </column>
+
+                                        <column AffectsFormMode="1" backcolor="-1" description="" disp_desc="1" editable="1" font_size="12" forecolor="-1" right_just="0" text_style="0" visible="1" val_off="" val_on=""
+                                                title="OwnerName" uid="rqIDcTCol" width="200" type="16">
+                                            <databind alias="U_OwnerName" databound="1" table="@CT_VO_VMD1" />
+
+                                        </column>
+
+                                        <column AffectsFormMode="1" backcolor="-1" description="" disp_desc="0" editable="1" font_size="12" forecolor="-1" right_just="0" text_style="0" visible="1" val_off="" val_on=""
+                                                title="U_OwnerAddress " uid="rqIBPCCol" width="250" type="16" >
+                                            <databind alias="U_OwnerAddress" databound="1" table="@CT_VO_VMD1" />
+
+                                        </column>
+
+
+                                        <column AffectsFormMode="1" backcolor="-1" description="" disp_desc="0" editable="1" font_size="12" forecolor="-1" right_just="0" text_style="0" visible="1" val_off="" val_on=""
+                                                title="Phone" uid="rqIItCCol" width="100" type="16">
+                                            <databind alias="U_OwnerPhone" databound="1" table="@CT_VO_VMD1" />
+                                        </column>
+
+                                        <column AffectsFormMode="1" backcolor="-1" description="" disp_desc="0" editable="1" font_size="12" forecolor="-1" right_just="0" text_style="0" visible="1" val_off="" val_on=""
+                                                title="Email" uid="rqIItNCol" width="150" type="16">
+                                            <databind alias="U_OwnerEmail" databound="1" table="@CT_VO_VMD1" />
+                                        </column>
+                                        <column AffectsFormMode="1" backcolor="-1" description="" disp_desc="0" editable="1" font_size="12" forecolor="-1" right_just="0" text_style="0" visible="1" val_off="" val_on="" title="U_OwnershipStartDate"
+                                                uid="rqrevCCol" width="80" type="16" >
+                                            <databind alias="U_OwnershipStartDate" databound="1" table="@CT_VO_VMD1" />
+
+                                        </column>
+                                        <column AffectsFormMode="1" backcolor="-1" description="" disp_desc="0" editable="1" font_size="12" forecolor="-1" right_just="1" text_style="0" visible="1" val_off="" val_on="" title="OwnershipEndDate"
+                                                uid="rqIPlQCol" width="100" type="16">
+                                            <databind alias="U_OwnershipEndDate" databound="1" table="@CT_VO_VMD1" />
+                                        </column>
+                                    </action>
+                                </columns>
+                            </specific>
+                        </item>
+                        <!-- Remarks static text and edit text -->
+                        <item uid="remLbl" type="8" left="5" top="305" height="14" width="90" AffectsFormMode="0"
+                              linkto="remTbx" enabled="1" visible="1" from_pane="0" to_pane="0" disp_desc="0" right_just="0" supp_zeros="0"
+                              backcolor="-1" description="" font_size="0" forecolor="-1" tab_order="0" text_style="0">
+                            <specific caption="Remarks" />
+                        </item>
+                        <item uid="remTbx" type="118" left="135" top="260" height="58" width="220" AffectsFormMode="1"
+                              linkto="" enabled="1" visible="1" from_pane="0" to_pane="0" disp_desc="0" right_just="0" supp_zeros="0"
+                              backcolor="-1" description="" font_size="0" forecolor="-1" tab_order="0" text_style="0">
+                            <specific>
+                                <databind databound="1" table="@CT_VO_OVMD" alias="U_Remarks" />
+                            </specific>
+                        </item>
+
+                    </action>
+
+                </items>
+                <FormMenu>
+                    <Menus>
+                        <action type="add" />
+                    </Menus>
+                </FormMenu>
+                <ChooseFromListCollection>
+                    <action type="add">
+                        <ChooseFromList UniqueID="SellerCFL" ObjectType="2" MultiSelection="0" IsSystem="1"/>
+                        <ChooseFromList UniqueID="InvCFL" ObjectType="13" MultiSelection="0" IsSystem="1"/>
+                    </action>
+                </ChooseFromListCollection>
+                <DataBrowser BrowseBy="CodeEdt" />
+                <Settings Enabled="1" />
+                <items>
+                    <action type="group" >
+                        <item uid="DetTab" />
+                        <item uid="OwnTab" />
+                    </action>
+                </items>
+            </form>
+        </action>
+    </forms>
+</Application>
