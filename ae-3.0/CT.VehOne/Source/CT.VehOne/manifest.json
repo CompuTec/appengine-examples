@@ -5,7 +5,7 @@
   "PluginType": "plugin",
   "icon": "sap-icon://machine",
   "Assembly": "CT.VehOne.dll",
-  "MinimumCoreLevel": "3.0.1.151",
+  "MinimumCoreLevel": "3.0.1.282",
   "company": "YourCompany",
   "api": {
     "routePrefix": "CTVehOne",
