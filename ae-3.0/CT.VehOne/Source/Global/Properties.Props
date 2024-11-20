@@ -5,6 +5,6 @@
         <Authors>CompuTec S.A.</Authors>
         <Copyright>CompuTec S.A.</Copyright>    
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-        <RunNpmTask>false</RunNpmTask>
+        <RunNpmTask>true</RunNpmTask>
     </PropertyGroup>
 </Project>
