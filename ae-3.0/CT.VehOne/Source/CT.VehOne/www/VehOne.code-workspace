@@ -1,0 +1,59 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.tabSize": 4,
+		"editor.indentSize": "tabSize",
+		"[typescript]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"[xml]": {
+			"editor.defaultFormatter": "redhat.vscode-xml"
+		},
+		"git.autofetch": true,
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": "explicit"
+		},
+		"editor.rulers": [
+			100,
+			120
+		],
+		"xml.format.splitAttributes": true,
+		"prettier.printWidth": 100,
+		"prettier.useTabs": true,
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"extensions": {
+		"recommendations": [
+			"SAPSE.sap-ux-fiori-tools-extension-pack",
+			"xabikos.JavaScriptSnippets",
+			"SantaCodes.santacodes-region-viewer",
+			"humao.rest-client",
+			"dbaeumer.vscode-eslint",
+			"formulahendry.auto-rename-tag",
+			"esbenp.prettier-vscode",
+			"wayou.vscode-todo-highlight",
+			"Gruntfuggly.todo-tree",
+			"SAPOSS.vscode-ui5-language-assistant",
+			"jacek-wozniczak.vscode-ui5-api-reference",
+			"redhat.vscode-xml",
+			"SAPOSS.xml-toolkit",
+			"DotJoshJohnson.xml"
+		]
+	},
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Launch Edge",
+				"request": "launch",
+				"type": "msedge",
+				"url": "https://localhost:54001/webcontent/launchpad/webapp/Index.html#/plugin/ct.vehone,home",
+				"webRoot": "${workspaceRoot}/webapp"
+			}
+		]
+	}
+}
