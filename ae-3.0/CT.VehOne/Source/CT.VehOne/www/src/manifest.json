@@ -38,8 +38,7 @@
 				"sap.ui.core": {},
 				"sap.m": {},
 				"sap.f": {},
-				"computec.appengine.common": {},
-				"computec.appengine.uicore": {}
+				"computec.appengine.common": {}
 			}
 		},
 		"contentDensities": {
@@ -48,9 +47,11 @@
 		},
 		"models": {},
 		"resources": {
-			"css": [{
-				"uri": "./assets/style/style.css"
-			}]
+			"css": [
+				{
+					"uri": "./assets/style/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -61,16 +62,26 @@
 				"controlAggregation": "pages",
 				"async": true
 			},
-			"routes": [{
-				"pattern": "",
-				"name": "home",
-				"target": "home"
-			}
+			"routes": [
+				{
+					"pattern": "home",
+					"name": "home",
+					"target": "home"
+				},
+				{
+					"pattern": "vehicles",
+					"name": "vehicles",
+					"target": "vehicles"
+				}
 			],
 			"targets": {
 				"home": {
 					"viewName": "Home",
 					"viewId": "Home"
+				},
+				"vehicles": {
+					"viewName": "Vehicles",
+					"viewId": "Vehicles"
 				}
 			}
 		}

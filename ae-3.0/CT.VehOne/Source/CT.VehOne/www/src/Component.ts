@@ -5,13 +5,16 @@ import UIComponent from "computec/appengine/uicore/UIComponent";
  */
 export default class Component extends UIComponent {
 	public static metadata = {
-		manifest: "json"
-	}
-	public init() {
+		manifest: "json",
+	};
+	init() {
 		super.init();
-		UIComponent.prototype.onInit.call(this);
-
-		this.getRouter().initialize();
-		this.attachSLOdataModel("odata/CTVehOne", "CustomModel");
+		this.initRouter();
+		try {
+			this.attachSLOdataModel("odata/CTVehOne/", "CustomModel");
+		} catch (error) {
+			console.error(error);
+		}
 	}
 }
+
