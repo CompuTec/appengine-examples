@@ -6,7 +6,7 @@
   "PluginType": "Di",
   "Icon": "sap-icon://machine",
   "Company": "YourCompany",
-  "MinimumCoreLevel": "3.0.1.282",
+  "MinimumCoreLevel": "3.0.1.289",
   "SetupDescription": {
     
   },
