@@ -1,5 +1,8 @@
 PROCEDURE "MyFirstProcedure"
+(
 @HRitem AS NVARCHAR(50)
+)
 AS
 BEGIN
+SELECT 'TEST';
 END
