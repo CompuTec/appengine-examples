@@ -146,17 +146,12 @@
 								<content>
 									<ToolbarSpacer/>
 									<Button id="addButton"
-											tooltip="{i18n>addDoc}"
-											press=".onAddButtonPressHandler"
+											tooltip="{i18n>addVehicle}"
+											press=".onAddButtonPress"
 											icon="sap-icon://add"
 											type="Emphasized"/>
-									<Button tooltip="{i18n>sortSettings}"
-											press=".onTableOpenSortSettings"
-											enabled="{= !${inventoryCounting>/tableBusy}}"
-											icon="sap-icon://sort"
-											type="Transparent"/>
 									<Button tooltip="{i18n>refresh}"
-											press=".listRefresh"
+											press="onRefresh"
 											enabled="{= !${inventoryCounting>/tableBusy}}"
 											icon="sap-icon://refresh"
 											type="Transparent"/>
