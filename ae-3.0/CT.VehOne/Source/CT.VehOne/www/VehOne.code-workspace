@@ -21,7 +21,7 @@
 			100,
 			120
 		],
-		"xml.format.splitAttributes": true,
+		"xml.format.splitAttributes": "alignWithFirstAttr",
 		"prettier.printWidth": 100,
 		"prettier.useTabs": true,
 		"editor.defaultFormatter": "esbenp.prettier-vscode"

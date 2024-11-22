@@ -34,8 +34,8 @@
 		"npm-run-all": "^4.1.5",
 		"typescript": "^4.3.2",
 		"ui5-middleware-livereload": "^0.5.4",
-		"@computec/uicore": "^3.0.3",
-		"@computec/common": "^3.0.3"
+		"@computec/uicore": "^3.0.4",
+		"@computec/common": "^3.0.4"
 	},
 	"ui5": {
 		"dependencies": [
