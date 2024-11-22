@@ -20,7 +20,7 @@
 			"phone@2": "",
 			"tablet": "",
 			"tablet@2": ""
-		},
+		},		
 		"deviceTypes": {
 			"desktop": true,
 			"tablet": true,
@@ -41,6 +41,7 @@
 				"computec.appengine.common": {}
 			}
 		},
+		"handleValidation": true,
 		"contentDensities": {
 			"compact": true,
 			"cozy": true

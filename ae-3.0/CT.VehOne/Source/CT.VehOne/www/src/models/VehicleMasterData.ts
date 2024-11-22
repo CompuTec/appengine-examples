@@ -1,7 +1,10 @@
+import DateHelper from "computec/appengine/common/helpers/DateHelper";
 import { VehicleTypeEnum } from "./enums/VehicleTypeEnum";
 import { VehiclePreviousOwners } from "./VehiclePreviousOwners";
+import BaseBusinessObject from "computec/appengine/common/models/BaseBusinessObject";
 
-export default class VehicleMasterData {
+export default class VehicleMasterData extends BaseBusinessObject {
+	Code: string;
 	U_Type: VehicleTypeEnum;
 	U_Model: string;
 	U_Color: string;
@@ -14,4 +17,13 @@ export default class VehicleMasterData {
 	Owners: VehiclePreviousOwners;
 	U_BuyBy: string;
 	U_InvNr: number;
+
+
+	toJSON(): Record<string, unknown> {
+		return {
+			...super.toJSON(),
+			U_ManufacturingDate: DateHelper.toISOString(this.U_ManufacturingDate),
+			U_RegistrationDate: DateHelper.toISOString(this.U_RegistrationDate),
+		};
+	}
 }
