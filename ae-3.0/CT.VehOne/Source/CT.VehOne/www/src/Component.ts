@@ -17,4 +17,3 @@ export default class Component extends UIComponent {
 		}
 	}
 }
-

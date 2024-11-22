@@ -8,7 +8,7 @@
     "Enabled": true,
     "AeWwwPath": "",
     "Plugins": [
-      "C:\\git\\core\\SampleApp\\CT.VehOne\\Source\\CT.VehOne.BL\\dev.config.json"
+      "E:\\projects\\github\\appengine-examples\\ae-3.0\\CT.VehOne\\Source\\CT.VehOne.BL\\dev.config.json"
     ]
   }
 

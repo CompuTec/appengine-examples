@@ -1,8 +1,225 @@
-<mvc:View
-	controllerName="ct.vehone.controller.Home"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc">
-	<Page title="{i18n>vehicles}">
-		<Text text="Veh"></Text>
-	</Page>
+<mvc:View xmlns:f="sap.f"
+		  xmlns:control="sap.gantt.control"
+		  controllerName="ct.vehone.controller.Vehicles"
+		  xmlns="sap.m"
+		  xmlns:core="sap.ui.core"
+		  xmlns:layout="sap.ui.layout"
+		  xmlns:fb="sap.ui.comp.filterbar"
+		  xmlns:mvc="sap.ui.core.mvc"
+		  xmlns:ae="computec.appengine.common.controls"
+		  xmlns:semantic="sap.f.semantic">
+	<semantic:SemanticPage id="InventoryCounting">
+		<semantic:titleHeading>
+			<Title text="{i18n>vehiclesPageTitle}"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<fb:FilterBar busy="{= ${VIEW>/busy}}"
+						  clear="onTableFilterClear"
+						  search="onFilterChange"
+						  useToolbar="false"
+						  showRestoreButton="false"
+						  showGoOnFB="true"
+						  showClearOnFB="true">
+				<fb:filterGroupItems>
+
+					<fb:FilterGroupItem groupName="group"
+										label="{i18n>vehicleModelFilterLabel}"
+										visibleInFilterBar="true"
+										name="Model">
+						<fb:control>
+							<Input value="{FILTER>/U_Model}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="group"
+										label="{i18n>vehicleColorFilterLabel}"
+										visibleInFilterBar="true"
+										name="Color">
+						<fb:control>
+							<Input value="{FILTER>/U_Color}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="group"
+										label="{i18n>vehicleEnginePowerFilterLabel}"
+										visibleInFilterBar="true"
+										name="EnginePower">
+						<fb:control>
+							<Input value="{FILTER>/U_EnginePower}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="group"
+										label="{i18n>vehicleEngineCapacityFilterLabel}"
+										visibleInFilterBar="true"
+										name="EngineCapacity">
+						<fb:control>
+							<Input value="{FILTER>/U_EngineCapacity}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="group"
+										label="{i18n>vehicleManufacturingDateFilterLabel}"
+										visibleInFilterBar="true"
+										name="ManufacturingDate">
+						<fb:control>
+							<DateRangeSelection value="{parts: [
+									'FILTER>/ManufacturingDateFrom', 
+									'FILTER>/ManufacturingDateTo'],
+									 type: 'computec.appengine.common.types.DateInterval'}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="group"
+										label="{i18n>vehicleRegistrationDateFilterLabel}"
+										visibleInFilterBar="true"
+										name="RegistrationDate">
+						<fb:control>
+							<DateRangeSelection value="{parts: [
+									'FILTER>/RegistrationDateFrom', 
+									'FILTER>/RegistrationDateTo'],
+									 type: 'computec.appengine.common.types.DateInterval'}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="group"
+										label="{i18n>vehicleVINFilterLabel}"
+										visibleInFilterBar="true"
+										name="VIN">
+						<fb:control>
+							<Input value="{FILTER>/U_VIN}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="group"
+										label="{i18n>vehicleRegistrationNumberFilterLabel}"
+										visibleInFilterBar="true"
+										name="RegistrationNumber">
+						<fb:control>
+							<Input value="{FILTER>/U_RegistrationNumber}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="group"
+										label="{i18n>vehicleBuyByFilterLabel}"
+										visibleInFilterBar="true"
+										name="BuyBy">
+						<fb:control>
+							<Input value="{FILTER>/U_BuyBy}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="group"
+										label="{i18n>vehicleInvNrFilterLabel}"
+										visibleInFilterBar="true"
+										name="InvNr">
+						<fb:control>
+							<Input value="{FILTER>/U_InvNr}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</semantic:headerContent>
+		<semantic:content>
+			<IconTabBar select="onIconTabBarCarTypeSelection">
+				<items>
+					<IconTabFilter showAll="true"
+								   text="{i18n>vehiclesTabAll}"
+								   key="all"/>
+					<IconTabSeparator/>
+					<IconTabFilter text="{i18n>vehiclesTabCar}"
+								   icon="sap-icon://car-rental"
+								   key="car"/>
+					<IconTabFilter text="{i18n>vehiclesTabBus}"
+								   icon="sap-icon://bus-public-transport"
+								   key="bus"/>
+					<IconTabFilter text="{i18n>vehiclesTabTruck}"
+								   icon="sap-icon://shipping-status"
+								   key="truck"/>
+					<IconTabFilter text="{i18n>vehiclesTabMotorcycle}"
+								   icon="sap-icon://performance"
+								   key="motorcycle"/>
+					<IconTabFilter text="{i18n>vehiclesTabOther}"
+								   icon="sap-icon://world"
+								   key="other"/>
+				</items>
+				<content>
+					<Table id="vehiclesTable"
+						   busy="{VIEW>/busy}"
+						   items="{
+						path: 'CustomModel>/VehicleMasterData'
+					}"
+						   sticky="ColumnHeaders,HeaderToolbar">
+						<headerToolbar>
+							<OverflowToolbar>
+								<content>
+									<ToolbarSpacer/>
+									<Button id="addButton"
+											tooltip="{i18n>addDoc}"
+											press=".onAddButtonPressHandler"
+											icon="sap-icon://add"
+											type="Emphasized"/>
+									<Button tooltip="{i18n>sortSettings}"
+											press=".onTableOpenSortSettings"
+											enabled="{= !${inventoryCounting>/tableBusy}}"
+											icon="sap-icon://sort"
+											type="Transparent"/>
+									<Button tooltip="{i18n>refresh}"
+											press=".listRefresh"
+											enabled="{= !${inventoryCounting>/tableBusy}}"
+											icon="sap-icon://refresh"
+											type="Transparent"/>
+								</content>
+							</OverflowToolbar>
+						</headerToolbar>
+						<columns>
+							<Column>
+								<Text text="{i18n>vehiclesTypeColumnType}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>vehiclesTypeColumnModel}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>vehiclesTypeColumnColor}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>vehiclesTypeColumnEnginePower}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>vehiclesTypeColumnEngineCapacity}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>vehiclesTypeColumnManufacturingDate}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>vehiclesTypeColumnRegistrationDate}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>vehiclesTypeColumnVIN}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>vehiclesTypeColumnRegistrationNumber}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>vehiclesTypeColumnBuyBy}"/>
+							</Column>
+							<Column>
+								<Text text="{i18n>vehiclesTypeColumnInvNr}"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Navigation"
+											press="onItemPress">
+								<cells>
+									<Text text="{path: 'CustomModel>U_Type', type: 'sap.ui.model.odata.type.String'}"/>
+									<Text text="{path: 'CustomModel>U_Model', type: 'sap.ui.model.odata.type.String'}"/>
+									<Text text="{path: 'CustomModel>U_Color', type: 'sap.ui.model.odata.type.String'}"/>
+									<Text text="{path: 'CustomModel>U_EnginePower', type: 'computec.appengine.common.types.Quantity'}"/>
+									<Text text="{path: 'CustomModel>U_EngineCapacity', type: 'computec.appengine.common.types.Quantity'}"/>
+									<Text text="{path: 'CustomModel>U_ManufacturingDate', type: 'computec.appengine.common.types.odata.DateOnly'}"/>
+									<Text text="{path: 'CustomModel>U_RegistrationDate', type: 'computec.appengine.common.types.odata.DateOnly'}"/>
+									<Text text="{path: 'CustomModel>U_VIN', type: 'sap.ui.model.odata.type.String'}"/>
+									<Text text="{path: 'CustomModel>U_RegistrationNumber', type: 'sap.ui.model.odata.type.String'}"/>
+									<Text text="{path: 'CustomModel>U_BuyBy', type: 'sap.ui.model.odata.type.String'}"/>
+									<Text text="{path: 'CustomModel>U_InvNr', type: 'sap.ui.model.odata.type.Int32'}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</IconTabBar>
+		</semantic:content>
+	</semantic:SemanticPage>
+
 </mvc:View>
