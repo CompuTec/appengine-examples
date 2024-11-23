@@ -1,0 +1,139 @@
+<mvc:View controllerName="ct.vehone.controller.VehicleDetails"
+		  xmlns="sap.m"
+		  xmlns:core="sap.ui.core"
+		  xmlns:semantic="sap.f.semantic"
+		  xmlns:layout="sap.ui.layout"
+		  xmlns:f="sap.ui.layout.form"
+		  xmlns:mvc="sap.ui.core.mvc">
+	<semantic:SemanticPage id="requestDetails"
+						   headerExpanded="true"
+						   headerPinnable="false"
+						   busy="{VIEW>/busy}">
+		<semantic:titleHeading>
+			<Title text="{i18n>inventoryCountingRequest}"/>
+		</semantic:titleHeading>
+		<semantic:titleCustomTextActions>
+			<Button press="onEditPressed"
+					visible="{= !${VIEW>/editMode}}"
+					text="{i18n>edit}"
+					icon="sap-icon://edit"/>
+			<Button press="onDeletePressed"
+					visible="{= !${VIEW>/editMode}}"
+					text="{i18n>delete}"
+					icon="sap-icon://delete"/>
+			<Button press="onSavePressed"
+					visible="{= ${VIEW>/editMode}}"
+					text="{i18n>save}"
+					icon="sap-icon://save"/>
+			<Button press="onCancelPressed"
+					visible="{= ${VIEW>/editMode}}"
+					text="{i18n>cancel}"
+					icon="sap-icon://cancel"/>
+		</semantic:titleCustomTextActions>
+		<semantic:headerContent>
+			<f:SimpleForm editable="true">
+				<core:Title text="{i18n>vehicleDetails}"/>
+				<Label text="{i18n>type}"/>
+
+				<Select editable="false"
+						items="{VIEW>/CarTypesEnum}"
+						selectedKey="{CustomModel>U_Type}">
+					<core:Item key="{VIEW>}"
+							   text="{path: 'VIEW>', formatter:'.translate'}"/>
+				</Select>
+
+				<Label text="{i18n>code}"/>
+
+				<Input editable="{= ${VIEW>/editMode}}"
+					   required="true"
+					   value="{path: 'CustomModel>Code', type: 'sap.ui.model.type.String', constraints:{ minLength: 1 }}"/>
+
+				<Label text="{i18n>model}"/>
+
+				<Input editable="{= ${VIEW>/editMode}}"
+					   required="true"
+					   value="{path: 'CustomModel>U_Model', type: 'sap.ui.model.type.String', constraints:{ minLength: 1 }}"/>
+
+				<Label text="{i18n>color}"/>
+
+				<Input editable="{= ${VIEW>/editMode}}"
+					   required="true"
+					   value="{path: 'CustomModel>U_Color', type: 'sap.ui.model.type.String', constraints:{ minLength: 1 }}"/>
+
+				<Label text="{i18n>enginePower}"/>
+
+				<Input editable="{= ${VIEW>/editMode}}"
+					   value="{path: 'CustomModel>U_EnginePower', type: 'computec.appengine.common.types.Quantity'}"/>
+
+				<Label text="{i18n>engineCapacity}"/>
+
+				<Input editable="{= ${VIEW>/editMode}}"
+					   value="{path: 'CustomModel>U_EngineCapacity', type: 'computec.appengine.common.types.Quantity'}"/>
+
+				<Label text="{i18n>manufacturingDate}"/>
+
+				<DatePicker editable="{= ${VIEW>/editMode}}"
+							value="{path: 'CustomModel>U_ManufacturingDate', type: 'computec.appengine.common.types.DateOnly'}"/>
+
+				<core:Title text="{i18n>vehicleRegistrationDetails}"/>
+
+				<Label text="{i18n>registrationDate}"/>
+
+				<DatePicker editable="{= ${VIEW>/editMode}}"
+							value="{path:'CustomModel>U_RegistrationDate', type: 'computec.appengine.common.types.DateOnly'}"/>
+
+				<Label text="{i18n>vin}"/>
+
+				<Input editable="{= ${VIEW>/editMode}}"
+					   value="{path: 'CustomModel>U_VIN', type: 'sap.ui.model.type.String', constraints:{ minLength: 5 }}"/>
+
+				<Label text="{i18n>registrationNumber}"/>
+
+				<Input editable="{= ${VIEW>/editMode}}"
+					   value="{path: 'CustomModel>U_RegistrationNumber', type: 'sap.ui.model.type.String', constraints:{ minLength: 3 }}"/>
+
+			</f:SimpleForm>
+		</semantic:headerContent>
+		<semantic:content>
+			<Table items="{CustomModel>VehiclePreviousOwners}">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="{i18n>previousOwners}"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>ownerName}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>ownerAddress}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>ownerPhone}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>ownerEmail}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>ownershipStartDate}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>ownershipEndDate}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{CustomModel>U_OwnerName}"/>
+							<Text text="{CustomModel>U_OwnerAddress}"/>
+							<Text text="{CustomModel>U_OwnerPhone}"/>
+							<Text text="{CustomModel>U_OwnerEmail}"/>
+							<Text text="{path: 'CustomModel>U_OwnershipStartDate', type:'computec.common.types.odata.DateOnly'}"/>
+							<Text text="{path: 'CustomModel>U_OwnershipEndDate', type:'computec.common.types.odata.DateOnly'}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>

@@ -9,10 +9,20 @@ import VehicleDialog from "../controls/VehicleDialog/VehicleDialog";
 import BaseController from "./BaseController";
 import MessageBox from "sap/m/MessageBox";
 import ErrorHelper from "computec/appengine/uicore/helpers/ErrorHelper";
+import ODataHelper from "computec/appengine/uicore/helpers/ODataHelper";
+import VehicleMasterData from "../models/VehicleMasterData";
+import { ListItemBase$PressEvent } from "sap/m/ListItemBase";
+import { Route$MatchedEvent } from "sap/ui/core/routing/Route";
 export default class Vehicles extends BaseController<VehiclesViewModel, VehiclesFilterViewModel> {
 	formatter: Formatter = new Formatter();
 	onInit(): void {
 		super.onInit();
+		this.getRouter().getRoute("home").attachMatched(this.onRouteMatched.bind(this), this);
+	}
+
+	onRouteMatched(oEvent: Route$MatchedEvent): void {
+		const parameters = oEvent.getParameter("arguments") as { refresh?: boolean };
+		if (parameters.refresh) this._refreshVehiclesTable();
 	}
 
 	// #region VIEW
@@ -23,9 +33,9 @@ export default class Vehicles extends BaseController<VehiclesViewModel, Vehicles
 		return new VehiclesViewModel();
 	}
 	private _getVehiclesTable = () => this.byId("vehiclesTable") as Table;
-	private _getVehiclesTableBidning = () =>
+	private _getVehiclesTableBinding = () =>
 		this._getVehiclesTable().getBinding("items") as ODataListBinding;
-	private _refreshVehiclesTable = () => this._getVehiclesTableBidning().refresh();
+	private _refreshVehiclesTable = () => this._getVehiclesTableBinding()?.refresh();
 	// #endregion
 
 	//#region HANDLERS
@@ -51,6 +61,10 @@ export default class Vehicles extends BaseController<VehiclesViewModel, Vehicles
 		this.getFilterModel().resetFilter();
 		this._applyFilter();
 	}
+	onItemPress(oEvent: ListItemBase$PressEvent) {
+		const vehicleCode = ODataHelper.getObject<VehicleMasterData>(oEvent.getSource()).Code;
+		this.navTo("vehicleDetails", { vehicleCode });
+	}
 	// #endregion
 
 	private async _addVehicle() {
@@ -65,7 +79,7 @@ export default class Vehicles extends BaseController<VehiclesViewModel, Vehicles
 
 	private _applyFilter() {
 		const filter = this.getFilterModel().getQueryFilter();
-		this._getVehiclesTableBidning().changeParameters({
+		this._getVehiclesTableBinding().changeParameters({
 			$filter: filter,
 		});
 	}
