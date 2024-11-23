@@ -195,7 +195,7 @@
 						</columns>
 						<items>
 							<ColumnListItem type="Navigation"
-											press="onItemPress">
+											press=" ">
 								<cells>
 									<Text text="{path: 'AE>U_Type', type: 'sap.ui.model.odata.type.String'}"/>
 									<Text text="{path: 'AE>U_Model', type: 'sap.ui.model.odata.type.String'}"/>
