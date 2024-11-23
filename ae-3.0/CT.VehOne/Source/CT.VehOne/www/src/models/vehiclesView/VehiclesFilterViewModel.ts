@@ -1,9 +1,9 @@
 import FilterProperty from "computec/appengine/common/models/FilterProperty";
 import FilterViewModel from "computec/appengine/common/models/FilterViewModel";
 import FilterOperator from "sap/ui/model/FilterOperator";
-import { VehicleTypeEnum } from "../enums/VehicleTypeEnum";
+import { VehicleTypeDBEnum } from "../enums/VehicleTypeDBEnum";
 
-export default class VehiclesFilterViewModel extends FilterViewModel  {
+export default class VehiclesFilterViewModel extends FilterViewModel {
 	getFilterProperties(): (string | FilterProperty)[] {
 		return [
 			new FilterProperty("VehicleType", "U_Type", FilterOperator.EQ),
@@ -11,25 +11,23 @@ export default class VehiclesFilterViewModel extends FilterViewModel  {
 			new FilterProperty("U_Color", FilterOperator.Contains),
 			new FilterProperty("U_EnginePower", FilterOperator.EQ),
 			new FilterProperty("U_EngineCapacity", FilterOperator.EQ),
-			new FilterProperty("ManufacturingDateFrom", "U_ManufacturingDate", FilterOperator.LE),
-			new FilterProperty("ManufacturingDateTo", "U_ManufacturingDate", FilterOperator.GE),
-			new FilterProperty("RegistrationDateFrom", "U_RegistrationDate", FilterOperator.LE),
-			new FilterProperty("RegistrationDateTo", "U_RegistrationDate", FilterOperator.GE),
+			new FilterProperty("ManufacturingDateFrom", "U_ManufacturingDate", FilterOperator.GE),
+			new FilterProperty("ManufacturingDateTo", "U_ManufacturingDate", FilterOperator.LE),
+			new FilterProperty("RegistrationDateFrom", "U_RegistrationDate", FilterOperator.GE),
+			new FilterProperty("RegistrationDateTo", "U_RegistrationDate", FilterOperator.LE),
 			new FilterProperty("U_VIN", FilterOperator.Contains),
 			new FilterProperty("U_RegistrationNumber", FilterOperator.Contains),
 			new FilterProperty("U_BuyBy", FilterOperator.Contains),
 			new FilterProperty("U_InvNr", FilterOperator.Contains),
-		]
+		];
 	}
 
 	constructor() {
 		super();
-		this._resetFilter();
+		this.resetFilter();
 	}
 
-
-	private _resetFilter() {
-		this.VehicleType = null;
+	resetFilter() {
 		this.U_Model = "";
 		this.U_Color = "";
 		this.U_EnginePower = null;
@@ -59,9 +57,9 @@ export default class VehiclesFilterViewModel extends FilterViewModel  {
 	}
 
 	get VehicleType() {
-		return this.getValue<VehicleTypeEnum>("/VehicleType");
+		return this.getValue<VehicleTypeDBEnum>("/VehicleType");
 	}
-	set VehicleType(value: VehicleTypeEnum) {
+	set VehicleType(value: VehicleTypeDBEnum) {
 		this.setValue("/VehicleType", value);
 	}
 
@@ -108,27 +106,27 @@ export default class VehiclesFilterViewModel extends FilterViewModel  {
 	}
 
 	public get RegistrationDateFrom() {
-		return this.getValue<string | null>("/RegistrationDateFrom");
+		return this.getValue<Date | null>("/RegistrationDateFrom");
 	}
-	public set RegistrationDateFrom(value: string | null) {
-		this.setValue("RegistrationDateFrom", value);
+	public set RegistrationDateFrom(value: Date | null) {
+		this.setValue("/RegistrationDateFrom", value);
 	}
 	public get RegistrationDateTo() {
-		return this.getValue<string | null>("/RegistrationDateTo");
+		return this.getValue<Date | null>("/RegistrationDateTo");
 	}
-	public set RegistrationDateTo(value: string | null) {
-		this.setValue("RegistrationDateTo", value);
+	public set RegistrationDateTo(value: Date | null) {
+		this.setValue("/RegistrationDateTo", value);
 	}
 	public get ManufacturingDateFrom() {
-		return this.getValue<string | null>("/ManufacturingDateFrom");
+		return this.getValue<Date | null>("/ManufacturingDateFrom");
 	}
-	public set ManufacturingDateFrom(value: string | null) {
-		this.setValue("ManufacturingDateFrom", value);
+	public set ManufacturingDateFrom(value: Date | null) {
+		this.setValue("/ManufacturingDateFrom", value);
 	}
 	public get ManufacturingDateTo() {
-		return this.getValue<string | null>("/ManufacturingDateTo");
+		return this.getValue<Date | null>("/ManufacturingDateTo");
 	}
-	public set ManufacturingDateTo(value: string | null) {
-		this.setValue("ManufacturingDateTo", value);
+	public set ManufacturingDateTo(value: Date | null) {
+		this.setValue("/ManufacturingDateTo", value);
 	}
 }

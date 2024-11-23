@@ -1563,4 +1563,35 @@
 		<translation lang="ln_Turkish_Tr">Kapat</translation>
 		<translation lang="ln_TrdtnlChinese_Hk">關閉</translation>
 	</Message>
+	<Message id="vehiclesAddingFailure" param="1">
+		<translation lang="Default">Failed to add vehicle: {0}</translation>
+		<translation lang="ln_English">Failed to add vehicle: {0}</translation>
+		<translation lang="ln_Polish">Nie udało się dodać pojazdu: {0}</translation>
+		<translation lang="ln_Hebrew">נכשל בהוספת רכב: {0}</translation>
+		<translation lang="ln_Spanish_Ar">No se pudo agregar el vehículo: {0}</translation>
+		<translation lang="ln_Spanish_Pa">No se pudo agregar el vehículo: {0}</translation>
+		<translation lang="ln_German">Fahrzeug konnte nicht hinzugefügt werden: {0}</translation>
+		<translation lang="ln_Serbian">Dodavanje vozila nije uspjelo: {0}</translation>
+		<translation lang="ln_Danish">Kunne ikke tilføje køretøj: {0}</translation>
+		<translation lang="ln_Norwegian">Kunne ikke legge til kjøretøy: {0}</translation>
+		<translation lang="ln_Italian">Impossibile aggiungere il veicolo: {0}</translation>
+		<translation lang="ln_Hungarian">Nem sikerült hozzáadni a járművet: {0}</translation>
+		<translation lang="ln_Chinese">添加车辆失败: {0}</translation>
+		<translation lang="ln_Dutch">Voertuig toevoegen mislukt: {0}</translation>
+		<translation lang="ln_Finnish">Ajoneuvon lisääminen epäonnistui: {0}</translation>
+		<translation lang="ln_Greek">Αποτυχία προσθήκης οχήματος: {0}</translation>
+		<translation lang="ln_Portuguese">Falha ao adicionar veículo: {0}</translation>
+		<translation lang="ln_Swedish">Misslyckades med att lägga till fordon: {0}</translation>
+		<translation lang="ln_French">Échec de l'ajout du véhicule: {0}</translation>
+		<translation lang="ln_Spanish">No se pudo agregar el vehículo: {0}</translation>
+		<translation lang="ln_Russian">Не удалось добавить транспортное средство: {0}</translation>
+		<translation lang="ln_Spanish_La">No se pudo agregar el vehículo: {0}</translation>
+		<translation lang="ln_Czech_Cz">Nepodařilo se přidat vozidlo: {0}</translation>
+		<translation lang="ln_Slovak_Sk">Nepodarilo sa pridať vozidlo: {0}</translation>
+		<translation lang="ln_Korean_Kr">차량 추가 실패: {0}</translation>
+		<translation lang="ln_Portuguese_Br">Falha ao adicionar veículo: {0}</translation>
+		<translation lang="ln_Japanese_Jp">車両の追加に失敗しました: {0}</translation>
+		<translation lang="ln_Turkish_Tr">Araç ekleme başarısız oldu: {0}</translation>
+		<translation lang="ln_TrdtnlChinese_Hk">添加車輛失敗: {0}</translation>
+	</Message>
 </messageTranslations>
