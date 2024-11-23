@@ -44,7 +44,7 @@
 
 				<Label text="{i18n>code}"/>
 
-				<Input editable="{= ${VIEW>/editMode}}"
+				<Input editable="false"
 					   required="true"
 					   value="{path: 'CustomModel>Code', type: 'sap.ui.model.type.String', constraints:{ minLength: 1 }}"/>
 
@@ -128,8 +128,8 @@
 							<Text text="{CustomModel>U_OwnerAddress}"/>
 							<Text text="{CustomModel>U_OwnerPhone}"/>
 							<Text text="{CustomModel>U_OwnerEmail}"/>
-							<Text text="{path: 'CustomModel>U_OwnershipStartDate', type:'computec.common.types.odata.DateOnly'}"/>
-							<Text text="{path: 'CustomModel>U_OwnershipEndDate', type:'computec.common.types.odata.DateOnly'}"/>
+							<Text text="{path: 'CustomModel>U_OwnershipStartDate', type:'computec.appengine.common.types.odata.DateOnly'}"/>
+							<Text text="{path: 'CustomModel>U_OwnershipEndDate', type:'computec.appengine.common.types.odata.DateOnly'}"/>
 						</cells>
 					</ColumnListItem>
 				</items>

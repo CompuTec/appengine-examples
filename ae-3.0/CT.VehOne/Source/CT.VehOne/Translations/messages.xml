@@ -922,7 +922,7 @@
 		<translation lang="ln_Spanish_La">Fecha de fabricación</translation>
 		<translation lang="ln_Czech_Cz">Datum výroby</translation>
 		<translation lang="ln_Slovak_Sk">Dátum výroby</translation>
-		<translation lang="ln_Korean_Kr">제조 일자</translation>
+		<translation lang="ln_Korean_Kr">제조 일��</translation>
 		<translation lang="ln_Portuguese_Br">Data de fabricação</translation>
 		<translation lang="ln_Japanese_Jp">製造日</translation>
 		<translation lang="ln_Turkish_Tr">Üretim tarihi</translation>
@@ -1982,4 +1982,98 @@
 		<translation lang="ln_Turkish_Tr">Mülkiyet Bitiş Tarihi</translation>
 		<translation lang="ln_TrdtnlChinese_Hk">所有權結束日期</translation>
 	</Message>
+	<Message id="cancel" param="0">
+		<translation lang="Default">Cancel</translation>
+		<translation lang="ln_English">Cancel</translation>
+		<translation lang="ln_Polish">Anuluj</translation>
+		<translation lang="ln_Hebrew">בטל</translation>
+		<translation lang="ln_Spanish_Ar">Cancelar</translation>
+		<translation lang="ln_Spanish_Pa">Cancelar</translation>
+		<translation lang="ln_German">Abbrechen</translation>
+		<translation lang="ln_Serbian">Otkaži</translation>
+		<translation lang="ln_Danish">Annuller</translation>
+		<translation lang="ln_Norwegian">Avbryt</translation>
+		<translation lang="ln_Italian">Annulla</translation>
+		<translation lang="ln_Hungarian">Mégse</translation>
+		<translation lang="ln_Chinese">取消</translation>
+		<translation lang="ln_Dutch">Annuleren</translation>
+		<translation lang="ln_Finnish">Peruuta</translation>
+		<translation lang="ln_Greek">Ακύρωση</translation>
+		<translation lang="ln_Portuguese">Cancelar</translation>
+		<translation lang="ln_Swedish">Avbryt</translation>
+		<translation lang="ln_French">Annuler</translation>
+		<translation lang="ln_Spanish">Cancelar</translation>
+		<translation lang="ln_Russian">Отмена</translation>
+		<translation lang="ln_Spanish_La">Cancelar</translation>
+		<translation lang="ln_Czech_Cz">Zrušit</translation>
+		<translation lang="ln_Slovak_Sk">Zrušiť</translation>
+		<translation lang="ln_Korean_Kr">취소</translation>
+		<translation lang="ln_Portuguese_Br">Cancelar</translation>
+		<translation lang="ln_Japanese_Jp">キャンセル</translation>
+		<translation lang="ln_Turkish_Tr">İptal</translation>
+		<translation lang="ln_TrdtnlChinese_Hk">取消</translation>
+	</Message>
+	<Message id="save" param="0">
+		<translation lang="Default">Save</translation>
+		<translation lang="ln_English">Save</translation>
+		<translation lang="ln_Polish">Zapisz</translation>
+		<translation lang="ln_Hebrew">שמור</translation>
+		<translation lang="ln_Spanish_Ar">Guardar</translation>
+		<translation lang="ln_Spanish_Pa">Guardar</translation>
+		<translation lang="ln_German">Speichern</translation>
+		<translation lang="ln_Serbian">Sačuvaj</translation>
+		<translation lang="ln_Danish">Gem</translation>
+		<translation lang="ln_Norwegian">Lagre</translation>
+		<translation lang="ln_Italian">Salva</translation>
+		<translation lang="ln_Hungarian">Mentés</translation>
+		<translation lang="ln_Chinese">保存</translation>
+		<translation lang="ln_Dutch">Opslaan</translation>
+		<translation lang="ln_Finnish">Tallenna</translation>
+		<translation lang="ln_Greek">Αποθήκευση</translation>
+		<translation lang="ln_Portuguese">Salvar</translation>
+		<translation lang="ln_Swedish">Spara</translation>
+		<translation lang="ln_French">Enregistrer</translation>
+		<translation lang="ln_Spanish">Guardar</translation>
+		<translation lang="ln_Russian">Сохранить</translation>
+		<translation lang="ln_Spanish_La">Guardar</translation>
+		<translation lang="ln_Czech_Cz">Uložit</translation>
+		<translation lang="ln_Slovak_Sk">Uložiť</translation>
+		<translation lang="ln_Korean_Kr">저장</translation>
+		<translation lang="ln_Portuguese_Br">Salvar</translation>
+		<translation lang="ln_Japanese_Jp">保存</translation>
+		<translation lang="ln_Turkish_Tr">Kaydet</translation>
+		<translation lang="ln_TrdtnlChinese_Hk">保存</translation>
+	</Message>
+	<Message id="vehicleCancelConfirmation" param="0">
+		<translation lang="Default">Are you sure you want to cancel? Unsaved data will be lost.</translation>
+		<translation lang="ln_English">Are you sure you want to cancel? Unsaved data will be lost.</translation>
+		<translation lang="ln_Polish">Czy na pewno chcesz anulować? Niezapisane dane zostaną utracone.</translation>
+		<translation lang="ln_Hebrew">האם אתה בטוח שברצונך לבטל? נתונים שלא נשמרו יאבדו.</translation>
+		<translation lang="ln_Spanish_Ar">¿Estás seguro de que deseas cancelar? Los datos no guardados se perderán.</translation>
+		<translation lang="ln_Spanish_Pa">¿Estás seguro de que deseas cancelar? Los datos no guardados se perderán.</translation>
+		<translation lang="ln_German">Sind Sie sicher, dass Sie abbrechen möchten? Nicht gespeicherte Daten gehen verloren.</translation>
+		<translation lang="ln_Serbian">Da li ste sigurni da želite da otkažete? Nezapisani podaci će biti izgubljeni.</translation>
+		<translation lang="ln_Danish">Er du sikker på, at du vil annullere? Ugemte data vil gå tabt.</translation>
+		<translation lang="ln_Norwegian">Er du sikker på at du vil avbryte? Ulagrede data vil gå tapt.</translation>
+		<translation lang="ln_Italian">Sei sicuro di voler annullare? I dati non salvati andranno persi.</translation>
+		<translation lang="ln_Hungarian">Biztosan megszakítja? Az el nem mentett adatok elvesznek.</translation>
+		<translation lang="ln_Chinese">您确定要取消吗？未保存的数据将丢失。</translation>
+		<translation lang="ln_Dutch">Weet u zeker dat u wilt annuleren? Niet-opgeslagen gegevens gaan verloren.</translation>
+		<translation lang="ln_Finnish">Oletko varma, että haluat peruuttaa? Tallentamattomat tiedot menetetään.</translation>
+		<translation lang="ln_Greek">Είστε βέβαιοι ότι θέλετε να ακυρώσετε; Τα μη αποθηκευμένα δεδομένα θα χαθούν.</translation>
+		<translation lang="ln_Portuguese">Tem certeza de que deseja cancelar? Os dados não salvos serão perdidos.</translation>
+		<translation lang="ln_Swedish">Är du säker på att du vill avbryta? Osparade data kommer att gå förlorade.</translation>
+		<translation lang="ln_French">Êtes-vous sûr de vouloir annuler? Les données non enregistrées seront perdues.</translation>
+		<translation lang="ln_Spanish">¿Estás seguro de que deseas cancelar? Los datos no guardados se perderán.</translation>
+		<translation lang="ln_Russian">Вы уверены, что хотите отменить? Несохраненные данные будут потеряны.</translation>
+		<translation lang="ln_Spanish_La">¿Estás seguro de que deseas cancelar? Los datos no guardados se perderán.</translation>
+		<translation lang="ln_Czech_Cz">Opravdu chcete zrušit? Neuložená data budou ztracena.</translation>
+		<translation lang="ln_Slovak_Sk">Naozaj chcete zrušiť? Neuložené údaje budú stratené.</translation>
+		<translation lang="ln_Korean_Kr">취소하시겠습니까? 저장되지 않은 데이터는 손실됩니다.</translation>
+		<translation lang="ln_Portuguese_Br">Tem certeza de que deseja cancelar? Os dados não salvos serão perdidos.</translation>
+		<translation lang="ln_Japanese_Jp">キャンセルしてもよろしいですか？ 保存されていないデータは失われます。</translation>
+		<translation lang="ln_Turkish_Tr">İptal etmek istediğinizden emin misiniz? Kaydedilmemiş veriler kaybolacak.</translation>
+		<translation lang="ln_TrdtnlChinese_Hk">您確定要取消嗎？未保存的數據將丟失。</translation>
+	</Message>
+	
 </messageTranslations>
