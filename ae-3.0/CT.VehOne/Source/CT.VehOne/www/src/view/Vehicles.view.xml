@@ -116,29 +116,29 @@
 				<items>
 					<IconTabFilter showAll="true"
 								   text="{i18n>vehiclesTabAll}"
-								   key="all"/>
+								   key="All"/>
 					<IconTabSeparator/>
 					<IconTabFilter text="{i18n>vehiclesTabCar}"
 								   icon="sap-icon://car-rental"
-								   key="car"/>
+								   key="Car"/>
 					<IconTabFilter text="{i18n>vehiclesTabBus}"
 								   icon="sap-icon://bus-public-transport"
-								   key="bus"/>
+								   key="Bus"/>
 					<IconTabFilter text="{i18n>vehiclesTabTruck}"
 								   icon="sap-icon://shipping-status"
-								   key="truck"/>
+								   key="Truck"/>
 					<IconTabFilter text="{i18n>vehiclesTabMotorcycle}"
 								   icon="sap-icon://performance"
-								   key="motorcycle"/>
+								   key="Motorcycle"/>
 					<IconTabFilter text="{i18n>vehiclesTabOther}"
 								   icon="sap-icon://world"
-								   key="other"/>
+								   key="Other"/>
 				</items>
 				<content>
 					<Table id="vehiclesTable"
 						   busy="{VIEW>/busy}"
 						   items="{
-						path: 'CustomModel>/VehicleMasterData'
+						path: 'AE>/CustomViews/Simple(DataSource=\'@CT_VO_OVMD\')'
 					}"
 						   sticky="ColumnHeaders,HeaderToolbar">
 						<headerToolbar>
@@ -197,17 +197,17 @@
 							<ColumnListItem type="Navigation"
 											press="onItemPress">
 								<cells>
-									<Text text="{path: 'CustomModel>U_Type', type: 'sap.ui.model.odata.type.String'}"/>
-									<Text text="{path: 'CustomModel>U_Model', type: 'sap.ui.model.odata.type.String'}"/>
-									<Text text="{path: 'CustomModel>U_Color', type: 'sap.ui.model.odata.type.String'}"/>
-									<Text text="{path: 'CustomModel>U_EnginePower', type: 'computec.appengine.common.types.Quantity'}"/>
-									<Text text="{path: 'CustomModel>U_EngineCapacity', type: 'computec.appengine.common.types.Quantity'}"/>
-									<Text text="{path: 'CustomModel>U_ManufacturingDate', type: 'computec.appengine.common.types.odata.DateOnly'}"/>
-									<Text text="{path: 'CustomModel>U_RegistrationDate', type: 'computec.appengine.common.types.odata.DateOnly'}"/>
-									<Text text="{path: 'CustomModel>U_VIN', type: 'sap.ui.model.odata.type.String'}"/>
-									<Text text="{path: 'CustomModel>U_RegistrationNumber', type: 'sap.ui.model.odata.type.String'}"/>
-									<Text text="{path: 'CustomModel>U_BuyBy', type: 'sap.ui.model.odata.type.String'}"/>
-									<Text text="{path: 'CustomModel>U_InvNr', type: 'sap.ui.model.odata.type.Int32'}"/>
+									<Text text="{path: 'AE>U_Type', type: 'sap.ui.model.odata.type.String'}"/>
+									<Text text="{path: 'AE>U_Model', type: 'sap.ui.model.odata.type.String'}"/>
+									<Text text="{path: 'AE>U_Color', type: 'sap.ui.model.odata.type.String'}"/>
+									<Text text="{path: 'AE>U_EnginePower', type: 'computec.appengine.common.types.Quantity'}"/>
+									<Text text="{path: 'AE>U_EngineCapacity', type: 'computec.appengine.common.types.Quantity'}"/>
+									<Text text="{path: 'AE>U_ManufacturingDate', type: 'computec.appengine.common.types.odata.DateOnly'}"/>
+									<Text text="{path: 'AE>U_RegistrationDate', type: 'computec.appengine.common.types.odata.DateOnly'}"/>
+									<Text text="{path: 'AE>U_VIN', type: 'sap.ui.model.odata.type.String'}"/>
+									<Text text="{path: 'AE>U_RegistrationNumber', type: 'sap.ui.model.odata.type.String'}"/>
+									<Text text="{path: 'AE>U_BuyBy', type: 'sap.ui.model.odata.type.String'}"/>
+									<Text text="{path: 'AE>U_InvNr', type: 'sap.ui.model.odata.type.Int32'}"/>
 								</cells>
 							</ColumnListItem>
 						</items>

@@ -1,17 +1,15 @@
 import VehiclesViewModel from "../models/vehiclesView/VehiclesViewModel";
-import FilterViewModel from "computec/appengine/common/models/FilterViewModel";
 import VehiclesFilterViewModel from "../models/vehiclesView/VehiclesFilterViewModel";
 import Formatter from "../helpers/Formatter";
 import { IconTabBar$SelectEvent } from "sap/m/IconTabBar";
-import { VehicleTypeEnum } from "../models/enums/VehicleTypeEnum";
+import { VehicleTypeDBEnum } from "../models/enums/VehicleTypeDBEnum";
 import Table from "sap/m/Table";
 import ODataListBinding from "sap/ui/model/odata/v4/ODataListBinding";
 import VehicleDialog from "../controls/VehicleDialog/VehicleDialog";
 import BaseController from "./BaseController";
 import MessageBox from "sap/m/MessageBox";
 import ErrorHelper from "computec/appengine/uicore/helpers/ErrorHelper";
-
-export default class Vehicles extends BaseController<VehiclesViewModel, FilterViewModel> {
+export default class Vehicles extends BaseController<VehiclesViewModel, VehiclesFilterViewModel> {
 	formatter: Formatter = new Formatter();
 	onInit(): void {
 		super.onInit();
@@ -33,7 +31,7 @@ export default class Vehicles extends BaseController<VehiclesViewModel, FilterVi
 	//#region HANDLERS
 	onIconTabBarCarTypeSelection(evt: IconTabBar$SelectEvent) {
 		const key = evt.getParameter("key");
-		this.getFilterModel().VehicleType = VehicleTypeEnum[key as keyof typeof VehicleTypeEnum];
+		this.getFilterModel().VehicleType = VehicleTypeDBEnum[key as keyof typeof VehicleTypeDBEnum];
 		this._applyFilter();
 	}
 	onFilterChange() {
@@ -46,8 +44,12 @@ export default class Vehicles extends BaseController<VehiclesViewModel, FilterVi
 		try {
 			await this._addVehicle();
 		} catch (error) {
-			MessageBox.error(this.translate("vehiclesAddingFailure",[ErrorHelper.getError(error)]))
+			MessageBox.error(this.translate("vehiclesAddingFailure", [ErrorHelper.getError(error)]));
 		}
+	}
+	onTableFilterClear() {
+		this.getFilterModel().resetFilter();
+		this._applyFilter();
 	}
 	// #endregion
 
@@ -55,14 +57,16 @@ export default class Vehicles extends BaseController<VehiclesViewModel, FilterVi
 		const dialog = new VehicleDialog();
 		this.getView().addDependent(dialog);
 		const result = await dialog.open();
-		if (!result) return
+		if (!result) return;
 		const service = await this.getVehicleService();
 		await service.AddVehicle(result);
 		this._refreshVehiclesTable();
 	}
 
 	private _applyFilter() {
-		const filter = this.getFilterModel().getFilter();
-		this._getVehiclesTableBidning().filter(filter);
+		const filter = this.getFilterModel().getQueryFilter();
+		this._getVehiclesTableBidning().changeParameters({
+			$filter: filter,
+		});
 	}
 }

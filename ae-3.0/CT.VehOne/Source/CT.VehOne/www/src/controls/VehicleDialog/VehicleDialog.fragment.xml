@@ -35,10 +35,10 @@
 			<DatePicker value="{path:'/Vehicle/U_RegistrationDate', type: 'computec.appengine.common.types.DateOnly'}"/>
 
 			<Label text="{i18n>vin}"/>
-			<Input value="{path: '/Vehicle/U_VIN', type: 'sap.ui.model.odata.type.String', constraints:{ minLength: 5 }}"/>
+			<Input value="{path: '/Vehicle/U_VIN', type: 'sap.ui.model.type.String', constraints:{ minLength: 5 }}"/>
 
 			<Label text="{i18n>registrationNumber}"/>
-			<Input value="{path: '/Vehicle/U_RegistrationNumber', type: 'sap.ui.model.odata.type.String, constraints:{ minLength: 3 }'}"/>
+			<Input value="{path: '/Vehicle/U_RegistrationNumber', type: 'sap.ui.model.type.String', constraints:{ minLength: 3 }}"/>
 		</f:SimpleForm>
 		<beginButton>
 			<Button text="{i18n>accept}"
