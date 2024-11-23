@@ -67,19 +67,10 @@
 				{
 					"pattern": "home",
 					"name": "home",
-					"target": "home"
-				},
-				{
-					"pattern": "vehicles",
-					"name": "vehicles",
 					"target": "vehicles"
 				}
 			],
 			"targets": {
-				"home": {
-					"viewName": "Home",
-					"viewId": "Home"
-				},
 				"vehicles": {
 					"viewName": "Vehicles",
 					"viewId": "Vehicles"
