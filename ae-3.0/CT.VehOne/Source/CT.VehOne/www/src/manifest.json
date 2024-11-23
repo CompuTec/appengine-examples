@@ -65,15 +65,24 @@
 			},
 			"routes": [
 				{
-					"pattern": "home",
+					"pattern": "home/:refresh:",
 					"name": "home",
 					"target": "vehicles"
+				},
+				{
+					"pattern": "vehicle/{vehicleCode}",
+					"name": "vehicleDetails",
+					"target": "vehicleDetails"
 				}
 			],
 			"targets": {
 				"vehicles": {
 					"viewName": "Vehicles",
 					"viewId": "Vehicles"
+				},
+				"vehicleDetails": {
+					"viewName": "VehicleDetails",
+					"viewId": "VehicleDetails"
 				}
 			}
 		}
