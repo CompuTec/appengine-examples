@@ -1,0 +1,20 @@
+{
+    "ignore": [
+        "**/*.d.ts"
+    ],
+    "presets": [
+        "transform-ui5",
+        "@babel/preset-typescript",
+        [
+            "@babel/preset-env",
+            {
+                "targets": {
+                    "chrome": 67
+                }
+            }
+        ]
+    ],
+    "plugins": [
+        "@babel/plugin-proposal-object-rest-spread"
+    ]
+}

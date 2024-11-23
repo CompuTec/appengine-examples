@@ -1,0 +1,8 @@
+﻿{
+  "Id": "Vehicles",
+  "Description": "Vehicles List",
+  "Source": {
+    "Hana": "Select \"ItemCode\", \"ItemName\" from \"OITM\"",
+    "MsSql": "Select ItemCode, ItemName from OITM"
+  }
+}

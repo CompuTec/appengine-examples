@@ -18,6 +18,10 @@
         </None>
 
         <None Remove="www\Tests\**"/>
+
+        <None Update="CustomViews\Vehicles.customview.json">
+          <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
     <ItemGroup>
