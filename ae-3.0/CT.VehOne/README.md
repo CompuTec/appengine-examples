@@ -2,6 +2,8 @@
 
 ---
 
+
+
 ## Demo Project Overview
 
 This demo project showcases the key components of the **Computec.AppEngine** framework for SAP Business One, and includes the following modules:
@@ -27,10 +29,18 @@ This demo project showcases the key components of the **Computec.AppEngine** fra
 
 - Models
 - Serializers
-- Controllers
+- Controllerss
 - Jobs
 - Web UI Forms
 
 ---
 
 For detailed documentation, visit the [documentation](./README.md).
+
+
+## Demo Project Overview
+please upadte paths in files :
+* `CT.VehOne/Properties/launchSettings.json` - absolute path to the `DevAeConvig.config.json`
+* `CT.VehOne/Properties/DevAeConvig.config.json` - absolute path to the `dev.config.json` 
+* `CT.VehOne.UI/Properties/Debug.config.json` - absolute path to the `DevAeConvig.config.json `
+* `CT.VehOne.UI/Properties/launchSettings.json` - absolute path to the `dev.config.json` 

@@ -6,17 +6,8 @@
       "workingDirectory": "C:\\Program Files\\sap\\SAP Business One\\AddOns\\CT\\CompuTec.Start\\X64Client\\",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "devapp",
-        "CT_DEBUG": "C:\\git\\core\\SampleApp\\CT.VehOne\\Source\\CT.VehOne.UI\\Properties\\Debug.config.json"
+        "CT_DEBUG": "C:\\git\\core\\appengine-examples\\ae-3.0\\CT.VehOne\\Source\\CT.VehOne.UI\\Properties\\Debug.config.json"
       }
-    },
-    "DebugCore": {
-      "commandName": "Executable",
-      "executablePath": "C:\\git\\core\\core\\Sources\\CompuTec.Core\\CompuTec.Start\\bin\\Debug\\net8.0\\CompuTec.Start.exe",
-      "workingDirectory": "C:\\git\\core\\core\\Sources\\CompuTec.Core\\CompuTec.Start\\bin\\Debug\\net8.0\\",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "devapp",
-        "CT_DEBUG": "C:\\git\\core\\SampleApp\\CT.VehOne\\Source\\CT.VehOne.UI\\Properties\\Debug.config.json"
-      }
-    }
+    } 
   }
 }

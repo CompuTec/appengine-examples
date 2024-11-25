@@ -7,16 +7,6 @@
       "environmentVariables": {
         "CT_DEBUG": "C:\\git\\core\\SampleApp\\CT.VehOne\\Source\\CT.VehOne\\Properties\\DevAeConvig.config.json"
       }
-    },
-    "Local": {
-      "commandName": "Executable",
-      "executablePath": "C:\\git\\AEN\\aen\\Source\\CompuTec.AppEngine.Host.DevApp\\bin\\Debug\\net8.0\\CompuTec.AppEngine.Host.DevApp.core.exe",
-      "workingDirectory": "C:\\git\\AEN\\aen\\Source\\CompuTec.AppEngine.Host.DevApp\\bin\\Debug\\net8.0",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "default",
-        "CT_DEBUG": "C:\\git\\core\\SampleApp\\CT.VehOne\\Source\\CT.VehOne\\Properties\\DevAeConvig.config.json"
-
-      }
     }
   }
 }

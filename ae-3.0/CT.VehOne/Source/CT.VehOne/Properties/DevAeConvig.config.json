@@ -16,7 +16,7 @@
   "DevelopmentConfiguration": {
     "Enabled": true,
     "Plugins": [ 
-      "C:\\git\\core\\SampleApp\\CT.VehOne\\Source\\CT.VehOne\\dev.config.json"
+      "C:\\git\\core\\appengine-examples\\ae-3.0\\CT.VehOne\\Source\\CT.VehOne\\dev.config.json"
     ]
   }
  
