@@ -1,0 +1,90 @@
+{
+	"_version": "1.9.0",
+	"sap.app": {
+		"id": "ct.vehone",
+		"type": "application",
+		"title": "CT.VehOne",
+		"description": "CT.VehOne",
+		"i18n": "plugins/CTVehOne/I18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"dataSources": {}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "sap-icon://example",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},		
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "ct.vehone.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.120.2",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.f": {},
+				"computec.appengine.common": {}
+			}
+		},
+		"handleValidation": true,
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {},
+		"resources": {
+			"css": [
+				{
+					"uri": "./assets/style/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "computec.appengine.uicore.plugin.m.PluginRouter",
+				"viewType": "XML",
+				"viewPath": "ct.vehone.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "home/:refresh:",
+					"name": "home",
+					"target": "vehicles"
+				},
+				{
+					"pattern": "vehicle/{vehicleCode}",
+					"name": "vehicleDetails",
+					"target": "vehicleDetails"
+				}
+			],
+			"targets": {
+				"vehicles": {
+					"viewName": "Vehicles",
+					"viewId": "Vehicles"
+				},
+				"vehicleDetails": {
+					"viewName": "VehicleDetails",
+					"viewId": "VehicleDetails"
+				}
+			}
+		}
+	}
+}

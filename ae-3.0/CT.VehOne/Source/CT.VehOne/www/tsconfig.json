@@ -1,0 +1,42 @@
+{
+	"compilerOptions": {
+		"target": "es2022",
+		"module": "es2022",
+		"skipLibCheck": true,
+		"preserveConstEnums": true,
+		"sourceMap": true,
+		"allowJs": false,
+		"strict": true,
+		"strictNullChecks": false,
+		"strictPropertyInitialization": false,
+		"moduleResolution": "node",
+		"rootDir": "./src",
+		"outDir": "./webapp",
+		"baseUrl": "./",
+		"typeRoots": [
+			"./node_modules/@types",
+			"./node_modules/@sapui5/types",
+			"./node_modules/@computec"
+		],
+		"paths": {
+			"ct/vehone/*": [
+				"./src/*"
+			],
+			"computec/appengine/uicore/*": [
+				"./node_modules/@computec/uicore/src/computec/appengine/uicore/*"
+			],
+			"computec/appengine/common/*": [
+				"./node_modules/@computec/common/src/computec/appengine/common/*"
+			],
+			"@computec/uicore/*": [
+				"./node_modules/@computec/uicore/src/computec/appengine/uicore/*"
+			],
+			"@computec/common/*": [
+				"./node_modules/@computec/common/src/computec/appengine/common/*"
+			]
+		}
+	},
+	"include": [
+		"./src/**/*"
+	]
+}

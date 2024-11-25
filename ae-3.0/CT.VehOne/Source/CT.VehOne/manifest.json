@@ -5,12 +5,8 @@
   "PluginType": "plugin",
   "icon": "sap-icon://machine",
   "Assembly": "CT.VehOne.dll",
-  "MinimumCoreLevel": "3.0.1.151",
+  "MinimumCoreLevel": "3.0.1.289",
   "company": "YourCompany",
-  "TranslationDescription":
-  {
-    "XmlTranslationFile":"CT.VehOne.UI.Translations.messages.xml."
-  },
   "api": {
     "routePrefix": "CTVehOne",
     "assemblies": [
@@ -26,8 +22,8 @@
     "apps": [
       {
         "icon": "sap-icon://machine",
-        "namespace": "CT.VehOne.Plugin",
-        "tile": "TEstApp",
+        "namespace": "ct.vehone",
+        "tile": "CT.VehOne",
         "target": "home",
         "type": "user"
       }
