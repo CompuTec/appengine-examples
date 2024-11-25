@@ -10,7 +10,7 @@
 						   headerPinnable="false"
 						   busy="{VIEW>/busy}">
 		<semantic:titleHeading>
-			<Title text="{i18n>inventoryCountingRequest}"/>
+			<Title text="{i18n>vehicleDetails}"/>
 		</semantic:titleHeading>
 		<semantic:titleCustomTextActions>
 			<Button press="onEditPressed"
