@@ -32,16 +32,16 @@ internal sealed class SendAlertService : ISendAlertService
             return;
         }
 
-        using MessagesService messageService =
+         MessagesService messageService =
             (MessagesService)company.GetCompanyService().GetBusinessService(ServiceTypes.MessagesService);
 
         // Create a new message
-        using Message message = messageService.GetDataInterface(MessagesServiceDataInterfaces.msdiMessage);
+         Message message = messageService.GetDataInterface(MessagesServiceDataInterfaces.msdiMessage);
         message.Subject = subject;
         message.Text = topc;
 
         // Add a recipient
-        using var recipientCollection = message.RecipientCollection;
+         var recipientCollection = message.RecipientCollection;
         foreach (var user in users)
         {
             var recipient = recipientCollection.Add();
@@ -50,7 +50,7 @@ internal sealed class SendAlertService : ISendAlertService
         }
 
         // Send the message
-        using var resoponse = messageService.SendMessage(message);
+         var resoponse = messageService.SendMessage(message);
         _logger.LogInformation("Message sent to {0} users {code}", users.Length, resoponse.Code);
     }
 }

@@ -2,7 +2,7 @@
   "version": "1.0",
   "id":"CT.VehOne.UI",
   "Assembly": "CT.VehOne.UI.dll",
-  "name": "ConsoleApp User Interface",
+  "name": "VehicleOne UI",
   "PluginType": "SapUI",
   "icon": "sap-icon://activate",
   "company": "Company Name",
