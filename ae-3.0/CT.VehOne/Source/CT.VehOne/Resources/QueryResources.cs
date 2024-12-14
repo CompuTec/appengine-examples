@@ -8,7 +8,7 @@ namespace CT.VehOne.Resources;
 
 public interface IVehicleQueries
 {
-    IList<(string ItemCOde, string itemName)> GetItemsToResore();
+    IEnumerable<(string, string)> GetItemsToResore();
 }
     
 
@@ -20,7 +20,7 @@ internal class QueryResources:BaseSapQueries<MssqlResources,HanaQueries>,IVehicl
     }
     
     
-    public IList<(string ItemCOde, string itemName)> GetItemsToResore()
+    public IEnumerable<(string, string)> GetItemsToResore()
     {
         var qm= _CoreConnection.GetQuery();
         qm.CommandText=GetResource(nameof(GetItemsToResore));

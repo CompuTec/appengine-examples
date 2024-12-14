@@ -1,6 +1,8 @@
 using CompuTec.Core2.Beans;
 using CompuTec.Core2.Beans.Structures;
+using CompuTec.Core2.DI.Database;
 using ConsoleApp.DataBase.Beans.VechicleMD;
+using CT.VehOne.BL.Enumerators;
 using Microsoft.Extensions.Logging;
 
 namespace CT.VehOne.BL.BusinessEntities.VehicleMastrData;
@@ -61,6 +63,7 @@ internal sealed partial class VechicleMasterDataBean : MasterDataBean, IVehicleM
     {
         ValidateCode();
         Validate();
+        U_Type = VechicleType.Motorcycle;
         return true;
     }
 
@@ -107,5 +110,6 @@ internal sealed partial class VechicleMasterDataBean : MasterDataBean, IVehicleM
             throw new Exception(_translationService.GetTranslatedMessage("VehOne.ModelIsMissing"));
     }
 
+    
     
 }

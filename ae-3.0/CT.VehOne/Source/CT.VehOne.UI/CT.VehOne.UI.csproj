@@ -36,7 +36,7 @@
         <Exec WorkingDirectory="$(TargetDir)" Command="del *.zip /F"/>
         <Exec WorkingDirectory="$(TargetDir)" Command="del *.nupkg /F"/>
         <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet tool restore"/>
-        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet ct push  $(TargetDir) -x CT.VehOne.BL -r $(Version) -z" Condition="'$(Configuration)'!='Debug'"/>
+        <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet ct push  $(TargetDir) -x CT.VehOne.BL -r $(Version) -z" />
         <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet ct pack $(TargetDir) -x CT.VehOne.BL -r $(Version)"/>
     </Target>
 </Project>
