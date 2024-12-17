@@ -32,6 +32,38 @@
 		<translation lang="ln_Turkish_Tr">CT.VehOne Turkish</translation>
 		<translation lang="ln_TrdtnlChinese_Hk">CT.VehOne Traditional Chinese (Hong Kong)</translation>
 	</Message>
+	<Message id="sapMenuTitle" param="0">
+		<translation lang="Default">Vehicle One</translation>
+		<translation lang="ln_English">Vehicle One</translation>
+		<translation lang="ln_Polish">Vehicle One</translation>
+		<translation lang="ln_Hebrew">רכב אחד</translation>
+		<translation lang="ln_Hebrew">Vehículo Uno</translation>
+		<translation lang="ln_Spanish_Ar">Vehículo Uno</translation>
+		<translation lang="ln_Spanish_Pa">Vehículo Uno</translation>
+		<translation lang="ln_German">Fahrzeug Eins</translation>
+		<translation lang="ln_Serbian">Vozilo Jedan</translation>
+		<translation lang="ln_Danish">Køretøj Et</translation>
+		<translation lang="ln_Norwegian">Kjøretøy En</translation>
+		<translation lang="ln_Italian">Veicolo Uno</translation>
+		<translation lang="ln_Hungarian">Jármű Egy</translation>
+		<translation lang="ln_Chinese">车辆一</translation>
+		<translation lang="ln_Dutch">Voertuig Een</translation>
+		<translation lang="ln_Finnish">Ajoneuvo Yksi</translation>
+		<translation lang="ln_Greek">Όχημα Ένα</translation>
+		<translation lang="ln_Portuguese">Veículo Um</translation>
+		<translation lang="ln_Swedish">Fordon Ett</translation>
+		<translation lang="ln_French">Véhicule Un</translation>
+		<translation lang="ln_Spanish">Vehículo Uno</translation>
+		<translation lang="ln_Russian">Транспортное средство Один</translation>
+		<translation lang="ln_Spanish_La">Vehículo Uno</translation>
+		<translation lang="ln_Czech_Cz">Vozidlo Jedna</translation>
+		<translation lang="ln_Slovak_Sk">Vozidlo Jeden</translation>
+		<translation lang="ln_Korean_Kr">차량 하나</translation>
+		<translation lang="ln_Portuguese_Br">Veículo Um</translation>
+		<translation lang="ln_Japanese_Jp">車両一</translation>
+		<translation lang="ln_Turkish_Tr">Araç Bir</translation>
+		<translation lang="ln_TrdtnlChinese_Hk">車輛一</translation>
+	</Message>
 	<Message id="vehiclesPageTitle" param="0">
 		<translation lang="Default">Vehicles</translation>
 		<translation lang="ln_English">Vehicles</translation>

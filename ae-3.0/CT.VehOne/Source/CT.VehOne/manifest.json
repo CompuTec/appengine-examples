@@ -28,6 +28,17 @@
         "type": "user"
       }
     ],
-    "sapForms": []
+    "sapForms": [
+      {
+        "Type": "Form",
+        "Title": "Vehicle One",
+        "MenuUid": "CT_VEHONE_MAIN",
+        "FatherMenuUid": "3072",
+        "MenuCaption": "Vehicle One",
+        "MenuCaptionTranslationId": "sapMenuTitle",
+        "Url": "ct.vehone,home",
+        "InternalUrl": true
+      }
+    ]
   }
 }
