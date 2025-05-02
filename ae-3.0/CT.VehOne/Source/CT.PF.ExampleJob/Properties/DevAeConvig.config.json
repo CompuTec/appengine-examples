@@ -1,0 +1,47 @@
+{
+  "ConnectionStrings": {
+    "DefaultDbProvider": "Hana",
+    "DefaultConnection": "Database=DEV;server=hanadev:30013;uid=SYSTEM;password={SYSTEMPassword};current Schema=CTAPPDATA"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    },
+    "Console": {
+      "IncludeScopes": true
+    },
+    "Debug": {
+      "IncludeScopes": true
+    },
+    "NLog": {
+      "IncludeScopes": true,
+      "RemoveLoggerFactoryFilter": false
+    }
+  },
+  "NLog": {
+    "targets": {
+      "file": {
+        "type": "File",
+        "fileName": "${specialfolder:folder=CommonApplicationData:cached=true}\\CompuTec\\AppEngine\\Logs\\DEV-${username}-${shortdate}.log"
+      }
+    },
+    "Rules": [
+      {
+        "logger": "*",
+        "minLevel": "Trace",
+        "writeTo": "file"
+      }
+    ]
+  },
+  "DevelopmentConfiguration": {
+    "Enabled": true,
+    "Plugins": [ 
+      "C:\\git\\core\\appengine-examples\\ae-3.0\\CT.VehOne\\Source\\CT.PF.ExampleJob\\dev.config.json"
+    ]
+    
+  },
+  "AppEngineInstance": "E36AD3C3-D172-4FDA-B19E-0E0A0ED195E6",
+  "DefaultAppEngineInstanceName": "Developemt From Sources Example"
+}

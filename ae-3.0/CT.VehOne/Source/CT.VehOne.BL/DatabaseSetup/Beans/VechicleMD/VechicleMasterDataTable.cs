@@ -52,12 +52,12 @@ public class VechicleMasterDataTable : UDOManager
     private List<IUDOFindColumn> GetFindColumns()
     {
         List<IUDOFindColumn> findColumns = new List<IUDOFindColumn>();
-        findColumns.CreateFindColumn("Code", "Code"); // Add Code as a find column
-        findColumns.CreateFindColumn("Name", "Name"); // Add Name as a find column
-        findColumns.CreateFindColumn("U_Type", "Type"); // Add Type as a find column
-        findColumns.CreateFindColumn("U_Model", "Model"); // Add Model as a find column
-        findColumns.CreateFindColumn("U_Brand", "Brand"); // Add Brand as a find column
-        findColumns.CreateFindColumn("U_RegistrationNumber", "RegistrationNumber"); // Add RegistrationNumber as a find column
+        findColumns.Create("Code", "Code"); // Add Code as a find column
+        findColumns.Create("Name", "Name"); // Add Name as a find column
+        findColumns.Create("U_Type", "Type"); // Add Type as a find column
+        findColumns.Create("U_Model", "Model"); // Add Model as a find column
+        findColumns.Create("U_Brand", "Brand"); // Add Brand as a find column
+        findColumns.Create("U_RegistrationNumber", "RegistrationNumber"); // Add RegistrationNumber as a find column
         return findColumns;
     }
 

@@ -13,6 +13,7 @@
     <File Path="Requests\requests.rest" />
     <File Path="Requests\http-client.env.json" />
   </Folder>
+  <Project Path="CT.PF.ExampleJob\CT.PF.ExampleJob.csproj" Type="Classic C#" />
   <Project Path="CT.VehOne.BL\CT.VehOne.BL.csproj" Type="Classic C#" />
   <Project Path="CT.VehOne.UI\CT.VehOne.UI.csproj" Type="Classic C#" />
   <Project Path="CT.VehOne\CT.VehOne.csproj" Type="Classic C#" />

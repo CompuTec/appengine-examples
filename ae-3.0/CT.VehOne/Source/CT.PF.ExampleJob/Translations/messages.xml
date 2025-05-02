@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<messageTranslations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<Message id="CT.PF.ExampleJob" param="0">
+<translation lang="Default" >CT.PF.ExampleJob English</translation>
+<translation lang="ln_English" >CT.PF.ExampleJob English</translation>
+<translation lang="ln_Polish" >CT.PF.ExampleJob Polish</translation>
+<translation lang="ln_Hebrew" >CT.PF.ExampleJob Hebrew</translation>
+<translation lang="ln_Spanish_Ar" >CT.PF.ExampleJob Spanish (Argentina)</translation>
+<translation lang="ln_Spanish_Pa" >CT.PF.ExampleJob Spanish (Panama)</translation>
+<translation lang="ln_German" >CT.PF.ExampleJob German</translation>
+<translation lang="ln_Serbian" >CT.PF.ExampleJob Serbian</translation>
+<translation lang="ln_Danish" >CT.PF.ExampleJob Danish</translation>
+<translation lang="ln_Norwegian" >CT.PF.ExampleJob Norwegian</translation>
+<translation lang="ln_Italian" >CT.PF.ExampleJob Italian</translation>
+<translation lang="ln_Hungarian" >CT.PF.ExampleJob Hungarian</translation>
+<translation lang="ln_Chinese" >CT.PF.ExampleJob Chinese</translation>
+<translation lang="ln_Dutch" >CT.PF.ExampleJob Dutch</translation>
+<translation lang="ln_Finnish" >CT.PF.ExampleJob Finnish</translation>
+<translation lang="ln_Greek" >CT.PF.ExampleJob Greek</translation>
+<translation lang="ln_Portuguese" >CT.PF.ExampleJob Portuguese</translation>
+<translation lang="ln_Swedish" >CT.PF.ExampleJob Swedish</translation>
+<translation lang="ln_French" >CT.PF.ExampleJob French</translation>
+<translation lang="ln_Spanish" >CT.PF.ExampleJob Spanish</translation>
+<translation lang="ln_Russian" >CT.PF.ExampleJob Russian</translation>
+<translation lang="ln_Spanish_La" >CT.PF.ExampleJob Spanish (Latin America)</translation>
+<translation lang="ln_Czech_Cz" >CT.PF.ExampleJob Czech</translation>
+<translation lang="ln_Slovak_Sk" >CT.PF.ExampleJob Slovak</translation>
+<translation lang="ln_Korean_Kr" >CT.PF.ExampleJob Korean</translation>
+<translation lang="ln_Portuguese_Br" >CT.PF.ExampleJob Portuguese (Brazil)</translation>
+<translation lang="ln_Japanese_Jp" >CT.PF.ExampleJob Japanese</translation>
+<translation lang="ln_Turkish_Tr" >CT.PF.ExampleJob Turkish</translation>
+<translation lang="ln_TrdtnlChinese_Hk" >CT.PF.ExampleJob Traditional Chinese (Hong Kong)</translation>
+</Message>
+</messageTranslations>

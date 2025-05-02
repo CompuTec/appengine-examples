@@ -9,6 +9,7 @@ To learn more about building your plugins, visit the [CompuTec AppEngine Develop
 ## Examples for AppEngine 3.0
 
 - [CT.VehOne](ae-3.0/CT.VehOne): This example demonstrates the Computec.AppEngine framework for SAP Business One, featuring a business logic library, a custom SAP UI application, and a web plugin for exposing the logic via web interfaces.
+- [CT.PF.ExampleJob](ae-3.0/CT.VehOne/CT.PF.ExampleJob) AppEngine Plugin that is configured to consume ProcessForce API objects.
 
 ## Examples for AppEngine 2.0
 

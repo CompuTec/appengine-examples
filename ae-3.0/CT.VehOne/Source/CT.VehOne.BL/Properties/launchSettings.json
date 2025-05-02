@@ -2,7 +2,7 @@
   "profiles": {
     "LaunchSetup": {
       "commandName": "Executable",
-      "executablePath": "C:\\Program Files\\sap\\SAP Business One\\AddOns\\CT\\CompuTec.Start\\X64Client\\CompuTec.Start.exe",
+      "executablePath": "C:\\Program Files\\sap\\SAP Business One\\AddOns\\CT\\CompuTec.Start\\X64Client\\start.exe",
       "workingDirectory": "C:\\Program Files\\sap\\SAP Business One\\AddOns\\CT\\CompuTec.Start\\X64Client\\",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "devapp",
@@ -11,7 +11,7 @@
     },
     "DebugCore": {
       "commandName": "Executable",
-      "executablePath": "E:\\projects\\core\\Sources\\CompuTec.Core\\CompuTec.Start\\bin\\Debug\\net8.0\\CompuTec.Start.exe",
+      "executablePath": "E:\\projects\\core\\Sources\\CompuTec.Core\\CompuTec.Start\\bin\\Debug\\net8.0\\start.exe",
       "workingDirectory": "E:\\projects\\core\\Sources\\CompuTec.Core\\CompuTec.Start\\bin\\Debug\\net8.0\\",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "devapp",

@@ -1,0 +1,9 @@
+{
+  "SourceDirectory": "",
+  "OutputDll": "bin\\Debug\\net8.0\\CT.PF.ExampleJob.dll",
+  "Dependencies": [
+
+  ],
+  "MapWwwAppFolder": true
+}
+ 

@@ -1,0 +1,14 @@
+﻿global using System;
+global using System.Collections.Generic;
+global using System.Linq;
+global using CompuTec.BaseLayer;
+global using CompuTec.BaseLayer.Connection;
+global using CompuTec.BaseLayer.Services;
+global using CompuTec.Core2;
+global using CompuTec.Core2.AE;
+global using CompuTec.Core2.AE.Annotation;
+global using CompuTec.Core2.AE.Jobs;
+global using CompuTec.Core2.DI.Database;
+global using Microsoft.Extensions.Logging;
+global using CompuTec.Core2.AE.Services;
+global using CompuTec.Core2.Beans;

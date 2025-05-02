@@ -1,0 +1,26 @@
+﻿{
+  "version": "1.0.1",
+  "id": "CT.PF.ExampleJob",
+  "name": "CT.PF.ExampleJob Name",
+  "PluginType": "plugin",
+  "icon": "sap-icon://machine",
+  "Assembly": "CT.PF.ExampleJob.dll",
+  "MinimumCoreLevel": "3.0.1.151",
+  "company": "YourCompany",
+  "TranslationDescription":
+  {
+    "XmlTranslationFile":"CT.PF.ExampleJob.Translations.messages.xml."
+  },
+  "api": {
+    "routePrefix": "CT.PF.ExampleJob",
+    "assemblies": [
+    ],
+    "dependencies": {
+      "CompuTec.ProcessForce.API": {
+        "minVersion": "3.2504.1"
+      }
+    }
+  },
+  "ui": {  
+  }
+}

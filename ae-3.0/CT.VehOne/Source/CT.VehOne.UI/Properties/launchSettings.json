@@ -2,7 +2,7 @@
   "profiles": {
     "LaunchSApUiPlugin": {
       "commandName": "Executable",
-      "executablePath": "C:\\Program Files\\sap\\SAP Business One\\AddOns\\CT\\CompuTec.Start\\X64Client\\CompuTec.Start.exe",
+      "executablePath": "C:\\Program Files\\sap\\SAP Business One\\AddOns\\CT\\CompuTec.Start\\X64Client\\start.exe",
       "workingDirectory": "C:\\Program Files\\sap\\SAP Business One\\AddOns\\CT\\CompuTec.Start\\X64Client\\",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "devapp",
