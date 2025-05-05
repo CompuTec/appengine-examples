@@ -32,7 +32,8 @@ This demo project showcases the key components of the **Computec.AppEngine** fra
 - Controllerss
 - Jobs
 - Web UI Forms
-
+  
+### 4. Example Plugin that consumes ProcessForce API libraries  (CT.PF.ExampleJob)
 ---
 
 For detailed documentation, visit the [documentation](./README.md).
@@ -43,4 +44,6 @@ please upadte paths in files :
 * `CT.VehOne/Properties/launchSettings.json` - absolute path to the `DevAeConvig.config.json`
 * `CT.VehOne/Properties/DevAeConvig.config.json` - absolute path to the `dev.config.json` 
 * `CT.VehOne.UI/Properties/Debug.config.json` - absolute path to the `DevAeConvig.config.json `
-* `CT.VehOne.UI/Properties/launchSettings.json` - absolute path to the `dev.config.json` 
+* `CT.VehOne.UI/Properties/launchSettings.json` - absolute path to the `dev.config.json`
+*  `CT.PF.ExampleJob/Properties/launchSettings.json` - absolute path to the `dev.config.json`
+* `CT.PF.ExampleJob/Properties/DevAeConvig.config.json` - absolute path to the `dev.config.json` 
