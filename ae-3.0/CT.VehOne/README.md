@@ -36,7 +36,7 @@ This demo project showcases the key components of the **Computec.AppEngine** fra
 ### 4. Example Plugin that consumes ProcessForce API libraries  (CT.PF.ExampleJob)
 ---
 
-For detailed documentation, visit the [documentation](./README.md).
+For detailed documentation, visit the [documentation](https://learn.computec.one/docs/appengine/developers-guide/basic-and-business-logic/plugin-types/overview).
 
 
 ## Demo Project Overview
