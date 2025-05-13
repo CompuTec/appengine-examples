@@ -1,6 +1,8 @@
 # .NET Framework Example Project of Process Force API Consumption
 ## General
-### .NET Framework codebase is obsolete for CompuTec solution and will be removed in future releases
+
+> [!IMPORTANT]
+ .NET Framework codebase is obsolete for CompuTec solution and will be removed in future releases
 ## Environment Setup
 1) ProcessForce must be in the same version on the company database as the ProcessForce API installed on the machine where the code is executed.
 2) CompuTec.Core2 libraries in this application must be in the same version as the one in the ProcessForce API minimum version. you can download them from nuget.org or appengine. `https://{{AE_Address}}:{{AE_Port}}/api/Core/GetCorePackage/net48`. You can just replace them in the application directory.   
