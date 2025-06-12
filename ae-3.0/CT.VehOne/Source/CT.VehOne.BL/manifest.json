@@ -1,11 +1,12 @@
 {
-  "Version": "1.0.0",
-  "Id": "CT.VehOne.BL",
-  "Name": "CT.VehOne.BL Name",
+  "$schema": "https://download.computec.one/schema/plugin-manifest.schema.json",
+  "version": "1.0.0",
+  "id": "CT.VehOne.BL",
+  "name": "CT.VehOne.BL Name",
   "Assembly":"CT.VehOne.BL.dll",
   "PluginType": "Di",
   "Icon": "sap-icon://machine",
-  "Company": "YourCompany",
+  "company": "YourCompany",
   "MinimumCoreLevel": "3.0.1.289",
   "SetupDescription": {
     

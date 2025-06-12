@@ -1,4 +1,5 @@
 ﻿{
+  "$schema": "https://download.computec.one/schema/plugin-manifest.schema.json",
   "version": "1.0.1",
   "id": "CT.VehOne",
   "name": "CT.VehOne Name",
