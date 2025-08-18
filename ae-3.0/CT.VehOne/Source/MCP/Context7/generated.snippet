@@ -1,0 +1,1344 @@
+========================
+CODE SNIPPETS
+========================
+TITLE: UDO Document Header Builder (Full Permissions)
+DESCRIPTION: Defines a document header UDO (table, archive table, series management, permissions, and authorization) using the fluent builder. Use when creating a new document-type UDO with full lifecycle support.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+
+[Install]
+public class DocumentHead : UDOManager
+{
+    public const string OBJECT_CODE = "CT_CS_DOCCode";
+    public const string HEADER_TABLE_NAME = "CT_CS_ODOC";
+    public const string HEADER_TABLE_DESCRIPTION = "CS_DOC";
+    private readonly ITranslationService _tr;
+
+    public DocumentHead(ICoreConnection connection, ITranslationService tr, IDatabaseSetupManager manager) : base(connection, manager)
+        => _tr = tr;
+
+    protected override IUDOTable CreateUDOTable()
+        => UDOTable.CreateDocumentBuilder()
+            .WithTable(HEADER_TABLE_NAME, HEADER_TABLE_DESCRIPTION)
+            .WithRegisteredUdo(OBJECT_CODE, HEADER_TABLE_NAME)
+            .WithArchiveTable("CT_CS_ADOC")
+            .WithPermissions(
+                canArchive: BoYesNoEnum.tYES,
+                canCancel: BoYesNoEnum.tNO,
+                canClose: BoYesNoEnum.tYES,
+                canCreateDefaultForm: BoYesNoEnum.tYES,
+                canDelete: BoYesNoEnum.tYES,
+                canFind: BoYesNoEnum.tYES,
+                canLog: BoYesNoEnum.tYES,
+                canYearTransfer: BoYesNoEnum.tYES)
+            .WithSeriesManagement(BoYesNoEnum.tYES)
+            .WithAuthorizations(new AuthorizationUDO("MASTER", "ConsoleApp", BoUPTOptions.bou_FullReadNone, new List<DocumentAuthorizationInfo>()))
+            .Build();
+
+    protected override void SetChildTables()
+        => ChildTablesClasses.AddRange(new[] { typeof(DocumentLines), typeof(DocumentLinesTwoTables), typeof(DocumentSubLines1Table) });
+}
+
+----------------------------------------
+TITLE: UDO: Composite Primary Key Fields
+DESCRIPTION: Adds composite primary key fields (ItemCode + Revision) with alpha types and Find/Form participation for a document UDO table.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+return documentBuilder
+    .AddField("ItemCode", "Item Code").AsAlpha(50).AsPrimaryKey().AddToFindAndForm().Add()
+    .AddField("Revision", "Revision").AsAlpha(20).AsPrimaryKey().AddToFindAndForm().Add();
+
+----------------------------------------
+TITLE: UDO: Quantity & Percentage Fields with Defaults
+DESCRIPTION: Declares quantity / percentage fields including defaults (BatchSize=1, Yield=100%) for calculation scenarios in a document UDO.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+return documentBuilder
+    .AddField("Quantity", "Quantity").AsQuantity().AddToFindAndForm().Add()
+    .AddField("Factor", "Factor").AsQuantity().AddToFindAndForm().Add()
+    .AddField("BatchSize", "Batch Size").AsQuantity().WithDefaultValue("1").Add()
+    .AddField("Yield", "Yield %").AsPercentage().WithDefaultValue("100").Add();
+
+----------------------------------------
+TITLE: UDO: Price & Currency Fields
+DESCRIPTION: Adds pricing related fields (Price, PriceList id, Currency) to a UDO for commercial calculations.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+return documentBuilder
+    .AddField("Price", "Price").AsPrice().AddToFindAndForm().Add()
+    .AddField("PriceList", "Price List").AsNumeric(10).Add()
+    .AddField("Currency", "Currency").AsAlpha(3).AddToFindAndForm().Add();
+
+----------------------------------------
+TITLE: UDO Field with Valid Values + Translations
+DESCRIPTION: Field with limited valid values using translation service for multilingual captions (internal/external production type).
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+return documentBuilder
+    .AddField("ProdType", "Production Type").AsAlpha(1).WithDefaultValue("I")
+    .WithValidValues(
+        Tuple.Create("I", _translationService.GetTranslatedMessage("ProdTypeFieldI", "internal")),
+        Tuple.Create("E", _translationService.GetTranslatedMessage("ProdTypeFieldE", "external")))
+    .Add();
+
+----------------------------------------
+TITLE: UDO: Standard SAP Reference Codes
+DESCRIPTION: Adds warehouse, distribution and costing code fields aligned with SAP standard dimensions plus Project.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+return documentBuilder
+    .AddField("WhsCode", "Warehouse").AsAlpha(8).AddToFindAndForm().Add()
+    .AddField("OccrCode", "Distribution Rule").AsAlpha(8).AddToFindAndForm().Add()
+    .AddField("OcrCode", "Distribution Rule").AsAlpha(8).Add()
+    .AddField("OcrCode2", "Costing Code 2").AsAlpha(8).Add()
+    .AddField("OcrCode3", "Costing Code 3").AsAlpha(8).Add()
+    .AddField("OcrCode4", "Costing Code 4").AsAlpha(8).Add()
+    .AddField("OcrCode5", "Costing Code 5").AsAlpha(8).Add()
+    .AddField("Project", "Project").AsAlpha(20).Add();
+
+----------------------------------------
+TITLE: UDO: Memo Fields for Formulas & Notes
+DESCRIPTION: Adds memo fields for remarks, multiple formula types and instructions in a production/logic-heavy UDO.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+return documentBuilder
+    .AddField("Remarks", "Remarks").AsMemo().AddToFindAndForm().Add()
+    .AddField("YieldFormula", "Yield Formula").AsMemo().Add()
+    .AddField("ItemFormula", "Item Formula").AsMemo().Add()
+    .AddField("ScrapFormula", "Scrap Formula").AsMemo().Add()
+    .AddField("CoproductFormula", "Coproduct Formula").AsMemo().Add()
+    .AddField("Instructions", "Instructions").AsMemo().Add();
+
+----------------------------------------
+TITLE: UDOManager Base Template
+DESCRIPTION: Skeleton UDOManager showing DI constructor, constants, CreateUDOTable override and child table registration hook.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+using CompuTec.BaseLayer.Connection;
+using CompuTec.Core2.DI.Setup;
+using CompuTec.Core2.DI.Setup.Attributes;
+using CompuTec.Core2.DI.Setup.UDO.Model;
+using CompuTec.Core2.Translations;
+
+[Install]
+public class DocumentHeadTemplate : UDOManager
+{
+    public const string OBJECT_CODE = "CT_SAMPLE_CODE";
+    public const string TABLE_NAME = "CT_SAMPLE";
+    public const string TABLE_DESC = "Sample Table";
+    private readonly ITranslationService _tr;
+    public DocumentHeadTemplate(ICoreConnection c, ITranslationService tr, IDatabaseSetupManager m) : base(c, m) => _tr = tr;
+    protected override IUDOTable CreateUDOTable() => UDOTable.CreateDocumentBuilder().WithTable(TABLE_NAME, TABLE_DESC).WithRegisteredUdo(OBJECT_CODE, TABLE_NAME).Build();
+    protected override void SetChildTables() => ChildTablesClasses.AddRange(Array.Empty<Type>());
+}
+
+----------------------------------------
+TITLE: UDO: Register Child Tables
+DESCRIPTION: Registers related line and sub-line UDO manager classes forming master-detail hierarchy.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+protected override void SetChildTables()
+{
+    ChildTablesClasses.AddRange(new[] {
+        typeof(DocumentLines),
+        typeof(DocumentLinesTwoTables),
+        typeof(DocumentSubLines1Table)
+    });
+}
+
+----------------------------------------
+TITLE: Master Data UDO Builder (CreateMasterDataBuilder)
+DESCRIPTION: Builds a master data UDO with basic permissions and Code/Name fields.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+[Install]
+public class MasterDataSetup : UDOManager
+{
+    public const string OBJECT_CODE = "CT_MASTER_CODE";
+    public const string TABLE_NAME = "CT_MASTER_DATA";
+    public const string TABLE_DESCRIPTION = "Master Data";
+    public MasterDataSetup(ICoreConnection c, ITranslationService t, IDatabaseSetupManager m) : base(c, m) { }
+    protected override IUDOTable CreateUDOTable()
+    {
+        return UDOTable.CreateMasterDataBuilder()
+            .WithTable(TABLE_NAME, TABLE_DESCRIPTION)
+            .WithRegisteredUdo(OBJECT_CODE, TABLE_NAME)
+            .WithPermissions(BoYesNoEnum.tYES, BoYesNoEnum.tNO, BoYesNoEnum.tNO, BoYesNoEnum.tYES, BoYesNoEnum.tYES, BoYesNoEnum.tYES, BoYesNoEnum.tYES, BoYesNoEnum.tNO)
+            .AddField("Code", "Master Code").AsAlpha(20).AsPrimaryKey().AddToFindAndForm().Add()
+            .AddField("Name", "Master Name").AsAlpha(100).AddToFindAndForm().Add()
+            .Build();
+    }
+}
+
+----------------------------------------
+TITLE: Document Lines UDO Builder (CreateDocumentLinesBuilder)
+DESCRIPTION: Declares line-level table for document UDO with common numeric fields (Quantity, Price, LineTotal).
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+[Install]
+public class DocumentLinesSetup : UDOManager
+{
+    public const string TABLE_NAME = "CT_DOC_LINES";
+    public const string TABLE_DESCRIPTION = "Document Lines";
+    public DocumentLinesSetup(ICoreConnection c, ITranslationService t, IDatabaseSetupManager m) : base(c, m) { }
+    protected override IUDOTable CreateUDOTable()
+        => UDOTable.CreateDocumentLinesBuilder()
+            .WithTable(TABLE_NAME, TABLE_DESCRIPTION)
+            .AddField("ItemCode", "Item Code").AsAlpha(50).AddToFindAndForm().Add()
+            .AddField("Quantity", "Quantity").AsQuantity().Add()
+            .AddField("Price", "Unit Price").AsPrice().Add()
+            .AddField("LineTotal", "Line Total").AsSum().Add()
+            .Build();
+}
+
+----------------------------------------
+TITLE: Master Data Lines UDO Builder (CreateMasterDataLinesBuilder)
+DESCRIPTION: Line table for master data UDO objects with property/value and active flag.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+[Install]
+public class MasterDataLinesSetup : UDOManager
+{
+    public const string TABLE_NAME = "CT_MASTER_LINES";
+    public const string TABLE_DESCRIPTION = "Master Data Lines";
+    public MasterDataLinesSetup(ICoreConnection c, ITranslationService t, IDatabaseSetupManager m) : base(c, m) { }
+    protected override IUDOTable CreateUDOTable()
+        => UDOTable.CreateMasterDataLinesBuilder()
+            .WithTable(TABLE_NAME, TABLE_DESCRIPTION)
+            .AddField("PropertyCode", "Property Code").AsAlpha(20).Add()
+            .AddField("PropertyValue", "Property Value").AsAlpha(200).Add()
+            .AddField("Quantity", "Quantity").AsQuantity().Add()
+            .AddField("IsActive", "Is Active").AsAlpha(1).WithDefaultValue("Y").WithValidValues(Tuple.Create("Y", "Yes"), Tuple.Create("N", "No")).Add()
+            .Build();
+}
+
+----------------------------------------
+TITLE: No-Object Table Builder (CreateNoObjectBuilder)
+DESCRIPTION: Simple table definition without UDO registration (config / lookup tables).
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+[Install]
+public class NoObjectTableSetup : UDOManager
+{
+    public const string TABLE_NAME = "CT_CONFIG_TABLE";
+    public const string TABLE_DESCRIPTION = "Configuration Table";
+    public NoObjectTableSetup(ICoreConnection c, IDatabaseSetupManager m) : base(c, m) { }
+    protected override IUDOTable CreateUDOTable()
+        => UDOTable.CreateNoObjectBuilder()
+            .WithTable(TABLE_NAME, TABLE_DESCRIPTION)
+            .AddField("ConfigKey", "Configuration Key").AsAlpha(50).AsPrimaryKey().Add()
+            .AddField("ConfigValue", "Configuration Value").AsAlpha(250).Add()
+            .AddField("Description", "Description").AsMemo().Add()
+            .AddField("IsActive", "Is Active").AsAlpha(1).WithDefaultValue("Y").Add()
+            .Build();
+}
+
+----------------------------------------
+TITLE: No-Object Auto-Increment Table Builder (CreateNoObjectAutoIncrementBuilder)
+DESCRIPTION: Defines table with auto-increment primary key (log / audit tables).
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+[Install]
+public class AutoIncrementTableSetup : UDOManager
+{
+    public const string TABLE_NAME = "CT_LOG_TABLE";
+    public const string TABLE_DESCRIPTION = "Application Log Table";
+    public AutoIncrementTableSetup(ICoreConnection c, IDatabaseSetupManager m) : base(c, m) { }
+    protected override IUDOTable CreateUDOTable()
+        => UDOTable.CreateNoObjectAutoIncrementBuilder()
+            .WithTable(TABLE_NAME, TABLE_DESCRIPTION)
+            .AddField("LogLevel", "Log Level").AsAlpha(20).Add()
+            .AddField("Message", "Log Message").AsMemo().Add()
+            .AddField("Timestamp", "Log Timestamp").AsDate().Add()
+            .AddField("UserCode", "User Code").AsAlpha(20).Add()
+            .AddField("ModuleName", "Module Name").AsAlpha(50).Add()
+            .Build();
+}
+
+----------------------------------------
+TITLE: UDO Interface with Child Collections & ClearChilds
+DESCRIPTION: Interface for document UDO using [AppEngineUDOBean] plus child collection navigation properties and ClearChilds triggers.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+using System.ComponentModel;
+using CompuTec.Core2.Attributes.AE;
+using CompuTec.Core2.Beans;
+
+[AppEngineUDOBean(ObjectType = MyDocument.UDOCODE, TableName = MyDocument.TABLENAME)]
+public interface IMyDocument : IDocumentBean
+{
+    string U_ItemCode { get; set; }
+    string U_Description { get; set; }
+    string U_Revision { get; set; }
+
+    [DefaultValue(1d)]
+    double U_Quantity { get; set; }
+    double U_Factor { get; set; }
+    ProductionType U_ProdType { get; set; }
+
+    [AppEngineProperty(ClearChilds = new[] { nameof(DocumentLines), nameof(DocumentLinesTwo) })]
+    string U_ClrLns { get; set; }
+
+    [AppEngineProperty(ClearChilds = new[] { nameof(DocumentLines) })]
+    string U_ClrLns1 { get; set; }
+
+    [AppEngineProperty(ClearChilds = new[] { nameof(DocumentLinesTwo) })]
+    string U_ClrLns2 { get; set; }
+
+    IMyDocumentLines DocumentLines { get; }
+    IMyDocumentLinesTwo DocumentLinesTwo { get; }
+    IMySubLines SubLines { get; }
+}
+
+----------------------------------------
+TITLE: Document Bean Implementation with Child Definitions & ValueChanged
+DESCRIPTION: Implements a document bean class with child table registration and ValueChanged handler clearing lines.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+using CompuTec.BaseLayer.Connection;
+using CompuTec.Core2.Beans;
+using Microsoft.Extensions.Logging;
+using PropertyChangedEventArgs = CompuTec.Core2.Beans.Structures.PropertyChangedEventArgs;
+
+[Bean(TableName = MyDocument.TABLENAME, UdoCode = MyDocument.UDOCODE)]
+[GenerateUdoBeanProperties(typeof(IMyDocument))]
+internal sealed partial class MyDocument : DocumentBean, IMyDocument
+{
+    public const string UDOCODE = "CT_TEST_DOC";
+    public const string TABLENAME = "@CT_TEST_DOC";
+    public const string __LinesTableName = "@CT_TEST_DOCL";
+    public const string __LinesTableTwoName = "@CT_TEST_DOC2";
+    public const string __SubLinesTableName = "@CT_TEST_SUB";
+
+    public MyDocument(ICoreConnection connection, ILogger<MyDocument> logger) : base(connection, logger)
+    {
+        UDOCode = UDOCODE; TableName = TABLENAME;
+        AddChildDefinition<MyDocumentLines>(__LinesTableName);
+        AddChildDefinition<MyDocumentLinesTwo>(__LinesTableTwoName);
+        AddChildDefinition<MySubLines>(__SubLinesTableName);
+        ValueChanged += OnValueChanged;
+    }
+
+    private void OnValueChanged(object sender, PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(U_ClrLns))
+        {
+            for (int i = DocumentLines.Count - 1; i >= 0; i--)
+                DocumentLines.DelRowAtPos(i);
+        }
+    }
+
+    protected override bool BeforeAdd() => true;
+}
+
+----------------------------------------
+TITLE: Child Line Interfaces (Primary & Secondary + Sub-Lines)
+DESCRIPTION: Child line interfaces for document UDO including nested sub-lines referencing parent via ParentKey.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+using CompuTec.Core2.Attributes.AE;
+using CompuTec.Core2.Beans;
+
+public interface IBaseLineProps { string U_Description { get; set; } }
+public interface IIntermediateProps : IBaseLineProps { string U_Intermediate { get; set; } }
+
+[AppEngineUDOChildBean(TableName = MyDocument.__LinesTableName)]
+public interface IMyDocumentLines : IDocumentChildBean<IMyDocumentLines>, IBaseLineProps
+{
+    string U_ItemCode { get; set; }
+    double U_Quantity { get; set; }
+    int U_Sequence { get; set; }
+}
+
+[AppEngineUDOChildBean(TableName = MyDocument.__LinesTableTwoName)]
+public interface IMyDocumentLinesTwo : IDocumentChildBean<IMyDocumentLinesTwo>
+{
+    string U_ItemCode { get; set; }
+    int U_Sequence { get; set; }
+}
+
+[AppEngineUDOChildBean(TableName = MyDocument.__SubLinesTableName, Parent = nameof(IMyDocumentLines))]
+public interface IMySubLines : IDocumentChildBean<IMySubLines>, IIntermediateProps
+{
+    [AppEngineProperty(ParentKey = "U_LineNum", Priority = 0)]
+    int U_Parent { get; set; }
+    int U_Sequence { get; set; }
+    [AppEngineProperty(Priority = 1)]
+    string U_ItemCode { get; set; }
+    double U_Quantity { get; set; }
+}
+
+----------------------------------------
+TITLE: Child Line Classes with Generated Properties & IsRowFilled
+DESCRIPTION: Implements child line classes overriding IsRowFilled for persistence control; first line auto-sets quantity when item changes.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+using CompuTec.Core2.Beans;
+using CompuTec.Core2.Beans.Structures;
+
+[GenerateUdoBeanProperties(typeof(IMyDocumentLines))]
+internal partial class MyDocumentLines : DocumentChildBean<IMyDocumentLines>, IMyDocumentLines
+{
+    public MyDocumentLines(IUDOBean parent, bool master = false) : base(parent, master)
+        => ValueChanged += (_, e) => { if (e.PropertyName == nameof(U_ItemCode)) U_Quantity = 1; };
+    public override bool IsRowFilled() => !string.IsNullOrEmpty(U_ItemCode);
+}
+
+[GenerateUdoBeanProperties(typeof(IMyDocumentLinesTwo))]
+internal partial class MyDocumentLinesTwo : DocumentChildBean<IMyDocumentLinesTwo>, IMyDocumentLinesTwo
+{
+    public MyDocumentLinesTwo(IUDOBean parent, bool master = false) : base(parent, master) { }
+    public override bool IsRowFilled() => !string.IsNullOrEmpty(U_ItemCode);
+}
+
+[GenerateUdoBeanProperties(typeof(IMySubLines))]
+internal partial class MySubLines : DocumentChildBean<IMySubLines>, IMySubLines
+{
+    public MySubLines(IUDOBean parent, bool master = false) : base(parent, master) { }
+    public override bool IsRowFilled() => !string.IsNullOrEmpty(U_ItemCode);
+}
+
+----------------------------------------
+TITLE: Enum Mapping for UDO Field ([EnumType])
+DESCRIPTION: Maps numeric enum values to stored string codes with default value Internal.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+using CompuTec.Core2.DI.Attributes;
+
+namespace ConsoleApp.API.Beans.TestDocument
+{
+    // Maps numeric values 1,2 to SAP stored codes "I","E" with default = 1 (Internal)
+    [EnumType(new int[] { 1, 2 }, new string[] { "I", "E" }, 1)]
+    public enum ProductionType
+    {
+        Internal = 1,
+        External = 2
+    }
+}
+
+//---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: Default Value Strategies (Interface vs Manual Implementation)
+DESCRIPTION: Shows choosing interface-level [DefaultValue] vs manual implementation with [IgnoreGenerateProperty]; prefer interface attribute for simple static defaults.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+// Interface simple default
+[DefaultValue(1d)]
+double U_Quantity { get; set; }
+
+// Manual implementation pattern (only if dynamic logic required)
+[IgnoreGenerateProperty]
+double U_Quantity { get; set; }
+// Implementation snippet:
+[DefaultValue(1d)]
+public double U_Quantity
+{
+    get => FieldDictionary[nameof(U_Quantity)].Value;
+    set => FieldDictionary[nameof(U_Quantity)].Value = value;
+}
+
+----------------------------------------
+TITLE: IoC Attribute Basic Service Scopes
+DESCRIPTION: Registers services at Application, Company and Connection scopes using [Ioc]; framework auto-discovers registrations.
+SOURCE: inferred
+LANGUAGE: C#
+CODE:
+using CompuTec.BaseLayer.IoC;
+using CompuTec.BaseLayer;
+
+public interface IMyAppService { string GetHostId(); }
+[Ioc(Scope = IocScope.Application, Singelton = true, ReferenceType = typeof(IMyAppService))]
+internal class MyAppService : IMyAppService { private readonly string _id = Guid.NewGuid().ToString(); public string GetHostId() => _id; }
+
+public interface IMyCompanyService { int CompanyDbHash(); }
+[Ioc(Scope = IocScope.Company, Singelton = true, ReferenceType = typeof(IMyCompanyService))]
+internal class MyCompanyService : IMyCompanyService
+{ private readonly ICoreCompanyContainer _company; public MyCompanyService(ICoreCompanyContainer c) { _company = c; }
+  public int CompanyDbHash() => _company.GetHashCode(); }
+
+public interface IMyConnectionService { DateTime CreatedAt { get; } string CompanyDb { get; } }
+[Ioc(Scope = IocScope.Connection, ReferenceType = typeof(IMyConnectionService))]
+internal class MyConnectionService : IMyConnectionService
+{ public DateTime CreatedAt { get; } = DateTime.UtcNow; private readonly ICoreConnection _conn; public MyConnectionService(ICoreConnection conn) { _conn = conn; }
+  public string CompanyDb => _conn.CompanyInfo.CompanySchema; }
+
+//----------------------------------------
+========================
+CODE SNIPPETS
+========================
+TITLE: UI Event: Basic LoadFromToAction on Validate (Item Event)
+DESCRIPTION: Minimal pattern loading current bean, mutating a field, and letting framework persist automatically after validation.
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniItemEvents : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override bool HandleEvent(ref PItemEvent e) => e.FormTypeEx == VehicleMiniForm.FormTypeEx;
+    public override void OnValidateAfter(string formUid, ref PItemEvent e)
+    {
+        if (!e.ItemChanged || e.ItemUID != VehicleMiniForm.C.CodeEdit) return;
+        LoadFromToAction(e, udo => udo.U_Model = (udo.U_Model ?? string.Empty) + "*");
+    }
+}
+----------------------------------------
+TITLE: UI Event: LoadFromToAction with PItemEvent Context
+DESCRIPTION: Overload providing PItemEvent + bean giving access to triggering metadata.
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniItemEventsExtended : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override void OnClickAfter(string formUid, ref PItemEvent e)
+    {
+        if (e.ItemUID != VehicleMiniForm.C.CodeEdit) return;
+        LoadFromToAction(e, (evt, udo) =>
+        {
+            if (evt.Before_Action) return; // safety guard
+            udo.U_Color = (udo.U_Color ?? "") + "#";
+        });
+    }
+}
+----------------------------------------
+TITLE: UI Event: LoadFromToAction with Custom Object & attachedProperties
+DESCRIPTION: Passes a custom helper object and attachedProperties dictionary for transient state/correlation.
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+internal sealed class ColorAppendContext { public string Suffix { get; init; } = "#"; }
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniCustomObjectEvent : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override void OnClickAfter(string formUid, ref PItemEvent e)
+    {
+        var ctx = new ColorAppendContext { Suffix = DateTime.Now.Second % 2 == 0 ? "#" : "!" };
+        LoadFromToAction(e, ctx, (evt, state, udo) => udo.U_Color = (udo.U_Color ?? "") + state.Suffix,
+            dontFreeze: false, dontChangeFormMode: false,
+            attachedProperties: new Dictionary<string,object>{{"Op","ColorAppend"}});
+    }
+}
+----------------------------------------
+TITLE: UI Event: Two-Phase Mutation (afterLoadToAction)
+DESCRIPTION: Uses overload with inBetweenAction + afterLoadToAction for staged logic (cache original, then annotate change).
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniTwoPhaseEvent : ApplicationItemEvent<IVehicleMasterData>
+{
+    private string _originalModel = string.Empty;
+    public override void OnClickAfter(string formUid, ref PItemEvent e)
+    {
+        LoadFromToAction(e,
+            inBetweenAction: (evt, udo) => { _originalModel = udo.U_Model; udo.U_Model = (_originalModel ?? "") + "-TMP"; },
+            afterLoadToAction: (evt, udo) =>
+            {
+                if (!string.IsNullOrEmpty(_originalModel) && _originalModel != udo.U_Model)
+                    udo.U_Remarks = $"Model changed from {_originalModel} to {udo.U_Model}";
+            }, dontFreeze: true);
+    }
+}
+----------------------------------------
+TITLE: UI Event: Conditional Persist (LoadFromToFunc)
+DESCRIPTION: Func overload returns bool; false cancels persistence (validation failure path).
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniConditionalEvent : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override void OnClickAfter(string formUid, ref PItemEvent e)
+    {
+        LoadFromToFunc(e, (evt, udo) =>
+        {
+            if (string.IsNullOrWhiteSpace(udo.U_Model))
+            {
+                _application.SetStatusBarMessage("Model required", BoMessageTime.bmt_Short, true);
+                return false; // abort save
+            }
+            udo.U_Remarks = "Validated";
+            return true; // commit
+        }, dontFreeze: true);
+    }
+}
+----------------------------------------
+TITLE: UI Event: Form Overload (No PItemEvent Available)
+DESCRIPTION: Uses Form-based overload (e.g., tab selection) without raw PItemEvent.
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniFormEvent : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override void OnItemPressedAfter(string formUid, ref PItemEvent e)
+    {
+        if (e.ItemUID == VehicleMiniForm.C.DetailsTab)
+            LoadFromToAction(e.CurrentForm, (frmHolder, udo) => udo.U_Remarks = "Details tab visited", dontFreeze: true);
+    }
+}
+----------------------------------------
+TITLE: UI Event: Performance Flags (dontFreeze & dontChangeFormMode)
+DESCRIPTION: Prevents form freeze and avoids mode change for lightweight sanitizing mutation.
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniPerformanceEvent : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override void OnClickAfter(string formUid, ref PItemEvent e)
+    {
+        LoadFromToAction(e, udo => { if (udo.U_Quantity < 0) udo.U_Quantity = 0; }, dontFreeze: true, dontChangeFormMode: true);
+    }
+}
+----------------------------------------
+TITLE: UI Event: AttachedProperties Producer
+DESCRIPTION: Supplies metadata via attachedProperties for downstream cross-cut consumers.
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniAttachedPropsEvent : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override void OnClickAfter(string formUid, ref PItemEvent e)
+    {
+        LoadFromToAction(e, (evt, udo) => udo.U_Remarks = DateTime.Now.ToString("s"),
+            attachedProperties: new Dictionary<string, object>{{"CorrelationId", Guid.NewGuid()}});
+    }
+}
+----------------------------------------
+TITLE: UI Event: LoadFromTo / LoadFromToFunc Overload Cheat Sheet
+DESCRIPTION: Reference of common overload signatures for quick selection (subset of full API).
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+// Action variants
+T LoadFromToAction(PItemEvent e, Action<T> a, bool dontFreeze=false, bool dontChangeFormMode=false, Dictionary<string,object> props=null);
+T LoadFromToAction(PItemEvent e, Action<PItemEvent,T> a, bool dontFreeze=false, bool dontChangeFormMode=false, Dictionary<string,object> props=null);
+T LoadFromToAction<C>(PItemEvent e, C obj, Action<PItemEvent,C,T> a, bool dontFreeze=false, bool dontChangeFormMode=false, Dictionary<string,object> props=null);
+T LoadFromToAction(PItemEvent e, Action<PItemEvent,T> pre, Action<PItemEvent,T> post, bool dontFreeze=false, bool dontChangeFormMode=false, Dictionary<string,object> props=null);
+T LoadFromToAction(Form f, Action<FrmHolder,T> a, bool dontFreeze=false, bool dontChangeFormMode=false, Dictionary<string,object> props=null);
+// Func variants (return bool to commit)
+T LoadFromToFunc(PItemEvent e, Func<PItemEvent,T,bool> f, bool dontFreeze=false, Dictionary<string,object> props=null);
+T LoadFromToFunc(PItemEvent e, Func<T,bool> f, bool dontFreeze=false, Dictionary<string,object> props=null);
+T LoadFromToFunc<C>(PItemEvent e, C obj, Func<PItemEvent,C,T,bool> f, bool dontFreeze=false, Dictionary<string,object> props=null);
+T LoadFromToAction<C>(Form f, C obj, Action<FrmHolder,C,T> a, bool dontFreeze=false, bool dontChangeFormMode=false, Dictionary<string,object> props=null);
+----------------------------------------
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Document Structure Definition - Complete Header Table Setup with Columns, Permissions and Authorization
+DESCRIPTION: Creates a complete UDO document header structure using the UDOTable.CreateDocumentBuilder() pattern with full permissions, archive table, and authorization setup. Used for defining master document table structures and their database columns in SAP Business One with CompuTec.Core2 framework.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+[Install]
+public class DocumentHead : UDOManager
+{
+    public const String OBJECT_CODE = "CT_CS_DOCCode";
+    public const String HEADER_TABLE_NAME = "CT_CS_ODOC";
+    public const String HEADER_TABLE_DESCRIPTION = "CS_DOC";
+    private readonly ITranslationService _translationService;
+
+    public DocumentHead(ICoreConnection connection, ITranslationService translationService, IDatabaseSetupManager manager) : base(connection, manager)
+    {
+        _translationService = translationService;
+    }
+
+    protected override IUDOTable CreateUDOTable()
+    {
+        List<DocumentAuthorizationInfo> authorizationList = new List<DocumentAuthorizationInfo>();
+        var documentBuilder = UDOTable.CreateDocumentBuilder()
+            .WithTable(HEADER_TABLE_NAME, HEADER_TABLE_DESCRIPTION)
+            .WithRegisteredUdo(OBJECT_CODE, HEADER_TABLE_NAME)
+            .WithArchiveTable("CT_CS_ADOC")
+            .WithPermissions(
+                canArchive: BoYesNoEnum.tYES,
+                canCancel: BoYesNoEnum.tNO,
+                canClose: BoYesNoEnum.tYES,
+                canCreateDefaultForm: BoYesNoEnum.tYES,
+                canDelete: BoYesNoEnum.tYES,
+                canFind: BoYesNoEnum.tYES,
+                canLog: BoYesNoEnum.tYES,
+                canYearTransfer: BoYesNoEnum.tYES
+            )
+            .WithSeriesManagement(BoYesNoEnum.tYES)
+            .WithAuthorizations(new AuthorizationUDO("MASTER", "ConsoleApp", BoUPTOptions.bou_FullReadNone, authorizationList));
+        
+        return documentBuilder.Build();
+    }
+
+    protected override void SetChildTables()
+    {
+        ChildTablesClasses.AddRange(new Type[] { typeof(DocumentLines), typeof(DocumentLinesTwoTables), typeof(DocumentSubLines1Table) });
+    }
+}
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Table Structure - Primary Key Columns Definition and Setup
+DESCRIPTION: Defines primary key field columns for UDO table structures using the fluent builder pattern. Essential for creating unique document identification columns and their database field properties in SAP Business One UDO tables.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+return documentBuilder
+    // Primary Key Fields
+    .AddField("ItemCode", "Item Code")
+    .AsAlpha(50)
+    .AsPrimaryKey()
+    .AddToFindAndForm()
+    .Add()
+    .AddField("Revision", "Revision")
+    .AsAlpha(20)
+    .AsPrimaryKey()
+    .AddToFindAndForm()
+    .Add()
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Table Structure - Quantity and Numeric Column Fields Definition
+DESCRIPTION: Creates quantity, percentage, and numeric database column fields for UDO table structures with default values. Used for production-related calculations and measurements columns in SAP Business One document table definitions.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+return documentBuilder
+    // Quantity and Numeric Fields
+    .AddField("Quantity", "Quantity")
+    .AsQuantity()
+    .AddToFindAndForm()
+    .Add()
+    .AddField("Factor", "Factor")
+    .AsQuantity()
+    .AddToFindAndForm()
+    .Add()
+    .AddField("BatchSize", "Batch Size")
+    .AsQuantity()
+    .WithDefaultValue("1")
+    .Add()
+    .AddField("Yield", "Yield Percentage")
+    .AsPercentage()
+    .WithDefaultValue("100")
+    .Add()
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Table Structure - Price and Currency Column Fields Definition
+DESCRIPTION: Defines price, currency, and price list database column fields for UDO table structures and their properties. Commonly used for financial calculation columns in SAP Business One sales and purchasing document table definitions.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+return documentBuilder
+    // Price Fields
+    .AddField("Price", "Price")
+    .AsPrice()
+    .AddToFindAndForm()
+    .Add()
+    .AddField("PriceList", "Price List")
+    .AsNumeric(10)
+    .Add()
+    .AddField("Currency", "Currency")
+    .AsMemo()
+    .AddToFindAndForm()
+    .Add()
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Table Structure - Column Field with Valid Values and Translation Setup
+DESCRIPTION: Creates a database column field with predefined valid values using translation service for multilingual support in UDO table structures. Perfect for dropdown/combo field columns with limited options in SAP Business One form table definitions.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+return documentBuilder
+    // Production Type with Valid Values
+    .AddField("ProdType", "Production Type")
+    .AsAlpha(1)
+    .WithDefaultValue("I")
+    .WithValidValues(
+        new Tuple<string, string>("I", _translationService.GetTranslatedMessage("ProdTypeFieldI", "internal")),
+        new Tuple<string, string>("E", _translationService.GetTranslatedMessage("ProdTypeFieldE", "external"))
+    )
+    .Add()
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Table Structure - Standard SAP Code Column Fields Definition
+DESCRIPTION: Defines standard SAP Business One code database column fields like warehouse, distribution rules, and costing codes for UDO table structures. Essential column definitions for integration with SAP's financial and inventory management systems.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+return documentBuilder
+    // Code Fields
+    .AddField("WhsCode", "Warehouse")
+    .AsAlpha(8)
+    .AddToFindAndForm()
+    .Add()
+    .AddField("OccrCode", "Distribution Rule")
+    .AsAlpha(8)
+    .AddToFindAndForm()
+    .Add()
+    .AddField("OcrCode", "Distribution Rule")
+    .AsAlpha(8)
+    .Add()
+    .AddField("OcrCode2", "Costing Code 2")
+    .AsAlpha(8)
+    .Add()
+    .AddField("OcrCode3", "Costing Code 3")
+    .AsAlpha(8)
+    .Add()
+    .AddField("OcrCode4", "Costing Code 4")
+    .AsAlpha(8)
+    .Add()
+    .AddField("OcrCode5", "Costing Code 5")
+    .AsAlpha(8)
+    .Add()
+    .AddField("Project", "Project")
+    .AsAlpha(20)
+    .Add()
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Table Structure - Memo Column Fields for Formula and Text Storage
+DESCRIPTION: Creates memo database column fields for storing formulas, instructions, and remarks in UDO table structures. Used for complex business logic storage columns in production and manufacturing SAP Business One table definitions.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+return documentBuilder
+    // Memo Fields
+    .AddField("Remarks", "Remarks")
+    .AsMemo()
+    .AddToFindAndForm()
+    .Add()
+    .AddField("YieldFormula", "Yield Formula")
+    .AsMemo()
+    .Add()
+    .AddField("ItemFormula", "Item Formula")
+    .AsMemo()
+    .Add()
+    .AddField("ScrapFormula", "Scrap Formula")
+    .AsMemo()
+    .Add()
+    .AddField("CoproductFormula", "Coproduct Formula")
+    .AsMemo()
+    .Add()
+    .AddField("Instructions", "Instructions")
+    .AsMemo()
+    .Add()
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Database Object Structure - Manager Class Template with Dependencies
+DESCRIPTION: Basic structure template for a UDO Manager class that defines SAP Business One database object structures with proper dependency injection, inheritance from UDOManager, and translation service integration. Foundation for all UDO database table and column setup classes.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+using System;
+using System.Collections.Generic;
+using CompuTec.BaseLayer.Connection;
+using CompuTec.BaseLayer.DI;
+using CompuTec.Core2.DI.Setup;
+using CompuTec.Core2.DI.Setup.Attributes;
+using CompuTec.Core2.DI.Setup.UDO.Model;
+using CompuTec.Core2.Translations;
+
+namespace ConsoleApp.DataBase.Document
+{
+    [Install]
+    public class DocumentHead : UDOManager
+    {
+        public const String OBJECT_CODE = "CT_CS_DOCCode";
+        public const String HEADER_TABLE_NAME = "CT_CS_ODOC";
+        public const String HEADER_TABLE_DESCRIPTION = "CS_DOC";
+        private readonly ITranslationService _translationService;
+
+        public DocumentHead(ICoreConnection connection, ITranslationService translationService, IDatabaseSetupManager manager) : base(connection, manager)
+        {
+            _translationService = translationService;
+        }
+
+        protected override IUDOTable CreateUDOTable()
+        {
+            // Implementation here
+            throw new NotImplementedException();
+        }
+
+        protected override void SetChildTables()
+        {
+            ChildTablesClasses.AddRange(new Type[] { /* Child table types */ });
+        }
+    }
+}
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Database Structure - Child Tables Registration for Master-Detail Relationships
+DESCRIPTION: Registers child tables (line tables) for master-detail UDO database object structures in SAP Business One. Essential for documents that have header-line table relationships like sales orders or invoices with multiple related table structures and their column definitions.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+protected override void SetChildTables()
+{
+    ChildTablesClasses.AddRange(new Type[] { 
+        typeof(DocumentLines), 
+        typeof(DocumentLinesTwoTables), 
+        typeof(DocumentSubLines1Table) 
+    });
+}
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Bean Setup - MasterData Table Structure Factory Method
+DESCRIPTION: Creates a UDO Bean setup for MasterData table structures using CreateMasterDataBuilder() factory method. Used for defining master data object structures like Items, Business Partners, or custom master records in SAP Business One with their database columns and UDO Bean mappings.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+[Install]
+public class MasterDataSetup : UDOManager
+{
+    public const String OBJECT_CODE = "CT_MASTER_CODE";
+    public const String TABLE_NAME = "CT_MASTER_DATA";
+    public const String TABLE_DESCRIPTION = "Master Data";
+    private readonly ITranslationService _translationService;
+
+    public MasterDataSetup(ICoreConnection connection, ITranslationService translationService, IDatabaseSetupManager manager) : base(connection, manager)
+    {
+        _translationService = translationService;
+    }
+
+    protected override IUDOTable CreateUDOTable()
+    {
+        var masterDataBuilder = UDOTable.CreateMasterDataBuilder()
+            .WithTable(TABLE_NAME, TABLE_DESCRIPTION)
+            .WithRegisteredUdo(OBJECT_CODE, TABLE_NAME)
+            .WithPermissions(
+                canArchive: BoYesNoEnum.tYES,
+                canCancel: BoYesNoEnum.tNO,
+                canClose: BoYesNoEnum.tNO,
+                canCreateDefaultForm: BoYesNoEnum.tYES,
+                canDelete: BoYesNoEnum.tYES,
+                canFind: BoYesNoEnum.tYES,
+                canLog: BoYesNoEnum.tYES,
+                canYearTransfer: BoYesNoEnum.tNO
+            );
+
+        return masterDataBuilder
+            .AddField("Code", "Master Code")
+            .AsAlpha(20)
+            .AsPrimaryKey()
+            .AddToFindAndForm()
+            .Add()
+            .AddField("Name", "Master Name")
+            .AsAlpha(100)
+            .AddToFindAndForm()
+            .Add()
+            .Build();
+    }
+}
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Bean Setup - Document Lines Table Structure Factory Method
+DESCRIPTION: Creates a UDO Bean setup for DocumentLines table structures using CreateDocumentLinesBuilder() factory method. Used for defining line-level data structures in SAP Business One documents with their database columns and UDO Bean child table mappings.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+[Install]
+public class DocumentLinesSetup : UDOManager
+{
+    public const String TABLE_NAME = "CT_DOC_LINES";
+    public const String TABLE_DESCRIPTION = "Document Lines";
+    private readonly ITranslationService _translationService;
+
+    public DocumentLinesSetup(ICoreConnection connection, ITranslationService translationService, IDatabaseSetupManager manager) : base(connection, manager)
+    {
+        _translationService = translationService;
+    }
+
+    protected override IUDOTable CreateUDOTable()
+    {
+        var linesBuilder = UDOTable.CreateDocumentLinesBuilder()
+            .WithTable(TABLE_NAME, TABLE_DESCRIPTION);
+
+        return linesBuilder
+            // LineNum is automatically added for DocumentLines
+            .AddField("ItemCode", "Item Code")
+            .AsAlpha(50)
+            .AddToFindAndForm()
+            .Add()
+            .AddField("Quantity", "Quantity")
+            .AsQuantity()
+            .Add()
+            .AddField("Price", "Unit Price")
+            .AsPrice()
+            .Add()
+            .AddField("LineTotal", "Line Total")
+            .AsSum()
+            .Add()
+            .Build();
+    }
+}
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Bean Setup - MasterData Lines Table Structure Factory Method
+DESCRIPTION: Creates a UDO Bean setup for MasterDataLines table structures using CreateMasterDataLinesBuilder() factory method. Used for defining line-level data in master data objects with their database columns and UDO Bean child table relationships in SAP Business One.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+[Install]
+public class MasterDataLinesSetup : UDOManager
+{
+    public const String TABLE_NAME = "CT_MASTER_LINES";
+    public const String TABLE_DESCRIPTION = "Master Data Lines";
+    private readonly ITranslationService _translationService;
+
+    public MasterDataLinesSetup(ICoreConnection connection, ITranslationService translationService, IDatabaseSetupManager manager) : base(connection, manager)
+    {
+        _translationService = translationService;
+    }
+
+    protected override IUDOTable CreateUDOTable()
+    {
+        var masterLinesBuilder = UDOTable.CreateMasterDataLinesBuilder()
+            .WithTable(TABLE_NAME, TABLE_DESCRIPTION);
+
+        return masterLinesBuilder
+            // LineNum is automatically added for MasterDataLines
+            .AddField("PropertyCode", "Property Code")
+            .AsAlpha(20)
+            .Add()
+            .AddField("PropertyValue", "Property Value")
+            .AsAlpha(200)
+            .Add()
+            AddField("Quantity", "Property Value")
+            .AsQuantity()
+            .Add()
+            .AddField("IsActive", "Is Active")
+            .AsAlpha(1)
+            .WithDefaultValue("Y")
+            .WithValidValues(
+                new Tuple<string, string>("Y", "Yes"),
+                new Tuple<string, string>("N", "No")
+            )
+            .Add()
+            .Build();
+    }
+}
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Bean Setup - NoObject Table Structure Factory Method  
+DESCRIPTION: Creates a UDO Bean setup for NoObject table structures using CreateNoObjectBuilder() factory method. Used for defining simple database tables without UDO registration in SAP Business One, useful for configuration tables and lookup data with basic UDO Bean field mappings.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+[Install]
+public class NoObjectTableSetup : UDOManager
+{
+    public const String TABLE_NAME = "CT_CONFIG_TABLE";
+    public const String TABLE_DESCRIPTION = "Configuration Table";
+
+    public NoObjectTableSetup(ICoreConnection connection, IDatabaseSetupManager manager) : base(connection, manager)
+    {
+    }
+
+    protected override IUDOTable CreateUDOTable()
+    {
+        var noObjectBuilder = UDOTable.CreateNoObjectBuilder()
+            .WithTable(TABLE_NAME, TABLE_DESCRIPTION);
+
+        return noObjectBuilder
+            .AddField("ConfigKey", "Configuration Key")
+            .AsAlpha(50)
+            .AsPrimaryKey()
+            .Add()
+            .AddField("ConfigValue", "Configuration Value")
+            .AsAlpha(250)
+            .Add()
+            .AddField("Description", "Description")
+            .AsMemo()
+            .Add()
+            .AddField("IsActive", "Is Active")
+            .AsAlpha(1)
+            .WithDefaultValue("Y")
+            .Add()
+            .Build();
+    }
+}
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: SAP B1 UDO Bean Setup - NoObject AutoIncrement Table Structure Method
+DESCRIPTION: Creates a UDO Bean setup for NoObjectAutoIncrement table structures using CreateNoObjectAutoIncrementBuilder() factory method. Used for defining simple database tables with auto-incrementing primary keys in SAP Business One, ideal for log tables and sequential data with UDO Bean field mappings.
+SOURCE: CompuTec.Core2 Framework Documentation
+LANGUAGE: C#
+CODE:
+
+[Install]
+public class AutoIncrementTableSetup : UDOManager
+{
+    public const String TABLE_NAME = "CT_LOG_TABLE";
+    public const String TABLE_DESCRIPTION = "Application Log Table";
+
+    public AutoIncrementTableSetup(ICoreConnection connection, IDatabaseSetupManager manager) : base(connection, manager)
+    {
+    }
+
+    protected override IUDOTable CreateUDOTable()
+    {
+        var autoIncrementBuilder = UDOTable.CreateNoObjectAutoIncrementBuilder()
+            .WithTable(TABLE_NAME, TABLE_DESCRIPTION);
+
+        return autoIncrementBuilder
+            .AddField("LogLevel", "Log Level")
+            .AsAlpha(20)
+            .Add()
+            .AddField("Message", "Log Message")
+            .AsMemo().Add()
+            .AddField("Timestamp", "Log Timestamp")
+            .AsDate().Add()
+            .AddField("UserCode", "User Code")
+            .AsAlpha(20).Add()
+            .AddField("ModuleName", "Module Name")
+            .AsAlpha(50).Add()
+            .Build();
+    }
+}
+
+---------------------------------------
+
+========================
+CODE SNIPPETS
+========================
+TITLE: UI Event: Basic LoadFromToAction on Validate (Item Event)
+DESCRIPTION: Minimal pattern loading current bean, mutating a field, and letting framework persist automatically after validation.
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniItemEvents : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override bool HandleEvent(ref PItemEvent e) => e.FormTypeEx == VehicleMiniForm.FormTypeEx;
+    public override void OnValidateAfter(string formUid, ref PItemEvent e)
+    {
+        if (!e.ItemChanged || e.ItemUID != VehicleMiniForm.C.CodeEdit) return;
+        LoadFromToAction(e, udo => udo.U_Model = (udo.U_Model ?? string.Empty) + "*");
+    }
+}
+----------------------------------------
+TITLE: UI Event: LoadFromToAction with PItemEvent Context
+DESCRIPTION: Overload providing PItemEvent + bean giving access to triggering metadata.
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniItemEventsExtended : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override void OnClickAfter(string formUid, ref PItemEvent e)
+    {
+        if (e.ItemUID != VehicleMiniForm.C.CodeEdit) return;
+        LoadFromToAction(e, (evt, udo) =>
+        {
+            if (evt.Before_Action) return; // safety guard
+            udo.U_Color = (udo.U_Color ?? "") + "#";
+        });
+    }
+}
+----------------------------------------
+TITLE: UI Event: LoadFromToAction with Custom Object & attachedProperties
+DESCRIPTION: Passes a custom helper object and attachedProperties dictionary for transient state/correlation.
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+internal sealed class ColorAppendContext { public string Suffix { get; init; } = "#"; }
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniCustomObjectEvent : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override void OnClickAfter(string formUid, ref PItemEvent e)
+    {
+        var ctx = new ColorAppendContext { Suffix = DateTime.Now.Second % 2 == 0 ? "#" : "!" };
+        LoadFromToAction(e, ctx, (evt, state, udo) => udo.U_Color = (udo.U_Color ?? "") + state.Suffix,
+            dontFreeze: false, dontChangeFormMode: false,
+            attachedProperties: new Dictionary<string,object>{{"Op","ColorAppend"}});
+    }
+}
+----------------------------------------
+TITLE: UI Event: Two-Phase Mutation (afterLoadToAction)
+DESCRIPTION: Uses overload with inBetweenAction + afterLoadToAction for staged logic (cache original, then annotate change).
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniTwoPhaseEvent : ApplicationItemEvent<IVehicleMasterData>
+{
+    private string _originalModel = string.Empty;
+    public override void OnClickAfter(string formUid, ref PItemEvent e)
+    {
+        LoadFromToAction(e,
+            inBetweenAction: (evt, udo) => { _originalModel = udo.U_Model; udo.U_Model = (_originalModel ?? "") + "-TMP"; },
+            afterLoadToAction: (evt, udo) =>
+            {
+                if (!string.IsNullOrEmpty(_originalModel) && _originalModel != udo.U_Model)
+                    udo.U_Remarks = $"Model changed from {_originalModel} to {udo.U_Model}";
+            }, dontFreeze: true);
+    }
+}
+----------------------------------------
+TITLE: UI Event: Conditional Persist (LoadFromToFunc)
+DESCRIPTION: Func overload returns bool; false cancels persistence (validation failure path).
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniConditionalEvent : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override void OnClickAfter(string formUid, ref PItemEvent e)
+    {
+        LoadFromToFunc(e, (evt, udo) =>
+        {
+            if (string.IsNullOrWhiteSpace(udo.U_Model))
+            {
+                _application.SetStatusBarMessage("Model required", BoMessageTime.bmt_Short, true);
+                return false; // abort save
+            }
+            udo.U_Remarks = "Validated";
+            return true; // commit
+        }, dontFreeze: true);
+    }
+}
+----------------------------------------
+TITLE: UI Event: Form Overload (No PItemEvent Available)
+DESCRIPTION: Uses Form-based overload (e.g., tab selection) without raw PItemEvent.
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniFormEvent : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override void OnItemPressedAfter(string formUid, ref PItemEvent e)
+    {
+        if (e.ItemUID == VehicleMiniForm.C.DetailsTab)
+            LoadFromToAction(e.CurrentForm, (frmHolder, udo) => udo.U_Remarks = "Details tab visited", dontFreeze: true);
+    }
+}
+----------------------------------------
+TITLE: UI Event: Performance Flags (dontFreeze & dontChangeFormMode)
+DESCRIPTION: Prevents form freeze and avoids mode change for lightweight sanitizing mutation.
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniPerformanceEvent : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override void OnClickAfter(string formUid, ref PItemEvent e)
+    {
+        LoadFromToAction(e, udo => { if (udo.U_Quantity < 0) udo.U_Quantity = 0; }, dontFreeze: true, dontChangeFormMode: true);
+    }
+}
+----------------------------------------
+TITLE: UI Event: AttachedProperties Producer
+DESCRIPTION: Supplies metadata via attachedProperties for downstream cross-cut consumers.
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+[EnableEvent(VehicleMiniForm.FormTypeEx)]
+internal sealed class VehicleMiniAttachedPropsEvent : ApplicationItemEvent<IVehicleMasterData>
+{
+    public override void OnClickAfter(string formUid, ref PItemEvent e)
+    {
+        LoadFromToAction(e, (evt, udo) => udo.U_Remarks = DateTime.Now.ToString("s"),
+            attachedProperties: new Dictionary<string, object>{{"CorrelationId", Guid.NewGuid()}});
+    }
+}
+----------------------------------------
+TITLE: UI Event: LoadFromTo / LoadFromToFunc Overload Cheat Sheet
+DESCRIPTION: Reference of common overload signatures for quick selection (subset of full API).
+SOURCE: inferred
+LANGUAGE: csharp
+CODE:
+// Action variants
+T LoadFromToAction(PItemEvent e, Action<T> a, bool dontFreeze=false, bool dontChangeFormMode=false, Dictionary<string,object> props=null);
+T LoadFromToAction(PItemEvent e, Action<PItemEvent,T> a, bool dontFreeze=false, bool dontChangeFormMode=false, Dictionary<string,object> props=null);
+T LoadFromToAction<C>(PItemEvent e, C obj, Action<PItemEvent,C,T> a, bool dontFreeze=false, bool dontChangeFormMode=false, Dictionary<string,object> props=null);
+T LoadFromToAction(PItemEvent e, Action<PItemEvent,T> pre, Action<PItemEvent,T> post, bool dontFreeze=false, bool dontChangeFormMode=false, Dictionary<string,object> props=null);
+T LoadFromToAction(Form f, Action<FrmHolder,T> a, bool dontFreeze=false, bool dontChangeFormMode=false, Dictionary<string,object> props=null);
+// Func variants (return bool to commit)
+T LoadFromToFunc(PItemEvent e, Func<PItemEvent,T,bool> f, bool dontFreeze=false, Dictionary<string,object> props=null);
+T LoadFromToFunc(PItemEvent e, Func<T,bool> f, bool dontFreeze=false, Dictionary<string,object> props=null);
+T LoadFromToFunc<C>(PItemEvent e, C obj, Func<PItemEvent,C,T,bool> f, bool dontFreeze=false, Dictionary<string,object> props=null);
+T LoadFromToAction<C>(Form f, C obj, Action<FrmHolder,C,T> a, bool dontFreeze=false, bool dontChangeFormMode=false, Dictionary<string,object> props=null);
+----------------------------------------
