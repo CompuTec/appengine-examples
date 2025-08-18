@@ -29,13 +29,16 @@
         <Compile Remove="www\node_modules\**"/>
         <Compile Remove="www\src\**"/>
         <Compile Remove="www\Tests\**"/>
+        <Compile Remove="uiapi\___PLUGIN_ID____1.0.0\___MODULE___SalesOrder\webapp\**"/>
         <EmbeddedResource Remove="www\dist\**"/>
         <EmbeddedResource Remove="www\node_modules\**"/>
         <EmbeddedResource Remove="www\src\**"/>
         <EmbeddedResource Remove="www\Tests\**"/>
+        <EmbeddedResource Remove="uiapi\___PLUGIN_ID____1.0.0\___MODULE___SalesOrder\webapp\**"/>
         <None Remove="www\dist\**"/>
         <None Remove="www\node_modules\**"/>
         <None Remove="www\Tests\**"/>
+        <None Remove="uiapi\___PLUGIN_ID____1.0.0\___MODULE___SalesOrder\webapp\**" />
         <EmbeddedResource Update="Resources\HanaQueries.resx">
           <Generator>ResXFileCodeGenerator</Generator>
           <LastGenOutput>HanaQueries.Designer.cs</LastGenOutput>
@@ -70,6 +73,9 @@
         <Content Include="www\webapp\**">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
+        <Content Include="uiapi\___PLUGIN_ID____1.0.0\___MODULE___SalesOrder\dist\**">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
     <ItemGroup>
@@ -80,6 +86,10 @@
 
     <ItemGroup>
         <ProjectReference Include="..\CT.VehOne.BL\CT.VehOne.BL.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="uiapi\" />
     </ItemGroup>
 
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(RunNpmTask)'=='true'">

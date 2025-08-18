@@ -16,9 +16,8 @@
   "DevelopmentConfiguration": {
     "Enabled": true,
     "MapWwwAppFolder": true,
-    "Plugins": [ 
-      "C:\\git\\core\\appengine-examples\\ae-3.0\\CT.VehOne\\Source\\CT.VehOne\\dev.config.json"
+    "Plugins": [
+      "E:\\projects\\workshop\\appengine-examples\\ae-3.0\\CT.VehOne\\Source\\CT.VehOne\\dev.config.json"
     ]
   }
- 
 }

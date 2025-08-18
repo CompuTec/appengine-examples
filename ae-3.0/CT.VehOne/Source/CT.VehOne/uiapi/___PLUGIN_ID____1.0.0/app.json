@@ -1,0 +1,8 @@
+{
+  "applications": [
+    {
+      "name": "___PROVIDER___.___PLUGIN_ID___.___MODULE___SalesOrder",
+      "path": "___PLUGIN_ID____1.0.0/___MODULE___SalesOrder/webapp"
+    }
+  ]
+}

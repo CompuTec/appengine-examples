@@ -40,6 +40,12 @@
         "Url": "ct.vehone,home",
         "InternalUrl": true
       }
+    ],
+    "webupModules": [
+      {
+        "moduleId": "SalesOrder",
+        "buildPath": "uiapi\\___PLUGIN_ID____1.0.0\\___MODULE___SalesOrder\\dist"
+      }
     ]
   }
 }

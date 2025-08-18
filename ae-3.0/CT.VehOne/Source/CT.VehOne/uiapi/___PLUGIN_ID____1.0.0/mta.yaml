@@ -1,0 +1,15 @@
+_schema-version: 3.2.0
+ID: ___PLUGIN_ID___
+version: 1.0.0
+provider: ___PROVIDER___
+description: You can add your application description
+copyright: You can add your copyright information
+modules:
+- name: ___MODULE___SalesOrder
+  type: ui-extension
+  path: ___MODULE___SalesOrder
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - node ./../node_modules/gulp/bin/gulp --gulpfile ../gulpfile.js --cwd .

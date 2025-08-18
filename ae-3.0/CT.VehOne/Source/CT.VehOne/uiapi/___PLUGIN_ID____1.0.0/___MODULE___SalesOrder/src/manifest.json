@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "name": "___PROVIDER___.___PLUGIN_ID___.___MODULE___SalesOrder",
+  "description": "SAPBusinessOne WebClient UI API extension created by Visual Studio Code",
+  "b1.bundles": [
+    {
+      "id": "View.layout",
+      "baseViewGuid": "2Jx8aiyfYXojYjGBy5rr8X",
+      "layout": "layout/View.layout.json",
+      "description": "View",
+      "i18n": {
+        "@@i18n": ["___PROVIDER___.___PLUGIN_ID___.___MODULE___SalesOrder.i18n.i18n"]
+      }
+    }
+  ],
+  "allowedExternalURLs": "*",
+  "allowedServiceLayerAPIs": "*"
+}

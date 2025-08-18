@@ -1,6 +1,6 @@
 <Project>
     <PropertyGroup>
-        <Version>1.0</Version>
+        <Version>1.0.2</Version>
 		<CTCoreVersion>3.0.1.408</CTCoreVersion>
         <Authors>CompuTec S.A.</Authors>
         <Copyright>CompuTec S.A.</Copyright>    
