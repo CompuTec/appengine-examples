@@ -13,10 +13,14 @@ import ODataHelper from "computec/appengine/uicore/helpers/ODataHelper";
 import VehicleMasterData from "../models/VehicleMasterData";
 import { ListItemBase$PressEvent } from "sap/m/ListItemBase";
 import { Route$MatchedEvent } from "sap/ui/core/routing/Route";
+
+/**
+ * @namespace ct.vehone.controller
+ */
 export default class Vehicles extends BaseController<VehiclesViewModel, VehiclesFilterViewModel> {
 	formatter: Formatter = new Formatter();
 	onInit(): void {
-		super.onInit();
+		super.onInit();``
 		this.getRouter().getRoute("home").attachMatched(this.onRouteMatched.bind(this), this);
 	}
 

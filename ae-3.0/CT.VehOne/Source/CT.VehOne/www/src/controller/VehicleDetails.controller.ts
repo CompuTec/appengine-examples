@@ -10,6 +10,9 @@ import VehicleMasterData from "../models/VehicleMasterData";
 import ErrorHelper from "computec/appengine/uicore/helpers/ErrorHelper";
 import MessageBox from "sap/m/MessageBox";
 import ODataModel from "sap/ui/model/odata/v4/ODataModel";
+/**
+ * @namespace ct.vehone.controller
+ */
 export default class VehicleDetails extends BaseController<VehicleDetailsViewModel> {
 	private VEHICLE_UPDATE_GROUP_ID = "vehicleUpdateGroup";
 	onInit(): void {
