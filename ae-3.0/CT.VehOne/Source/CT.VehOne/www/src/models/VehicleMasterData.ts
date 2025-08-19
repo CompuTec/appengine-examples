@@ -24,6 +24,7 @@ export default class VehicleMasterData extends BaseBusinessObject {
 			...super.toJSON(),
 			U_ManufacturingDate: DateHelper.toISOString(this.U_ManufacturingDate),
 			U_RegistrationDate: DateHelper.toISOString(this.U_RegistrationDate),
+			UDFs: {}
 		};
 	}
 }

@@ -20,7 +20,7 @@ import { Route$MatchedEvent } from "sap/ui/core/routing/Route";
 export default class Vehicles extends BaseController<VehiclesViewModel, VehiclesFilterViewModel> {
 	formatter: Formatter = new Formatter();
 	onInit(): void {
-		super.onInit();``
+		super.onInit();
 		this.getRouter().getRoute("home").attachMatched(this.onRouteMatched.bind(this), this);
 	}
 
