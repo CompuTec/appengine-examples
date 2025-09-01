@@ -113,6 +113,8 @@ public class DocumentHead : UDOManager
     {
         List<IUDOField> fields = new List<IUDOField>();
 
+        fields.CreateAlpha("ItemCode", "Item Code", 50);
+        
         IUDOField ItemCode = new UDOTableField();
         ItemCode.SetName("ItemCode");
         ItemCode.SetDescription("Item Code");
