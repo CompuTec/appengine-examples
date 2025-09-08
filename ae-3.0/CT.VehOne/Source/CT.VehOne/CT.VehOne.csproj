@@ -82,6 +82,10 @@
         <ProjectReference Include="..\CT.VehOne.BL\CT.VehOne.BL.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="ModelContextProtocol.Core" Version="0.3.0-preview.3" />
+    </ItemGroup>
+
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(RunNpmTask)'=='true'">
         <Exec Command="cd $(ProjectDir)www\&#xD;&#xA;npm install"/>
         <Exec Command="cd $(ProjectDir)www\&#xD;&#xA;npm run build:ts"/>
