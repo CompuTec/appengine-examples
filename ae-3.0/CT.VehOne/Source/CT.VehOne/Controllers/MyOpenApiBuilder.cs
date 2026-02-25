@@ -16,7 +16,7 @@ public class MyOpenApiBuilder : AeSecureMinimalApiEndpointBuilder
         endpointRouteBuilder.MapGet("/Test", Test);
     }
 
-    private IResult Test([FromServices] SecureScopeService<ITranslationService> translationService)
-        =>Results.Ok(translationService.Value.GetTranslatedMessage("VehOne.VinIsMissing"));
+    private IResult Test([FromServices] ITranslationService translationService)
+        =>Results.Ok(translationService.GetTranslatedMessage("VehOne.VinIsMissing"));
 
 }
