@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "allowJs": true,
+    "module": "AMD",
+    "outDir": "./webapp",
+    "preserveConstEnums": false,
+    "isolatedModules": false,
+    "lib": ["es2015", "dom"],
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "rootDirs": [
+      "./src/controller",
+      "./src"
+    ],
+    "paths": {
+      "sbo/*": [
+        "../node_modules/sbo-types-uiapi/types/index.d.ts"
+      ]
+    }
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules"],
+  "compileOnSave": true
+}

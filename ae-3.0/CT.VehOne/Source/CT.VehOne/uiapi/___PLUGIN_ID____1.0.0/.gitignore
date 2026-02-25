@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+Makefile*.mta
+mta-*
+resources
+archive.zip

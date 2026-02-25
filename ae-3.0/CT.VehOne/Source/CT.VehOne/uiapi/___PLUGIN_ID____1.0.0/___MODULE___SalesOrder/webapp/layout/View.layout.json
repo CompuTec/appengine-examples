@@ -1,0 +1,25 @@
+{
+	"controller": "___PROVIDER___.___PLUGIN_ID___.___MODULE___SalesOrder.controller.View",
+	"overlay": {
+		"before": [
+			{
+				"guid": "8p7t18NaXsGaLBaXYHnt5T",
+				"items": [
+					{
+						"guid": "mApT49EtHH3qtUFeH3GGS3",
+						"ctrlType": "b1.sdk.Button",
+						"text": "{@@i18n>buttonText}",
+						"icon": "sap-icon://customize",
+						"enabled": true,
+						"visible": true,
+						"buttonType": "Emphasized",
+						"tooltip": "A button created by WebClient UI API",
+						"press": {
+							"procName": "onButtonClick"
+						}
+					}
+				]
+			}				
+		]
+	}
+}
