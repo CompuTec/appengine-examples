@@ -1,6 +1,6 @@
 {
   "$schema": "https://download.computec.one/schema/plugin-manifest.schema.json",
-  "version": "1.0.0",
+  "version": "1.0.10",
   "id": "CT.VehOne.BL",
   "name": "CT.VehOne.BL Name",
   "Assembly":"CT.VehOne.BL.dll",

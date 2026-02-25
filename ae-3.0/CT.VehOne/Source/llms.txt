@@ -1,0 +1,5 @@
+# llms.txt
+# Minimal manifest referencing only curated snippet bundle
+project_name=CompuTec.Core2
+project_version=3.0.1.445
+include=MCP/Context7/generated.snippet

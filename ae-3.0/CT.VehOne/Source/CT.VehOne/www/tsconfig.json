@@ -22,11 +22,17 @@
 			"ct/vehone/*": [
 				"./src/*"
 			],
+			"computec/appengine/uibase/*": [
+				"./node_modules/@computec/uibase/dist/*"
+			],
 			"computec/appengine/uicore/*": [
 				"./node_modules/@computec/uicore/src/computec/appengine/uicore/*"
 			],
 			"computec/appengine/common/*": [
 				"./node_modules/@computec/common/src/computec/appengine/common/*"
+			],
+			"@computec/uibase/*": [
+				"./node_modules/@computec/uibase/dist/*"
 			],
 			"@computec/uicore/*": [
 				"./node_modules/@computec/uicore/src/computec/appengine/uicore/*"

@@ -39,6 +39,10 @@ internal sealed partial class VechicleMasterDataBean : MasterDataBean, IVehicleM
     private void changed(object sender, PropertyChangedEventArgs eventargs)
     {
         _logger.LogDebug("Value changed {property}", eventargs.PropertyName);
+        if (eventargs.PropertyName == nameof(U_BuyBy))
+        {
+            this.Owners.U_OwnerName="ownerd by "+U_BuyBy;
+        }
     }
 
     private void changing(object sender, PropertyChangingEventArgs eventargs, out bool canel)

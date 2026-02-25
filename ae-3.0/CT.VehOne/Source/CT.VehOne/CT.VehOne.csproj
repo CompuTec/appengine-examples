@@ -89,7 +89,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="uiapi\" />
+      <Folder Include="uiapi\" /> 
+      <PackageReference Include="ModelContextProtocol.Core" Version="0.3.0-preview.3" />
     </ItemGroup>
 
     <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(RunNpmTask)'=='true'">

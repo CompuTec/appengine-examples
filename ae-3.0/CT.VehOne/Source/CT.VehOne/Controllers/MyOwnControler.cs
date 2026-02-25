@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CT.VehOne.Controllers;
 
-public class MyOwnControler:AppEngineSecureController
+ 
+public class MyOwn:AppEngineSecureController
 {
     [HttpGet]
     public string Get()
