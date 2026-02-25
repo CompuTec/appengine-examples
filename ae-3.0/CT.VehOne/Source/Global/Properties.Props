@@ -1,7 +1,7 @@
 <Project>
     <PropertyGroup>
         <Version>1.0.10</Version>
-		<CTCoreVersion>3.0.1.445</CTCoreVersion>
+		<CTCoreVersion>3.0.1.540</CTCoreVersion>
         <Authors>CompuTec S.A.</Authors>
         <Copyright>CompuTec S.A.</Copyright>    
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>

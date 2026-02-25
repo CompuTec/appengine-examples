@@ -3,10 +3,11 @@
   "isRoot": true,
   "tools": {
     "computec.tool": {
-      "version": "3.0.1.445",
+      "version": "3.0.1.540",
       "commands": [
         "ct"
-      ]
+      ],
+      "rollForward": false
     }
   }
 }
