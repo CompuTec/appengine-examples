@@ -199,8 +199,6 @@ project.lock.json
 # Rider
 .idea/
 
-# Visual Studio Code
-.vscode/
 
 # Output folder used by other front end stuff
 **/node_modules/*

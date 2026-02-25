@@ -22,8 +22,8 @@ internal sealed class VehicleMDEventHandler:ApplicationItemEvent<IVehicleMasterD
         
         if (itemEvent.ItemChanged&&itemEvent.ItemUID==VehicleMasterDataForm.Controls.OnwersMatrix)
         {
-            //his trick will force IVehicleMasterData model to loadFromToForm and this will trigger the new Lines to be added to the UI 
-            //In Moset of the cases in the lines you have and onbject with CFL that will automatically tyrigger this mechanism
+            // This trick will force IVehicleMasterData model to loadFromToForm and this will trigger the new Lines to be added to the UI  
+            //In Most of the cases in the lines you have an object with CFL that will automatically trigger this mechanism
             LoadFromToAction(itemEvent.CurrentForm, udo => { });
         }
     }   
@@ -49,6 +49,7 @@ internal sealed class VehicleMDEventHandler:ApplicationItemEvent<IVehicleMasterD
         DataTable dt = itemEvent.CFL_Event.SelectedObjects;
         LoadFromToAction(itemEvent.CurrentForm, udo =>
         {
+           
             if (dt.Rows.Count == 0)
             {
                 //Clear the fields

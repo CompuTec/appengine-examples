@@ -18,14 +18,4 @@ public class VehicleMdDataEventHandler:ApplicationDataEvent<IVehicleMasterData>
         return businessObjectInfo.FormTypeEx == VehicleMasterDataForm.FormTypeEx;
     }
 
-    protected override bool HandleAddException(Exception exception, IVehicleMasterData udoBean, PBusinessObjectInfo businessObjectInfo)
-    {
-        return base.HandleAddException(exception, udoBean, businessObjectInfo);
-        
-    }
-
-    protected override bool HandleUpdateException(Exception exception, IVehicleMasterData bean, PBusinessObjectInfo businessObjectInfo)
-    {
-        return base.HandleUpdateException(exception, bean, businessObjectInfo);
-    }
 }
