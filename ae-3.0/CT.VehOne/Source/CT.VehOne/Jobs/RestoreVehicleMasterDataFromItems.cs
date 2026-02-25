@@ -21,10 +21,12 @@ internal sealed class RestoreVehicleMasterDataFromItems:SecureJob
 
     public override Task Call()
     {
+        using var measure = _logger.CreateMeasure();
         var itemsCOdesToRestore= GetService<IVehicleQueries>().GetItemsToResore();
         if (!itemsCOdesToRestore.Any())
             return Task.CompletedTask;
         var service= GetService<IVehicleInformationService>();
+        measure.AddEvent("Somethink Hapened");
         foreach (var (itemCode, itemName) in itemsCOdesToRestore)
         {
             try
